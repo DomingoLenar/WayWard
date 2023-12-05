@@ -10,7 +10,7 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "com.example.myfirstapp"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0-${System.getenv("VERSION_SHA")}"
