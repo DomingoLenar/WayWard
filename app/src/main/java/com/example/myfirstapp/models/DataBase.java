@@ -66,5 +66,27 @@ public class DataBase {
         return null;
     }
 
+    public TravelPlan fetchTravelPlan(String columnName, String searchKey){
+        try{
+            Connection conn = createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM travel_plan WHERE "+columnName+" = '"+searchKey+"'");
+            String fetchedTitle = rs.getString(3);
+            String fetchedReviews = rs.getString(4);
+            String fetchedAuthor = rs.getString(2);
+            String fetchedDuration = rs.getString(5);
+            String fetchedEstimatedCost = rs.getString(6);
+            String fetchedDescription = rs.getString(7);
+            String fetchedDestinations = rs.getString(8);
+            TravelPlan fetchedPlan = new TravelPlan(fetchedTitle, null, fetchedAuthor,fetchedDuration, fetchedEstimatedCost,fetchedDescription,fetchedDestinations);
+            fetchedPlan.setReviews(fetchedReviews);
+            fetchedPlan.setPost_id(rs.getInt(1));
+            return fetchedPlan;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }
