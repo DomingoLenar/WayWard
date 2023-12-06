@@ -6,9 +6,6 @@ plugins {
 }
 
 android {
-    lint {
-        baseline = file("lint-baseline.xml")
-    }
     namespace = "com.example.myfirstapp"
     compileSdk = 34
     defaultConfig {
@@ -32,6 +29,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
 }
 
 kotlin {
