@@ -2,7 +2,6 @@ package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
 
-import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SignupActivity;
 
 public class SignupController {
@@ -18,8 +17,8 @@ public class SignupController {
 
     public void displayMainActivity(SignupActivity signupActivity) { // display Home page
 
-        Intent i = new Intent(signupActivity, MainActivity.class);
-        signupActivity.startActivity(i);
+//        Intent i = new Intent(signupActivity, MainActivity.class);
+//        signupActivity.startActivity(i);
 
     }
 }
