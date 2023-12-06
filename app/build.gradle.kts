@@ -10,7 +10,7 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "com.example.myfirstapp"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0-${System.getenv("VERSION_SHA")}"
@@ -45,6 +45,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.7.5")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation ("org.postgresql:postgresql:42.7.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     androidTestImplementation("androidx.test:runner:1.5.2")
