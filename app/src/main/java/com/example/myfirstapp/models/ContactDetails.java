@@ -10,6 +10,7 @@ public class ContactDetails {
     private String address;
     private String email;
     private String phoneNumber;
+    private int id = -1;
     private DataBase db = new DataBase();
     public ContactDetails(String username,  String email){
         this.username = username;
@@ -29,7 +30,7 @@ public class ContactDetails {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO contact_details (id, username, email, address, number) values (default, "+this.username+","+this.email+","+this.address+","+this.phoneNumber+")");
+            ResultSet rs = st.executeQuery("INSERT INTO contact_details (id, username, email, address, number) values (default, '"+this.username+"','"+this.email+"','"+this.address+"','"+this.phoneNumber+"')");
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -65,5 +66,8 @@ public class ContactDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+    public void setId(int id){
+        this.id = id;
     }
 }
