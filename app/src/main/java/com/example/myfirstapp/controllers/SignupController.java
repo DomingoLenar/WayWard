@@ -2,6 +2,7 @@ package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
 
+import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SignupActivity;
 
 public class SignupController {
