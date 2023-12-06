@@ -47,7 +47,16 @@ public class DataBase {
         }
         return null;
     }
-
+    public ContactDetails fetchContactDetails(String username){
+        try{
+            Connection conn = createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM contact_details WHERE username = '"+username+"'");
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }
