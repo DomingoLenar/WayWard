@@ -28,7 +28,7 @@ public class DataBase {
         try{
             Connection conn = createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM user_details WHERE username = "+username);
+            ResultSet rs = st.executeQuery("SELECT * FROM user_details WHERE username = '"+username+"'");
             if(rs.next()){
                 //Gets data from ResultSet and segregates them into respective variables
                 String fetchedUsername = rs.getString(1);
@@ -52,6 +52,14 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM contact_details WHERE username = '"+username+"'");
+            int fetchedID = rs.getInt(1);
+            String fetchedUsername = rs.getString(2);
+            String fetchedEmail = rs.getString(3);
+            String fetchedAddress = rs.getString(4);
+            String fetchedNumber = rs.getString(5);
+            ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail,fetchedNumber,fetchedAddress);
+            cd.setId(fetchedID);
+            return cd;
         }catch(SQLException e){
             e.printStackTrace();
         }
