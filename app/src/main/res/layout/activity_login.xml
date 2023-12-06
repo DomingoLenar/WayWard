@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".view.LoginActivity">
+    tools:context=".views.LoginActivity">
 
     <TextView
         android:id="@+id/loginTitle"
@@ -45,6 +45,7 @@
         android:background="@drawable/rounded_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
+        android:onClick="signIn"
         android:text="Sign In"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -62,6 +63,7 @@
         android:background="@drawable/rounded_button"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/signika_bold"
+        android:onClick="signUp"
         android:text="Sign Up"
         android:textColor="#000000"
         android:textSize="24sp"
