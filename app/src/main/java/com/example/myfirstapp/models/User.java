@@ -58,13 +58,17 @@ public class User {
      * Inserts the current object of user to the database
      */
     public void insertCurrentUser(){
-        try{
-            Connection conn = db.createConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default"+this.username+","
-            +this.password+","+this.firstName+","+this.middleName+","+ this.lastName+")");
-        }catch(SQLException e){
-            e.printStackTrace();
+        if(isUsernameValid()) {
+            try {
+                Connection conn = db.createConnection();
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
+                        + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else{
+            throw new RuntimeException("username already exists");
         }
     }
 
@@ -76,7 +80,7 @@ public class User {
         try {
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT exists(SELECT 1 FROM user_details WHERE username = "+this.username);
+            ResultSet rs = st.executeQuery("SELECT exists(SELECT 1 FROM user_details WHERE username = '"+this.username+"'");
             return rs.getBoolean(1);
         }catch(SQLException e){
             e.printStackTrace();
