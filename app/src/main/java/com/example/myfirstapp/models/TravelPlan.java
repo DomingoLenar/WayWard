@@ -11,18 +11,18 @@ import java.util.ArrayList;
 public class TravelPlan {
     private int post_id;
     private String title;
-    private ArrayList<Review> reviews;
-    private String username;
+    private ArrayList<Integer> reviews;
+    private String author;
     private String duration;
-    private int estimated_cost;
+    private String estimated_cost;
     private String description;
     private String destinations;
     private DataBase db = new DataBase();
 
-    public TravelPlan(String title, ArrayList<Review> reviews, String username, String duration, int estimated_cost,String description, String destinations){
+    public TravelPlan(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations){
         this.title = title;
         this.reviews = reviews;
-        this.username = username;
+        this.author = username;
         this.duration = duration;
         this.estimated_cost = estimated_cost;
         this.description = description;
@@ -33,11 +33,21 @@ public class TravelPlan {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
+            String csvReviews = createReviewCSV(this.reviews);
             ResultSet rs = st.executeQuery("INSERT INTO travel_plan(id,username,title,reviews,duration,estimated_cost,description,destinations)" +
-                    "values");
+                    "values(default, '"+this.author+"','"+this.title+"','"+csvReviews+"','"+this.duration+"','"+this.estimated_cost+"','"+this.description+"','"+this.destinations+"')");
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public String createReviewCSV(ArrayList<Integer> arrayList){
+        String output = "";
+        output += String.valueOf(arrayList.get(0));
+        for(int x = 1; x < arrayList.size(); x++){
+            output += ", "+String.valueOf(arrayList.get(x));
+        }
+        return output;
     }
 
     public void setPost_id(int post_id) {
@@ -52,20 +62,29 @@ public class TravelPlan {
         this.title = title;
     }
 
-    public ArrayList<Review> getReviews() {
+    public ArrayList<Integer> getReviews() {
         return reviews;
     }
 
-    public void setReviews(ArrayList<Review> reviews) {
+    public void setReviews(ArrayList<Integer> reviews) {
         this.reviews = reviews;
+    }
+    //Setter override to process raw string from database
+    public void setReviews(String csvReviews){
+        ArrayList<Integer> parsedReviews = new ArrayList<Integer>();
+        String[] rawReviews = csvReviews.split(",");
+        for(int x = 0; x < rawReviews.length; x++){
+            parsedReviews.add(Integer.parseInt(rawReviews[x]));
+        }
+        this.reviews = parsedReviews;
     }
 
     public String getUsername() {
-        return username;
+        return author;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.author = username;
     }
 
     public String getDuration() {
@@ -76,11 +95,11 @@ public class TravelPlan {
         this.duration = duration;
     }
 
-    public int getEstimated_cost() {
+    public String getEstimated_cost() {
         return estimated_cost;
     }
 
-    public void setEstimated_cost(int estimated_cost) {
+    public void setEstimated_cost(String estimated_cost) {
         this.estimated_cost = estimated_cost;
     }
 
