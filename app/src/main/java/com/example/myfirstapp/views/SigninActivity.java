@@ -1,4 +1,4 @@
-package com.example.myfirstapp.view;
+package com.example.myfirstapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.controllers.SigninController;
 
 public class SigninActivity extends AppCompatActivity {
 
+    SigninController signinController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+        signinController = new SigninController(this);
+
+        initViews();
+
+    }
+
+    private void initViews() {
 
         TextView signInTitle = findViewById(R.id.signInTitle);
         TextView signInDescription = findViewById(R.id.signInDescription);
