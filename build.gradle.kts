@@ -1,5 +1,8 @@
+buildscript {
+    val agp_version by extra("8.0.1")
+}
 plugins {
-    id("com.android.application") version "8.1.4" apply false
+    id("com.android.application") version "8.0.1" apply false
     kotlin("android") version "1.8.21" apply false
 }
 
