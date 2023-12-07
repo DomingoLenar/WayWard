@@ -2,6 +2,7 @@ package com.example.myfirstapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,12 +24,14 @@ public class SignInActivity extends AppCompatActivity {
         TextView signInPasswordTitle = findViewById(R.id.signInPasswordTitle);
 
         EditText signInPassword = findViewById(R.id.signInPassword);
+        EditText signInUsername = findViewById(R.id.signInUsername);
 
         Button signInButton = findViewById(R.id.signInButton);
 
         ImageView signInLogo = findViewById(R.id.signInLogo);
         ImageView signInAvatar = findViewById(R.id.signInAvatar);
         ImageView signInPasswordLogo = findViewById(R.id.signInPasswordLogo);
+        ImageView signInUsernameLogo = findViewById(R.id.signInUsernameLogo);
 
     }
 }
