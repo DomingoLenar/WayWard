@@ -2,7 +2,6 @@ package com.example.myfirstapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +10,7 @@ import android.widget.TextView;
 
 import com.example.myfirstapp.R;
 
-import org.w3c.dom.Text;
-
-public class SignupActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
