@@ -2,7 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/sansita_swashed_bold</item>
+        <item>@font/signika</item>
         <item>@font/signika_bold</item>
+        <item>@font/signika_light</item>
         <item>@font/signika_negative</item>
     </array>
 </resources>
