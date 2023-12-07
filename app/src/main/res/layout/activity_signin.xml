@@ -126,7 +126,7 @@
                 android:layout_width="69dp"
                 android:layout_height="72dp"
                 android:layout_marginLeft="270dp"
-                tools:srcCompat="@mipmap/usernameicon" />
+                tools:srcCompat="@mipmap/avataricon" />
 
         </LinearLayout>
 
