@@ -19,6 +19,17 @@ public class TravelPlan {
     private String destinations;
     private DataBase db = new DataBase();
 
+
+    /**
+     * Default constructor
+     * @param title
+     * @param reviews
+     * @param username
+     * @param duration
+     * @param estimated_cost
+     * @param description
+     * @param destinations
+     */
     public TravelPlan(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations){
         this.title = title;
         this.reviews = reviews;
@@ -29,6 +40,9 @@ public class TravelPlan {
         this.destinations = destinations;
     }
 
+    /**
+     * Method to push the this object into the database
+     */
     public void insertTravelPlan(){
         try{
             Connection conn = db.createConnection();
@@ -41,6 +55,10 @@ public class TravelPlan {
         }
     }
 
+    /**
+     * method to update the current description of a TravelPlan
+     * @param newDescription
+     */
     public void updateDescription(String newDescription){
         try{
             Connection conn = db.createConnection();
@@ -57,6 +75,10 @@ public class TravelPlan {
         }
     }
 
+    /**
+     * Method to update title of a current TravelPlan
+     * @param newTitle
+     */
     public void updateTitle(String newTitle){
         try{
             if(this.post_id != -1) {
