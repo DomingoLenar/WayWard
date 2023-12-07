@@ -73,6 +73,23 @@ public class User {
     }
 
     /**
+     * This method updates the database with the new password as well as the current object of user's
+     * password variable
+     * @param rawPassword   The raw un-hashed new password
+     */
+    public void updatePassword(String rawPassword){
+        String newPassword = hashPassword(rawPassword);
+        try{
+            Connection conn = db.createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
+            this.password = newPassword;
+        }catch(SQLException updateOfPassword){
+            updateOfPassword.printStackTrace();
+        }
+    }
+
+    /**
      * Checks if the username already exists in the database
      * @return boolean
      */
