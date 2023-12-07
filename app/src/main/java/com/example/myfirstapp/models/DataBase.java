@@ -7,6 +7,10 @@ public class DataBase {
     private String password = "palakapapoy";
 
 
+    /**
+     * This method establishes a connection with the POSTGRES database
+     * @return Returns an object of connection
+     */
     public Connection createConnection(){
         try {
             Class.forName("org.postgresql.Driver");
@@ -21,8 +25,8 @@ public class DataBase {
     /**
      * This method fetches the user from the database using the parameter username
      * this returns an object of User
-     * @param username
-     * @return User
+     * @param username username to fetch in the database
+     * @return object of user
      */
     public User fetchUser(String username){
         try{
@@ -47,6 +51,12 @@ public class DataBase {
         }
         return null;
     }
+
+    /**
+     * This method fetches the contact details of a given user using the username
+     * @param username  User to fetcch contact details of
+     * @return  Returns an object of ContactDetails
+     */
     public ContactDetails fetchContactDetails(String username){
         try{
             Connection conn = createConnection();
@@ -66,6 +76,12 @@ public class DataBase {
         return null;
     }
 
+    /**
+     * Fetches the travel plan given a search key and column
+     * @param columnName    Column to search at
+     * @param searchKey     Search key to be used at column
+     * @return  Returns an object of TravelPlan
+     */
     public TravelPlan fetchTravelPlan(String columnName, String searchKey){
         try{
             Connection conn = createConnection();
@@ -86,6 +102,26 @@ public class DataBase {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * This method searches a given table using given column and search key
+     * @param table Table to search
+     * @param column    Column to search
+     * @param searchKey Search key to be used for searching
+     * @return  Returns the id of the row
+     */
+    public int search(String table, String column, String searchKey){
+        try{
+            Connection conn = createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT id FROM "+table+" WHERE "+column+" = '"+searchKey+"'");
+            return rs.getInt(1);
+        }catch(SQLException search){
+            search.printStackTrace();
+        }
+
+        return -1;
     }
 
 
