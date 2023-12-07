@@ -167,9 +167,11 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="30dp"
+                tools:layout_editor_absoluteY="match"
                 android:contentDescription="Home Button"
-                app:srcCompat="@mipmap/transparentbackground1" >
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/homeicon" >
             </ImageButton>
 
             <ImageButton
@@ -180,19 +182,21 @@
                 tools:layout_editor_absoluteY="30dp"
                 android:layout_marginLeft="10dp"
                 android:contentDescription="Search Button"
-                app:srcCompat="@mipmap/transparentbackground1" >
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/searchicon" >
             </ImageButton>
 
             <ImageButton
                 android:id="@+id/userProfileMainButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:contentDescription="Main Button"
-                app:srcCompat="@mipmap/transparentbackground1" >
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/mainbuttonicon" >
             </ImageButton>
 
             <ImageButton
@@ -202,7 +206,8 @@
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"
                 android:contentDescription="Edit Button"
-                app:srcCompat="@mipmap/transparentbackground1" >
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/editicon" >
             </ImageButton>
 
             <ImageButton
@@ -213,7 +218,8 @@
                 tools:layout_editor_absoluteY="30dp"
                 android:layout_marginLeft="10dp"
                 android:contentDescription="Profile Button"
-                app:srcCompat="@mipmap/transparentbackground1" >
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/profileicon" >
             </ImageButton>
 
         </LinearLayout>
