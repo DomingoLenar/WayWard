@@ -232,8 +232,6 @@
         android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent" >
 
-
-
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>

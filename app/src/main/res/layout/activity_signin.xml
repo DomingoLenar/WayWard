@@ -113,20 +113,20 @@
                 android:layout_marginTop="75dp"
                 android:layout_marginLeft="50dp"/>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="28dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="28dp">
+                <ImageView
+                    android:id="@+id/signInAvatar"
+                    android:layout_width="69dp"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="270dp"
+                    tools:srcCompat="@mipmap/avataricon" />
 
-            <ImageView
-                android:id="@+id/signInAvatar"
-                android:layout_width="69dp"
-                android:layout_height="72dp"
-                android:layout_marginLeft="270dp"
-                tools:srcCompat="@mipmap/avataricon" />
+            </LinearLayout>
 
         </LinearLayout>
 
