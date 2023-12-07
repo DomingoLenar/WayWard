@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TravelPlan {
-    private int post_id;
+    private int post_id =-1;
     private String title;
     private ArrayList<Integer> reviews;
     private String author;
@@ -38,6 +38,37 @@ public class TravelPlan {
                     "values(default, '"+this.author+"','"+this.title+"','"+csvReviews+"','"+this.duration+"','"+this.estimated_cost+"','"+this.description+"','"+this.destinations+"')");
         }catch(SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    public void updateDescription(String newDescription){
+        try{
+            Connection conn = db.createConnection();
+            Statement st = conn.createStatement();
+            if(this.post_id == -1) {
+                ResultSet rs = st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE title = '" + this.title + "' and author = '" + this.author + "'");
+                this.description = newDescription;
+            }else{
+                ResultSet rs = st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE id = '" + this.post_id + "'");
+                this.description = newDescription;
+            }
+        }catch(SQLException updateDescriptionError){
+            updateDescriptionError.printStackTrace();
+        }
+    }
+
+    public void updateTitle(String newTitle){
+        try{
+            if(this.post_id != -1) {
+                Connection conn = db.createConnection();
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery("UPDATE travel_plan SET title = '" + newTitle + "' WHERE id = '" + this.post_id + ";");
+                this.title = newTitle;
+            }else{
+                throw new RuntimeException("This travel plan does not have a post id");
+            }
+        }catch(SQLException updateTitleException){
+            updateTitleException.printStackTrace();
         }
     }
 
