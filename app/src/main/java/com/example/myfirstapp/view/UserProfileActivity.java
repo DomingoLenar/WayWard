@@ -1,6 +1,7 @@
 package com.example.myfirstapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.media.Image;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
@@ -38,6 +40,9 @@ public class UserProfileActivity extends AppCompatActivity {
         ImageButton userProfileEditButton = findViewById(R.id.userProfileEditButton);
         ImageButton userProfileUPButton = findViewById(R.id.userProfileUPButton);
 
+        CardView userProfileBottomBarOrange = findViewById(R.id.userProfileBottomBarOrange);
+        CardView userProfileBottomBarDarkCream = findViewById(R.id.userProfileBottomBarDarkCream);
 
+        LinearLayout userProfileBottomBarContents = findViewById(R.id.userProfileBottomBarContents);
     }
 }

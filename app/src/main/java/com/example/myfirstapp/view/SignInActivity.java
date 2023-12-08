@@ -1,12 +1,14 @@
 package com.example.myfirstapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
@@ -32,6 +34,13 @@ public class SignInActivity extends AppCompatActivity {
         ImageView signInAvatar = findViewById(R.id.signInAvatar);
         ImageView signInPasswordLogo = findViewById(R.id.signInPasswordLogo);
         ImageView signInUsernameLogo = findViewById(R.id.signInUsernameLogo);
+
+        CardView signInWelcomeBack = findViewById(R.id.signInWelcomeBack);
+
+        LinearLayout signInWelcomeBackContents1 = findViewById(R.id.signInWelcomeBackContents1);
+        LinearLayout signInWelcomeBackContents2 = findViewById(R.id.signInWelcomeBackContents2);
+        LinearLayout signInWelcomeBackContents3 = findViewById(R.id.signInWelcomeBackContents3);
+        LinearLayout signInWelcomeBackContents4 = findViewById(R.id.signInWelcomeBackContents4);
 
     }
 }

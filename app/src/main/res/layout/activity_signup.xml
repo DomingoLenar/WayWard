@@ -50,6 +50,7 @@
         app:srcCompat="@mipmap/logointerfaceicon" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/signUpNewAccount"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_alignParentBottom="true"
@@ -59,6 +60,7 @@
         app:cardCornerRadius="28dp" >
 
         <LinearLayout
+            android:id="@+id/signUpNewAccountContents1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -128,6 +130,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/signUpNewAccountContents2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -145,6 +148,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/signUpNewAccountContents3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -170,6 +174,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/signUpNewAccountContents4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -195,6 +200,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/signUpNewAccountContents5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
