@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models;
 
+import com.example.myfirstapp.controllers.SignupController;
+
 import java.sql.*;
 
 /**
@@ -13,7 +15,11 @@ public class User {
     private String middleName;
     private String lastName;
     private final DataBase db = new DataBase();
+    private SignupController signupController;
 
+    public User (SignupController signupController) {
+        this.signupController = signupController;
+    }
     /**
      * This constructor takes in three parameters and leaves the details of names as null
      * @param username
@@ -196,4 +202,9 @@ public class User {
     }
 
 
+    public boolean createAccount(String email, String username, String password) {
+
+//        db.storeUserAccount()
+        return false;
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models;
 
+import com.example.myfirstapp.controllers.SignupController;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +14,11 @@ public class ContactDetails {
     private String phoneNumber;
     private int id = -1;
     private DataBase db = new DataBase();
+    private SignupController signupController;
+
+    public ContactDetails(SignupController signupController) {
+        this.signupController = signupController;
+    }
     public ContactDetails(String username,  String email){
         this.username = username;
         this.email = email;

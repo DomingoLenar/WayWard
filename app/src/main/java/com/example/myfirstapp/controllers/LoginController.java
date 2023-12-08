@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.example.myfirstapp.views.LoginActivity;
 import com.example.myfirstapp.views.SigninActivity;
+import com.example.myfirstapp.views.SignupActivity;
 
 public class LoginController {
     LoginActivity loginActivity;
@@ -18,7 +19,7 @@ public class LoginController {
     }
 
     public void displaySignUpActivity(LoginActivity loginActivity) { // display Sign Up Activity
-        Intent i = new Intent(loginActivity, SignupController.class);
+        Intent i = new Intent(loginActivity, SignupActivity.class);
         loginActivity.startActivity(i);
     }
 }

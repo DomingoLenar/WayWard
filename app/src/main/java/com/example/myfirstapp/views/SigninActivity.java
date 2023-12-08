@@ -14,6 +14,7 @@ import com.example.myfirstapp.controllers.SigninController;
 public class SigninActivity extends AppCompatActivity {
 
     SigninController signinController;
+    private EditText signInUser, signInPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,8 @@ public class SigninActivity extends AppCompatActivity {
         TextView signInWB = findViewById(R.id.signInWB);
         TextView signInPasswordTitle = findViewById(R.id.signInPasswordTitle);
 
-        EditText signInPassword = findViewById(R.id.signInPassword);
+//        signInUser = findViewById(R.id.signInUser);
+        signInPassword = findViewById(R.id.signInPassword);
 
         Button signInButton = findViewById(R.id.signInButton);
 
