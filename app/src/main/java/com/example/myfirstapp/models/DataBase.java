@@ -1,6 +1,16 @@
 package com.example.myfirstapp.models;
 
 import java.sql.*;
+import io.supabase.StorageClient;
+import io.supabase.api.IStorageFileAPI;
+import io.supabase.data.bucket.BucketUpdateOptions;
+import io.supabase.data.file.*;
+import io.supabase.utils.MessageResponse;
+
+import java.io.File;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 public class DataBase {
     private String url = "jdbc:postgresql://db.fauokmrzqpowzdiqqxxg.supabase.co:5432/postgres";
     private String user = "postgres";
@@ -122,6 +132,34 @@ public class DataBase {
         }
 
         return -1;
+    }
+
+    public boolean uploadImage(String localPath, String remotePath){
+        String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/";
+        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE1ODcyNTYsImV4cCI6MjAxNzE2MzI1Nn0.3GYnldygSO7wCrKZVHkQyviW0LVwS6KdPpAqIVa-EcE";
+
+        StorageClient storageClient = new StorageClient(serviceToken, url);
+
+        IStorageFileAPI fileAPI = storageClient.from("images");
+        try {
+            // We call .get here to block the thread and retrieve the value or an exception.
+            // Pass the file path in supabase storage and pass a file object of the file you want to upload.
+            FilePathResponse response = fileAPI.upload("test/image.png", new File("src/my-secret-image/image.png")).get();
+
+            // Generate a public url (The link is only valid if the bucket is public).
+            //fileAPI.getPublicUrl("my-secret-image/image.png", new FileDownloadOption(false), new FileTransformOptions(500, 500, ResizeOption.COVER, 50, FormatOption.NONE));
+
+            // Create a signed url to download an object in a private bucket that expires in 60 seconds, and will be downloaded instantly on link as "my-image.png"
+            //fileAPI.getSignedUrl("my-secret-image/image.png", 60, new FileDownloadOption("my-image.png"), null);
+
+            // Download the file
+            //fileAPI.download("my-secret-image/image.png", null);
+            System.out.println("Uploaded");
+            return true;
+
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
