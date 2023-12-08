@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
@@ -101,6 +102,545 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <HorizontalScrollView
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="408dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="400dp"
+            android:layout_height="150dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="412dp"
+            android:backgroundTint="@color/cream"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton1"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mainStars1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    tools:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Mines View \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="3.9"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton2"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mainStars2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    tools:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Burnham \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.3"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton3"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mainStars3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    tools:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="The \nMansion"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.1"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton4"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mainStars4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    tools:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Wright \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.6"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton5"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mainStars5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="3dp"
+                    tools:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Botanical \nGarden"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="3.8"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="350dp"
+        android:layout_height="275dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="100dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="275dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="412dp"
+            android:backgroundTint="@color/cream"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton1"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="500dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="140dp">
+
+            <ImageButton
+                android:id="@+id/mainRecommendedButton2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="mainRecommendedButton2"
+                app:srcCompat="@mipmap/avataricon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="match">
+            </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="280dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton3"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
