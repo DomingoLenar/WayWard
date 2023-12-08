@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         loginController = new LoginController(this);
+
         initViews();
 
 
