@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="240dp"
-        android:background="@drawable/view_bg"
+        android:background="@drawable/constaint_layout_orange_bg"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,12 +34,11 @@
             <Button
                 android:id="@+id/SU_signUpButton"
                 android:layout_width="239dp"
-
                 android:layout_height="64dp"
                 android:layout_marginStart="88dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="#FFFFFF"
+                android:background="@drawable/button_white_bg"
                 android:fontFamily="@font/signika_bold"
                 android:onClick="SU_signUp"
                 android:text="Next"
