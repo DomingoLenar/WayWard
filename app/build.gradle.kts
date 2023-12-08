@@ -40,6 +40,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.9.0")
     implementation ("org.postgresql:postgresql:42.7.0")
+    implementation ("io.github.jan-tennert.supabase:supabase-kt:1.0.0")
+    implementation ("io.github.jan-tennert.supabase:storage-kt:1.0.0")
+    implementation ("io.ktor:ktor-client-android:1.0.0")
+
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     androidTestImplementation("androidx.test:runner:1.5.2")
