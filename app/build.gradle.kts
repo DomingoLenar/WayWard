@@ -45,7 +45,7 @@ dependencies {
     implementation ("io.ktor:ktor-client-android:1.0.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation(files("libs/storage-java-1.0.1.jar"))
+    implementation(files("libs\\storage-java-1.0.1.jar"))
 
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
