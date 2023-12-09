@@ -30,7 +30,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         Button userProfilePreviousTravels = findViewById(R.id.userProfilePreviousTravels);
         Button userProfileLocationServices = findViewById(R.id.userProfileLocationServices);
-        Button userProfileAppearance = findViewById(R.id.userProfileAppearance);
+        Button userProfileProfileSettings = findViewById(R.id.userProfileProfileSettings);
         Button userProfilePrivacy = findViewById(R.id.userProfilePrivacy);
         Button userProfileLogout = findViewById(R.id.userProfileLogout);
 
