@@ -35,10 +35,10 @@ public class DataBase {
                 String fetchedPassword = rs.getString(2);
                 int fetchedUserID = rs.getInt(3);
                 String fetchedFName = rs.getString(4);
-                String fetchedMName = rs.getString(5);
+//                String fetchedMName = rs.getString(5);
                 String fetchedLName = rs.getString(6);
                 // constructs and returns a new object of user based on the fetched data
-                return new User(fetchedUsername, fetchedPassword, true,fetchedFName, fetchedMName, fetchedLName);
+                return new User(fetchedUsername, fetchedPassword, true,fetchedFName, fetchedLName);
             }else{
                 return null;
             }
@@ -55,9 +55,9 @@ public class DataBase {
             int fetchedID = rs.getInt(1);
             String fetchedUsername = rs.getString(2);
             String fetchedEmail = rs.getString(3);
-            String fetchedAddress = rs.getString(4);
+//            String fetchedAddress = rs.getString(4);
             String fetchedNumber = rs.getString(5);
-            ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail,fetchedNumber,fetchedAddress);
+            ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail,fetchedNumber);
             cd.setId(fetchedID);
             return cd;
         }catch(SQLException e){

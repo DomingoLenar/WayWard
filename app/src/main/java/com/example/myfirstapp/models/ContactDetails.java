@@ -26,11 +26,11 @@ public class ContactDetails {
         this.phoneNumber = null;
     }
 
-    public ContactDetails(String username, String email, String phoneNumber, String address){
+    public ContactDetails(String username, String email, String phoneNumber){
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+//        this.address = address;
     }
 
     public void insertCurrentCD(){

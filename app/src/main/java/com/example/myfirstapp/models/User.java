@@ -1,5 +1,6 @@
 package com.example.myfirstapp.models;
 
+import com.example.myfirstapp.controllers.SigninController;
 import com.example.myfirstapp.controllers.SignupController;
 
 import java.sql.*;
@@ -7,6 +8,7 @@ import java.sql.*;
 /**
  * User model class
  */
+
 public class User {
     private String username;
     private String password;
@@ -16,9 +18,12 @@ public class User {
     private String lastName;
     private final DataBase db = new DataBase();
     private SignupController signupController;
-
+    private SigninController signinController;
     public User (SignupController signupController) {
         this.signupController = signupController;
+    }
+    public User(SigninController signinController) {
+        this.signinController = signinController;
     }
     /**
      * This constructor takes in three parameters and leaves the details of names as null
@@ -44,13 +49,13 @@ public class User {
      * @param password
      * @param hashed
      * @param firstName
-     * @param middleName
+//     * @param middleName
      * @param lastName
      */
-    public User(String username, String password, boolean hashed, String firstName, String middleName, String lastName){
+    public User(String username, String password, boolean hashed, String firstName, String lastName){
         this.username = username;
         this.firstName = firstName;
-        this.middleName = middleName;
+//        this.middleName = middleName;
         this.lastName = lastName;
         if(hashed){
             this.password = password;
@@ -60,11 +65,14 @@ public class User {
     }
 
 
+
+
     /**
      * Inserts the current object of user to the database
      */
     public void insertCurrentUser(){
-        if(isUsernameValid()) {
+        boolean valid = isUsernameValid();
+        if(valid) {
             try {
                 Connection conn = db.createConnection();
                 Statement st = conn.createStatement();
