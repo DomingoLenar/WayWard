@@ -165,7 +165,7 @@ public class DataBase {
      */
     public boolean uploadImage(String localPath, String remotePath){
         String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/";
-        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE1ODcyNTYsImV4cCI6MjAxNzE2MzI1Nn0.3GYnldygSO7wCrKZVHkQyviW0LVwS6KdPpAqIVa-EcE";
+        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTU4NzI1NiwiZXhwIjoyMDE3MTYzMjU2fQ.IPP4_Zgysjp--4AwxDwkHC33G-oTW04SQE4OUWnoTQA";
 
         StorageClient storageClient = new StorageClient(serviceToken, url);
 
@@ -173,16 +173,7 @@ public class DataBase {
         try {
             // We call .get here to block the thread and retrieve the value or an exception.
             // Pass the file path in supabase storage and pass a file object of the file you want to upload.
-            FilePathResponse response = fileAPI.upload("test/image.png", new File("src/my-secret-image/image.png")).get();
-
-            // Generate a public url (The link is only valid if the bucket is public).
-            //fileAPI.getPublicUrl("my-secret-image/image.png", new FileDownloadOption(false), new FileTransformOptions(500, 500, ResizeOption.COVER, 50, FormatOption.NONE));
-
-            // Create a signed url to download an object in a private bucket that expires in 60 seconds, and will be downloaded instantly on link as "my-image.png"
-            //fileAPI.getSignedUrl("my-secret-image/image.png", 60, new FileDownloadOption("my-image.png"), null);
-
-            // Download the file
-            //fileAPI.download("my-secret-image/image.png", null);
+            FilePathResponse response = fileAPI.upload(remotePath, new File(localPath)).get();
             System.out.println("Uploaded");
             return true;
 
