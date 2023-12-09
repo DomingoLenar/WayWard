@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.controllers.SignupController;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -19,11 +20,14 @@ public class SignupActivity extends AppCompatActivity {
     private EditText usernameField, passwordField, emailField, fnameField, lNameField, phoneNoField;
     private TextView usernameLabel, passwordLabel, emailLabel, fNameLabel, lNameLabel, phoneNoLabel;
     private Button signUpButton;
+    SignupController signupController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        signupController = new SignupController(this);
 
         initViews();
 
@@ -59,22 +63,30 @@ public class SignupActivity extends AppCompatActivity {
         valueAnimator.start(); // start animation
 
         signUpButton.setText(R.string.sign_up);
+
+        if (usernameField.getText().toString().equals("") || passwordField.getText().toString().equals("") || emailField.getText().toString().equals("") ||
+                fnameField.getText().toString().equals("") || lNameField.getText().toString().equals("") || phoneNoField.getText().toString().equals("")) {
+            // notify user
+        } else {
+            signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
+                    fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
+        }
     }
 
     private void initViews() {
-        findViewById(R.id.SU_newaccLabel);
+        findViewById(R.id.SI_welcomeLabel);
 
-        signUpButton = findViewById(R.id.SU_signUpButton);
-        usernameField = findViewById(R.id.SU_usernameField);
-        passwordField = findViewById(R.id.SU_passwordField);
+        signUpButton = findViewById(R.id.SI_signInButton);
+        usernameField = findViewById(R.id.SI_usernameField);
+        passwordField = findViewById(R.id.SI_passwordField);
         emailField= findViewById(R.id.SU_emailField);
         fnameField = findViewById(R.id.SU_firstNameField);
         lNameField = findViewById(R.id.SU_lastnameField);
         phoneNoField = findViewById(R.id.SU_phoneField);
 
         emailLabel = findViewById(R.id.SU_emailLabel);
-        passwordLabel = findViewById(R.id.SU_passwordLabel);
-        usernameLabel = findViewById(R.id.SU_usernameLabel);
+        passwordLabel = findViewById(R.id.SI_passwordLabel);
+        usernameLabel = findViewById(R.id.SI_usernameLabel);
         fNameLabel = findViewById(R.id.SU_firstNameLabel);
         lNameLabel = findViewById(R.id.SU_lastNameLabel);
         phoneNoLabel = findViewById(R.id.SU_phoneLabel);

@@ -31,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * - Launch Sign In Activity
+     * @param view
      */
 
     public void signIn(View view) {
@@ -44,6 +45,5 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void signUp(View view) {
         loginController.displaySignUpActivity(this);
-
     }
 }
