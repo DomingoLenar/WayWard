@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,8 +48,16 @@ public class ContactDetails {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO contact_details (id, username, email, address, number) values (default, '"+this.username+"','"+this.email+"','"+this.address+"','"+this.phoneNumber+"')");
-        }catch(SQLException e){
+            st.executeQuery("INSERT INTO contact_details (id, username, email, address, number) values (default, '"+this.username+"','"+this.email+"','"+this.address+"','"+this.phoneNumber+"')");
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, insert success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
     }
@@ -60,8 +70,15 @@ public class ContactDetails {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("UPDATE contact_details SET address = '"+newAddress+"' WHERE username = '"+this.username+"'");
-        }catch(SQLException updateAddressException){
+            st.executeQuery("UPDATE contact_details SET address = '"+newAddress+"' WHERE username = '"+this.username+"'");
+        }catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateAddressException){
             updateAddressException.printStackTrace();
         }
     }
@@ -74,8 +91,16 @@ public class ContactDetails {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("UPDATE contact_details SET address = '"+newNumber+"' WHERE username = '"+this.username+"'");
-        }catch(SQLException updateNumberException){
+            st.executeQuery("UPDATE contact_details SET address = '"+newNumber+"' WHERE username = '"+this.username+"'");
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateNumberException){
             updateNumberException.printStackTrace();
         }
     }

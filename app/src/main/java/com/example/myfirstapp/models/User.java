@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.*;
 
 /**
@@ -62,9 +64,17 @@ public class User {
             try {
                 Connection conn = db.createConnection();
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
+                st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
                         + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
-            } catch (SQLException e) {
+            }
+            catch(PSQLException psqlException){
+                if("No results were returned by the query.".equals(psqlException.getMessage())){
+                    System.out.println("No results from query, insert success");
+                }else{
+                    psqlException.printStackTrace();
+                }
+            }
+            catch (SQLException e) {
                 e.printStackTrace();
             }
         }else{
@@ -82,9 +92,17 @@ public class User {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
+            st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
             this.password = newPassword;
-        }catch(SQLException updateOfPassword){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateOfPassword){
             updateOfPassword.printStackTrace();
         }
     }
@@ -98,8 +116,19 @@ public class User {
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT exists(SELECT 1 FROM user_details WHERE username = '"+this.username+"'");
-            return rs.getBoolean(1);
-        }catch(SQLException e){
+            rs.next();
+            return !(rs.getBoolean(1));
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, query success");
+                return true;
+            }else{
+                psqlException.printStackTrace();
+                return true;
+            }
+        }
+        catch(SQLException e){
             e.printStackTrace();
             return true;
         }

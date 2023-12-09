@@ -83,14 +83,19 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM contact_details WHERE username = '"+username+"'");
-            int fetchedID = rs.getInt(1);
-            String fetchedUsername = rs.getString(2);
-            String fetchedEmail = rs.getString(3);
-            String fetchedAddress = rs.getString(4);
-            String fetchedNumber = rs.getString(5);
-            ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail,fetchedNumber,fetchedAddress);
-            cd.setId(fetchedID);
-            return cd;
+            if(rs.next()) {
+                /*Getting the column index shouldnt be done manually update in later revision and use the
+                 *rs.findColumn(String columnName)
+                 */
+                int fetchedID = rs.getInt(1);
+                String fetchedUsername = rs.getString(2);
+                String fetchedEmail = rs.getString(3);
+                String fetchedAddress = rs.getString(4);
+                String fetchedNumber = rs.getString(5);
+                ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail, fetchedNumber, fetchedAddress);
+                cd.setId(fetchedID);
+                return cd;
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -108,17 +113,22 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM travel_plan WHERE "+columnName+" = '"+searchKey+"'");
-            String fetchedTitle = rs.getString(3);
-            String fetchedReviews = rs.getString(4);
-            String fetchedAuthor = rs.getString(2);
-            String fetchedDuration = rs.getString(5);
-            String fetchedEstimatedCost = rs.getString(6);
-            String fetchedDescription = rs.getString(7);
-            String fetchedDestinations = rs.getString(8);
-            TravelPlan fetchedPlan = new TravelPlan(fetchedTitle, null, fetchedAuthor,fetchedDuration, fetchedEstimatedCost,fetchedDescription,fetchedDestinations);
-            fetchedPlan.setReviews(fetchedReviews);
-            fetchedPlan.setPost_id(rs.getInt(1));
-            return fetchedPlan;
+            if(rs.next()) {
+                /*Getting the column index shouldnt be done manually update in later revision and use the
+                 *rs.findColumn(String columnName)
+                 */
+                String fetchedTitle = rs.getString(3);
+                String fetchedReviews = rs.getString(4);
+                String fetchedAuthor = rs.getString(2);
+                String fetchedDuration = rs.getString(5);
+                String fetchedEstimatedCost = rs.getString(6);
+                String fetchedDescription = rs.getString(7);
+                String fetchedDestinations = rs.getString(8);
+                TravelPlan fetchedPlan = new TravelPlan(fetchedTitle, null, fetchedAuthor, fetchedDuration, fetchedEstimatedCost, fetchedDescription, fetchedDestinations);
+                fetchedPlan.setReviews(fetchedReviews);
+                fetchedPlan.setPost_id(rs.getInt(1));
+                return fetchedPlan;
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -137,7 +147,9 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM "+table+" WHERE "+column+" = '"+searchKey+"'");
-            return rs.getInt(1);
+            if(rs.next()){
+                return rs.getInt(1);
+            }
         }catch(SQLException search){
             search.printStackTrace();
         }
