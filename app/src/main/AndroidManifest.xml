@@ -9,6 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".view.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.EditPlanActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.Login"
             android:exported="true">
             <intent-filter>
