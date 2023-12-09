@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -28,7 +29,17 @@ public class MainActivity extends AppCompatActivity {
         TextView mainTopRated = findViewById(R.id.mainTopRated);
         TextView mainRecommended = findViewById(R.id.mainRecommended);
 
-        ImageView mainAvatar = findViewById(R.id.mainAvatar);
+        ImageButton mainAvatar = findViewById(R.id.mainAvatar);
+        ImageButton mainStars1 = findViewById(R.id.mainStars1);
+        mainStars1.setClickable(false);
+        ImageButton mainStars2 = findViewById(R.id.mainStars2);
+        mainStars2.setClickable(false);
+        ImageButton mainStars3 = findViewById(R.id.mainStars3);
+        mainStars3.setClickable(false);
+        ImageButton mainStars4 = findViewById(R.id.mainStars4);
+        mainStars4.setClickable(false);
+        ImageButton mainStars5 = findViewById(R.id.mainStars5);
+        mainStars5.setClickable(false);
 
         CardView mainSearchBar = findViewById(R.id.mainSearchBar);
         CardView mainTopRatedCard = findViewById(R.id.mainTopRatedCard);
