@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
+                android:onClick="insert_thumbnail"
                 android:scaleType="centerCrop"
                 android:src="@drawable/campjohnhay"
                 android:visibility="visible" />
@@ -245,6 +246,7 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
+        android:onClick="planNowBtn"
         android:src="@drawable/baseline_arrow_circle_right_256"
         app:backgroundTint="#FFFFFF"
         tools:layout_editor_absoluteX="202dp"
