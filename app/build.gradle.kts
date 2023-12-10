@@ -53,6 +53,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation(files("libs\\storage-java-1.0.1.jar"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.8.0-RC")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
