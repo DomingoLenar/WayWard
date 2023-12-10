@@ -12,9 +12,11 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.example.myfirstapp.R;
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import org.w3c.dom.Text;
 
@@ -27,6 +29,23 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ImageView imageView2 = findViewById(R.id.imageView2);
+        TextView searchExplore = findViewById(R.id.searchExplore);
+        ImageButton searchAvatar = findViewById(R.id.searchAvatar);
+        CardView searchSearchBar = findViewById(R.id.searchSearchBar);
+        LinearLayout searchSearchBarContents = findViewById(R.id.searchSearchBarContents);
+        ImageView searchSearchLogo = findViewById(R.id.searchSearchLogo);
+        EditText searchSearchField = findViewById(R.id.searchSearchField);
+        CardView mainBottomBarDarkCream = findViewById(R.id.mainBottomBarDarkCream);
+        LinearLayout mainBottomBarContents = findViewById(R.id.mainBottomBarContents);
+        ImageButton mainHomeButton = findViewById(R.id.mainHomeButton);
+        ImageButton mainSearchButton = findViewById(R.id.mainSearchButton);
+        ImageButton mainMButton = findViewById(R.id.mainMButton);
+        ImageButton mainEditButton = findViewById(R.id.mainEditButton);
+        ImageButton mainUserProfileButton = findViewById(R.id.mainUserProfileButton);
+        CardView mainBottomBarOrange = findViewById(R.id.mainBottomBarOrange);
+        RelativeLayout searchFragments = findViewById(R.id.searchFragments);
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager2 = findViewById(R.id.view_pager);
@@ -58,13 +77,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        TextView searchExplore = findViewById(R.id.searchExplore);
 
-        ImageButton searchAvatar = findViewById(R.id.searchAvatar);
-
-        CardView searchSearchBar = findViewById(R.id.searchSearchBar);
-
-        LinearLayout searchSearchBarContents = findViewById(R.id.searchSearchBarContents);
 
     }
 
