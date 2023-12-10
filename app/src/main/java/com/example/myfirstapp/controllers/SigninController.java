@@ -26,16 +26,23 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-
+//        if (){
+//            // notify user
+//        } else {
+//        }
         displayMainActivity(signinActivity); // temporary...
 
         userModel = new User(username, password, false);
-        boolean valid = userModel.authenticate();
+        userModel.authenticate();
 
-        if (valid) {
-            displayMainActivity(signinActivity);
-        } else {
+
+    }
+
+    public void authorize(boolean permit) {
+        if (!permit) {
             // notify user that username || password incorrect
+        } else {
+            displayMainActivity(signinActivity);
         }
     }
 }
