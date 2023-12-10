@@ -2,8 +2,804 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.MainActivity">
+    android:background="@color/cream"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/mainExplore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika_bold"
+        android:text="EXPLORE"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <TextView
+        android:id="@+id/mainTopRated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika_bold"
+        android:text="Top Rated"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <TextView
+        android:id="@+id/mainRecommended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika_bold"
+        android:text="Recommended"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.463" />
+
+    <ImageButton
+        android:id="@+id/mainAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginBottom="640dp"
+        android:background="@color/cream"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="mainAvatar"
+        app:srcCompat="@mipmap/avataricon">
+    </ImageButton>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainSearchBar"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="85dp"
+        android:backgroundTint="#CACACA"
+        app:cardCornerRadius="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/mainSearchBarContents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/mainSearchLogo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
+                app:srcCompat="@mipmap/searchicon" />
+
+            <EditText
+                android:id="@+id/mainSearchField"
+                android:layout_width="265dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:fontFamily="@font/signika"
+                android:hint="Search for a place..."
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <HorizontalScrollView
+        android:id="@+id/mainTopRatedHorizontalScrollView"
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="235dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainTopRatedCard"
+            android:layout_width="400dp"
+            android:layout_height="150dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/cream"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFirstButton"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton1"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFirstButtonContents1"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/mainStars1"
+                    android:layout_width="54dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:background="@mipmap/transparentbackground11"
+                    android:contentDescription="mainStars1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Mines View \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFirstButtonContents2"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="3.9"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedSecondButton"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton2"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedSecondButtonContents1"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/mainStars2"
+                    android:layout_width="54dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="mainStars1"
+                    android:background="@mipmap/transparentbackground11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Burnham \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedSecondButtonContents2"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="105dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.3"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedThirdButton"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton3"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedThirdButtonContents1"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/mainStars3"
+                    android:layout_width="54dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="mainStars1"
+                    android:background="@mipmap/transparentbackground11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/staricon" />
+                <TextView
+                    android:id="@+id/mainButtonTitle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="The \nMansion"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedThirdButtonContents2"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="205dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.1"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFourthButton"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton4"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFourthButtonContents1"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/mainStars4"
+                    android:layout_width="54dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="mainStars1"
+                    android:background="@mipmap/transparentbackground11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Wright \nPark"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFourthButtonContents2"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="305dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="4.6"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFifthButton"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp">
+
+                <ImageButton
+                    android:id="@+id/mainTopRatedButton5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainTopRatedButton5"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFifthButtonContents1"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/mainStars5"
+                    android:layout_width="54dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="mainStars1"
+                    android:background="@mipmap/transparentbackground11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/staricon" />
+
+                <TextView
+                    android:id="@+id/mainButtonTitle5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="Botanical \nGarden"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+                <TextView
+                    android:id="@+id/mainButtonDescription5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/signika_light"
+                    android:text="Baguio City, Benguet"
+                    android:textColor="#000000"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainTopRatedFifthButtonContents2"
+                android:layout_width="90dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="405dp">
+
+                <TextView
+                    android:id="@+id/mainStarRating5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/signika_bold"
+                    android:text="3.8"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.228" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/mainRecommendedButtonVerticalScrollView"
+        android:layout_width="350dp"
+        android:layout_height="275dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainRecommendedButton"
+            android:layout_width="350dp"
+            android:layout_height="275dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="412dp"
+            android:backgroundTint="@color/cream"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toTopOf="parent"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/mainRecommendedFirstButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton1"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="500dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainRecommendedSecondButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="140dp">
+
+            <ImageButton
+                android:id="@+id/mainRecommendedButton2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="mainRecommendedButton2"
+                app:srcCompat="@mipmap/avataricon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="match">
+            </ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainRecommendedThirdButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="280dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton3"
+                    app:srcCompat="@mipmap/avataricon"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match">
+                </ImageButton>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainBottomBarDarkCream"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-26dp"
+        android:backgroundTint="#ACA193"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <LinearLayout
+            android:id="@+id/mainBottomBarContents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/mainHomeButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="match"
+                android:contentDescription="Home Button"
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/homeicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/mainSearchButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="Search Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/searchicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/mainMButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:contentDescription="Main Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/mainbuttonicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/mainEditButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:contentDescription="Edit Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/editicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/mainUserProfileButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="Profile Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/profileicon" >
+            </ImageButton>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainBottomBarOrange"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent" >
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

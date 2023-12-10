@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".view.UserProfileActivity">
+
+    <TextView
+        android:id="@+id/userProfileLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika_bold"
+        android:text="User"
+        android:textColor="#853E34"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <TextView
+        android:id="@+id/userProfileFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika"
+        android:text="User"
+        android:textColor="#853E34"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <TextView
+        android:id="@+id/userProfileDescription"
+        android:layout_width="292dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/signika_light"
+        android:text="We focus a lot on helping the first time or inexperience traveler head out. "
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <ImageView
+        android:id="@+id/userProfileAvatar"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043"
+        app:srcCompat="@mipmap/usernameicon" />
+
+    <Button
+        android:id="@+id/userProfilePreviousTravels"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E96925"
+        android:fontFamily="@font/signika_bold"
+        android:text="Previous Travels"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <Button
+        android:id="@+id/userProfileLocationServices"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E96925"
+        android:fontFamily="@font/signika_bold"
+        android:text="Location Services"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
+
+    <Button
+        android:id="@+id/userProfileProfileSettings"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E96925"
+        android:fontFamily="@font/signika_bold"
+        android:text="Profile Settings"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
+
+    <Button
+        android:id="@+id/userProfilePrivacy"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E96925"
+        android:fontFamily="@font/signika_bold"
+        android:text="Privacy"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543" />
+
+    <Button
+        android:id="@+id/userProfileLogout"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E96925"
+        android:fontFamily="@font/signika_bold"
+        android:text="Log-out"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/userProfileBottomBarDarkCream"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-26dp"
+        android:backgroundTint="#ACA193"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <LinearLayout
+            android:id="@+id/userProfileBottomBarContents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageButton
+                android:id="@+id/userProfileHomeButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="match"
+                android:contentDescription="Home Button"
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/homeicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/userProfileSearchButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="Search Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/searchicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/userProfileMainButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:contentDescription="Main Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/mainbuttonicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/userProfileEditButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:contentDescription="Edit Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/editicon" >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/userProfileUPButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="Profile Button"
+                android:background="@android:color/transparent"
+                app:srcCompat="@mipmap/profileicon" >
+            </ImageButton>
+
+        </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/userProfileBottomBarOrange"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
