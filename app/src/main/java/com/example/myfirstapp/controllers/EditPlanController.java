@@ -2,32 +2,25 @@ package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.example.myfirstapp.models.DataBase;
-import com.example.myfirstapp.models.FileUpload;
 import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import kotlin.Unit;
-import kotlin.coroutines.Continuation;
-import kotlin.coroutines.CoroutineContext;
-import kotlin.coroutines.EmptyCoroutineContext;
+import java.util.ArrayList;
 
 public class EditPlanController {
-
+    private String filePath;
+    public String imageType;
     EditPlanActivity editPlanActivity;
-    FileUpload fileUpload;
+    TravelPlan travelPlan;
     public EditPlanController (EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
-//        fileUpload = new FileUpload();
     }
 
     public void loadImage(int GALLERY_REQ_CODE) {
@@ -40,14 +33,14 @@ public class EditPlanController {
      * - convert bitmap into string
      * @param bitmap
      */
-    public String saveImage(Bitmap bitmap) {
+    public void imagePath(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         if (bitmap != null) {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream); // convert image to ONLY .jpeg
             byte[] bytes = byteArrayOutputStream.toByteArray(); // store in bytes array
             final String base64Image = Base64.encodeToString(bytes, Base64.DEFAULT); // string version of image
             File file = new File(base64Image); // file path
-
+            filePath = file.getPath();
 
 //            Continuation<? super Unit> continuation = new Continuation<Unit>() {
 //                @NonNull
@@ -63,20 +56,24 @@ public class EditPlanController {
 //            };
 
             //fileUpload.uploadFile(file, base64Image, continuation); // upload file to supabase storage
-            return file.getPath();
 
         } else {
             Toast.makeText(editPlanActivity.getApplicationContext(), "Select the image first", Toast.LENGTH_SHORT).show();
         }
-        return null;
     }
 
-    public void uploadToDB(TravelPlan plan, String filePath, String imageType){
+    public void uploadToDB(TravelPlan plan, String filePath){
         DataBase db = new DataBase();
         String post_id = ""+plan.getPost_id();
         String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
         db.uploadImage(filePath,remotePath);
     }
 
+    public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
+        travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
+        travelPlan.insertTravelPlan();
 
+        uploadToDB(travelPlan, filePath);
+
+    }
 }
