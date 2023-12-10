@@ -187,7 +187,6 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopPf="parent"
                 app:cardCornerRadius="50dp" >
 
                 <LinearLayout

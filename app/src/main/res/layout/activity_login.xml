@@ -39,48 +39,46 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/L_mottoLabel" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/L_mottoLabel"
         android:layout_width="289dp"
         android:layout_height="55dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="61dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="@font/signika_negative"
         android:text="Navigate Your Adventures with Precision"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/L_appName"
+        app:layout_constraintStart_toStartOf="@+id/L_appName"
+        app:layout_constraintTop_toBottomOf="@+id/L_appName" />
 
-    <ImageView
-        android:id="@+id/loginLogo"
-        android:layout_width="178dp"
-        android:layout_height="156dp"
-        app:layout_constraintBottom_toBottomOf="parent"
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/L_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="129dp"
         android:layout_marginTop="163dp"
         android:layout_marginEnd="129dp"
-        android:layout_marginBottom="18dp"
         android:fontFamily="@font/sansita_black_italic"
         android:text="Way Ward"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@mipmap/logointerfaceicon" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:src="@mipmap/logointerfaceicon"
+        app:layout_constraintEnd_toEndOf="@+id/L_appName"
+        app:layout_constraintStart_toStartOf="@+id/L_appName"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
