@@ -106,6 +106,9 @@ public class TravelPlan {
     public void setPost_id(int post_id) {
         this.post_id = post_id;
     }
+    public int getPost_id(){
+        return this.post_id;
+    }
 
     public String getTitle() {
         return title;

@@ -161,7 +161,7 @@ public class DataBase {
         try {
             // We call .get here to block the thread and retrieve the value or an exception.
             // Pass the file path in supabase storage and pass a file object of the file you want to upload.
-            FilePathResponse response = fileAPI.upload("test/image.png", new File("src/my-secret-image/image.png")).get();
+            FilePathResponse response = fileAPI.upload(remotePath, new File(localPath)).get();
 
             System.out.println("Uploaded");
             return true;
