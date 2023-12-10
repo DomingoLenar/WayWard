@@ -1,7 +1,5 @@
 package com.example.myfirstapp.models;
 
-import com.example.myfirstapp.controllers.SignupController;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,23 +12,19 @@ public class ContactDetails {
     private String phoneNumber;
     private int id = -1;
     private DataBase db = new DataBase();
-    private SignupController signupController;
 
-    public ContactDetails(SignupController signupController) {
-        this.signupController = signupController;
-    }
-    public ContactDetails(String username,  String email){
-        this.username = username;
-        this.email = email;
-        this.address = null;
-        this.phoneNumber = null;
-    }
-
-    public ContactDetails(String username, String email, String phoneNumber){
+    /**
+     * Default constructor
+     * @param username  Username of the user to whom these details belong to
+     * @param email Email of the user
+     * @param phoneNumber   Phone number of the user
+     * @param address   Address of the user
+     */
+    public ContactDetails(String username, String email, String phoneNumber, String address){
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
-//        this.address = address;
+        this.address = address;
     }
 
     public void insertCurrentCD(){

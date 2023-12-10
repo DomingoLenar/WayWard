@@ -49,13 +49,13 @@ public class User {
      * @param password
      * @param hashed
      * @param firstName
-//     * @param middleName
+     * @param middleName
      * @param lastName
      */
-    public User(String username, String password, boolean hashed, String firstName, String lastName){
+    public User(String username, String password, boolean hashed, String firstName, String middleName, String lastName){
         this.username = username;
         this.firstName = firstName;
-//        this.middleName = middleName;
+        this.middleName = middleName;
         this.lastName = lastName;
         if(hashed){
             this.password = password;
@@ -63,26 +63,36 @@ public class User {
             this.password = hashPassword(password);
         }
     }
-
-
-
-
     /**
      * Inserts the current object of user to the database
      */
     public void insertCurrentUser(){
-        boolean valid = isUsernameValid();
-        if(valid) {
-            try {
-                Connection conn = db.createConnection();
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
-                        + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }else{
-            throw new RuntimeException("username already exists");
+
+        try {
+            Connection conn = db.createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
+                    + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * This method updates the database with the new password as well as the current object of user's
+     * password variable
+     * @param rawPassword   The raw un-hashed new password
+     */
+    public void updatePassword(String rawPassword){
+        String newPassword = hashPassword(rawPassword);
+        try{
+            Connection conn = db.createConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
+            this.password = newPassword;
+        }catch(SQLException updateOfPassword){
+            updateOfPassword.printStackTrace();
         }
     }
 
@@ -90,15 +100,15 @@ public class User {
      * Checks if the username already exists in the database
      * @return boolean
      */
-    public boolean isUsernameValid(){
+    public void isUsernameValid(){
         try {
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT exists(SELECT 1 FROM user_details WHERE username = '"+this.username+"'");
-            return rs.getBoolean(1);
+            signupController.usernameAvailability(rs.getBoolean(1));
         }catch(SQLException e){
             e.printStackTrace();
-            return true;
+            signupController.usernameAvailability(true);
         }
     }
 
@@ -106,11 +116,11 @@ public class User {
      * Method used to authenticate given password with the stored password in the database
      * @return boolean
      */
-    public boolean authenticate(){
+    public void authenticate(){
         User dbUser = db.fetchUser(this.username);
 
         //insert logic to compare two objects of user
-        return this.password.equals(dbUser.getPassword());
+        signinController.authorize(this.password.equals(dbUser.getPassword()));
     }
 
     /**
