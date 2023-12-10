@@ -64,13 +64,9 @@ public class SignupActivity extends AppCompatActivity {
 
         signUpButton.setText(R.string.sign_up);
 
-        if (usernameField.getText().toString().equals("") || passwordField.getText().toString().equals("") || emailField.getText().toString().equals("") ||
-                fnameField.getText().toString().equals("") || lNameField.getText().toString().equals("") || phoneNoField.getText().toString().equals("")) {
-            // notify user
-        } else {
-            signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
-                    fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
-        }
+        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
+                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
+
     }
 
     private void initViews() {

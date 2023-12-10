@@ -39,12 +39,7 @@ public class SigninActivity extends AppCompatActivity {
     }
 
     public void SI_signIn(View view) {
-
-        if (usernameField.getText().toString().equals("") || passwordField.getText().toString().equals("")){
-            // notify user
-        } else {
-            signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
-        }
+        signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
 
     }
 }
