@@ -1,5 +1,7 @@
 package com.example.myfirstapp.models;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
@@ -22,9 +24,18 @@ public class Review {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO review(id, reviewer, rating, description)" +
+            st.executeQuery("INSERT INTO review(id, reviewer, rating, description)" +
                     "values(default, '"+this.reviewer.getUsername()+"','"+this.rating+"','"+this.description+"')");
-        }catch(SQLException e){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, insert success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+
+        catch(SQLException e){
             e.printStackTrace();
         }
     }

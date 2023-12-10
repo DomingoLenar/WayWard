@@ -1,6 +1,7 @@
 package com.example.myfirstapp.models;
 
 import org.json.JSONObject;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,7 +51,15 @@ public class TravelPlan {
             String csvReviews = createReviewCSV(this.reviews);
             ResultSet rs = st.executeQuery("INSERT INTO travel_plan(id,username,title,reviews,duration,estimated_cost,description,destinations)" +
                     "values(default, '"+this.author+"','"+this.title+"','"+csvReviews+"','"+this.duration+"','"+this.estimated_cost+"','"+this.description+"','"+this.destinations+"')");
-        }catch(SQLException e){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, insert success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException e){
             e.printStackTrace();
         }
     }
@@ -64,13 +73,21 @@ public class TravelPlan {
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
             if(this.post_id == -1) {
-                ResultSet rs = st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE title = '" + this.title + "' and author = '" + this.author + "'");
+                st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE title = '" + this.title + "' and author = '" + this.author + "'");
                 this.description = newDescription;
             }else{
-                ResultSet rs = st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE id = '" + this.post_id + "'");
+                st.executeQuery("UPDATE travel_plan SET description = '" + newDescription + "' WHERE id = '" + this.post_id + "'");
                 this.description = newDescription;
             }
-        }catch(SQLException updateDescriptionError){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateDescriptionError){
             updateDescriptionError.printStackTrace();
         }
     }
@@ -84,12 +101,20 @@ public class TravelPlan {
             if(this.post_id != -1) {
                 Connection conn = db.createConnection();
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("UPDATE travel_plan SET title = '" + newTitle + "' WHERE id = '" + this.post_id + ";");
+                st.executeQuery("UPDATE travel_plan SET title = '" + newTitle + "' WHERE id = '" + this.post_id + ";");
                 this.title = newTitle;
             }else{
                 throw new RuntimeException("This travel plan does not have a post id");
             }
-        }catch(SQLException updateTitleException){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateTitleException){
             updateTitleException.printStackTrace();
         }
     }

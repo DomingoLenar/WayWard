@@ -1,14 +1,12 @@
 package com.example.myfirstapp.models;
 
-import com.example.myfirstapp.controllers.SigninController;
-import com.example.myfirstapp.controllers.SignupController;
+import org.postgresql.util.PSQLException;
 
 import java.sql.*;
 
 /**
  * User model class
  */
-
 public class User {
     private String username;
     private String password;
@@ -17,14 +15,7 @@ public class User {
     private String middleName;
     private String lastName;
     private final DataBase db = new DataBase();
-    private SignupController signupController;
-    private SigninController signinController;
-    public User (SignupController signupController) {
-        this.signupController = signupController;
-    }
-    public User(SigninController signinController) {
-        this.signinController = signinController;
-    }
+
     /**
      * This constructor takes in three parameters and leaves the details of names as null
      * @param username
@@ -63,20 +54,32 @@ public class User {
             this.password = hashPassword(password);
         }
     }
+
+
     /**
      * Inserts the current object of user to the database
      */
     public void insertCurrentUser(){
-
-        try {
-            Connection conn = db.createConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
-                    + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(isUsernameValid()) {
+            try {
+                Connection conn = db.createConnection();
+                Statement st = conn.createStatement();
+                st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + this.username + "','"
+                        + this.password + "','" + this.firstName + "','" + this.middleName + "','" + this.lastName + "')");
+            }
+            catch(PSQLException psqlException){
+                if("No results were returned by the query.".equals(psqlException.getMessage())){
+                    System.out.println("No results from query, insert success");
+                }else{
+                    psqlException.printStackTrace();
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else{
+            throw new RuntimeException("username already exists");
         }
-
     }
 
     /**
@@ -89,9 +92,17 @@ public class User {
         try{
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
+            st.executeQuery("UPDATE user_details SET password = '"+newPassword+"' WHERE username = '"+this.username+"'");
             this.password = newPassword;
-        }catch(SQLException updateOfPassword){
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, Update success");
+            }else{
+                psqlException.printStackTrace();
+            }
+        }
+        catch(SQLException updateOfPassword){
             updateOfPassword.printStackTrace();
         }
     }
@@ -100,15 +111,26 @@ public class User {
      * Checks if the username already exists in the database
      * @return boolean
      */
-    public void isUsernameValid(){
+    public boolean isUsernameValid(){
         try {
             Connection conn = db.createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT exists(SELECT 1 FROM user_details WHERE username = '"+this.username+"'");
-            signupController.usernameAvailability(rs.getBoolean(1));
-        }catch(SQLException e){
+            rs.next();
+            return !(rs.getBoolean(1));
+        }
+        catch(PSQLException psqlException){
+            if("No results were returned by the query.".equals(psqlException.getMessage())){
+                System.out.println("No results from query, query success");
+                return true;
+            }else{
+                psqlException.printStackTrace();
+                return true;
+            }
+        }
+        catch(SQLException e){
             e.printStackTrace();
-            signupController.usernameAvailability(true);
+            return true;
         }
     }
 
@@ -116,11 +138,11 @@ public class User {
      * Method used to authenticate given password with the stored password in the database
      * @return boolean
      */
-    public void authenticate(){
+    public boolean authenticate(){
         User dbUser = db.fetchUser(this.username);
 
         //insert logic to compare two objects of user
-        signinController.authorize(this.password.equals(dbUser.getPassword()));
+        return this.password.equals(dbUser.getPassword());
     }
 
     /**
@@ -220,9 +242,4 @@ public class User {
     }
 
 
-    public boolean createAccount(String email, String username, String password) {
-
-//        db.storeUserAccount()
-        return false;
-    }
 }

@@ -63,7 +63,7 @@ public class DataBase {
                 String fetchedMName = rs.getString(5);
                 String fetchedLName = rs.getString(6);
                 // constructs and returns a new object of user based on the fetched data
-                return new User(fetchedUsername, fetchedPassword, true,fetchedFName,fetchedMName, fetchedLName);
+                return new User(fetchedUsername, fetchedPassword, true,fetchedFName, fetchedMName, fetchedLName);
             }else{
                 return null;
             }
@@ -83,14 +83,19 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM contact_details WHERE username = '"+username+"'");
-            int fetchedID = rs.getInt(1);
-            String fetchedUsername = rs.getString(2);
-            String fetchedEmail = rs.getString(3);
-            String fetchedAddress = rs.getString(4);
-            String fetchedNumber = rs.getString(5);
-            ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail, fetchedAddress, fetchedNumber);
-            cd.setId(fetchedID);
-            return cd;
+            if(rs.next()) {
+                /*Getting the column index shouldnt be done manually update in later revision and use the
+                 *rs.findColumn(String columnName)
+                 */
+                int fetchedID = rs.getInt(1);
+                String fetchedUsername = rs.getString(2);
+                String fetchedEmail = rs.getString(3);
+                String fetchedAddress = rs.getString(4);
+                String fetchedNumber = rs.getString(5);
+                ContactDetails cd = new ContactDetails(fetchedUsername, fetchedEmail, fetchedNumber, fetchedAddress);
+                cd.setId(fetchedID);
+                return cd;
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -108,17 +113,22 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM travel_plan WHERE "+columnName+" = '"+searchKey+"'");
-            String fetchedTitle = rs.getString(3);
-            String fetchedReviews = rs.getString(4);
-            String fetchedAuthor = rs.getString(2);
-            String fetchedDuration = rs.getString(5);
-            String fetchedEstimatedCost = rs.getString(6);
-            String fetchedDescription = rs.getString(7);
-            String fetchedDestinations = rs.getString(8);
-            TravelPlan fetchedPlan = new TravelPlan(fetchedTitle, null, fetchedAuthor,fetchedDuration, fetchedEstimatedCost,fetchedDescription,fetchedDestinations);
-            fetchedPlan.setReviews(fetchedReviews);
-            fetchedPlan.setPost_id(rs.getInt(1));
-            return fetchedPlan;
+            if(rs.next()) {
+                /*Getting the column index shouldnt be done manually update in later revision and use the
+                 *rs.findColumn(String columnName)
+                 */
+                String fetchedTitle = rs.getString(3);
+                String fetchedReviews = rs.getString(4);
+                String fetchedAuthor = rs.getString(2);
+                String fetchedDuration = rs.getString(5);
+                String fetchedEstimatedCost = rs.getString(6);
+                String fetchedDescription = rs.getString(7);
+                String fetchedDestinations = rs.getString(8);
+                TravelPlan fetchedPlan = new TravelPlan(fetchedTitle, null, fetchedAuthor, fetchedDuration, fetchedEstimatedCost, fetchedDescription, fetchedDestinations);
+                fetchedPlan.setReviews(fetchedReviews);
+                fetchedPlan.setPost_id(rs.getInt(1));
+                return fetchedPlan;
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -137,7 +147,9 @@ public class DataBase {
             Connection conn = createConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM "+table+" WHERE "+column+" = '"+searchKey+"'");
-            return rs.getInt(1);
+            if(rs.next()){
+                return rs.getInt(1);
+            }
         }catch(SQLException search){
             search.printStackTrace();
         }
@@ -153,7 +165,7 @@ public class DataBase {
      */
     public boolean uploadImage(String localPath, String remotePath){
         String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/";
-        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE1ODcyNTYsImV4cCI6MjAxNzE2MzI1Nn0.3GYnldygSO7wCrKZVHkQyviW0LVwS6KdPpAqIVa-EcE";
+        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTU4NzI1NiwiZXhwIjoyMDE3MTYzMjU2fQ.IPP4_Zgysjp--4AwxDwkHC33G-oTW04SQE4OUWnoTQA";
 
         StorageClient storageClient = new StorageClient(serviceToken, url);
 
@@ -161,16 +173,7 @@ public class DataBase {
         try {
             // We call .get here to block the thread and retrieve the value or an exception.
             // Pass the file path in supabase storage and pass a file object of the file you want to upload.
-            FilePathResponse response = fileAPI.upload("test/image.png", new File("src/my-secret-image/image.png")).get();
-
-            // Generate a public url (The link is only valid if the bucket is public).
-            //fileAPI.getPublicUrl("my-secret-image/image.png", new FileDownloadOption(false), new FileTransformOptions(500, 500, ResizeOption.COVER, 50, FormatOption.NONE));
-
-            // Create a signed url to download an object in a private bucket that expires in 60 seconds, and will be downloaded instantly on link as "my-image.png"
-            //fileAPI.getSignedUrl("my-secret-image/image.png", 60, new FileDownloadOption("my-image.png"), null);
-
-            // Download the file
-            //fileAPI.download("my-secret-image/image.png", null);
+            FilePathResponse response = fileAPI.upload(remotePath, new File(localPath)).get();
             System.out.println("Uploaded");
             return true;
 
