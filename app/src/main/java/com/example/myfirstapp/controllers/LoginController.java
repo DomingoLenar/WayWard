@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.LoginActivity;
+import com.example.myfirstapp.views.MainActivity;
+import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.SigninActivity;
 import com.example.myfirstapp.views.SignupActivity;
 
@@ -16,7 +18,7 @@ public class LoginController {
 
     public void displaySignInActivity(LoginActivity loginActivity){ // display Sign In Activity
 
-        Intent i = new Intent(loginActivity, EditPlanActivity.class);
+        Intent i = new Intent(loginActivity, SigninActivity.class);
         loginActivity.startActivity(i);
 
 //        Intent i = new Intent(loginActivity, SigninActivity.class);
