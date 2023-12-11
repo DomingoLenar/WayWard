@@ -3,6 +3,9 @@ package com.example.myfirstapp.models;
 import com.example.myfirstapp.controllers.SigninController;
 import com.example.myfirstapp.controllers.SignupController;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 /**
@@ -129,9 +132,30 @@ public class User {
      * @return String
      */
     private String hashPassword(String rawPassword){
-        String hashed="";
+        try {
+            // Create a MessageDigest instance for SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
-        return hashed;
+            // Get the byte representation of the input string
+            byte[] hash = digest.digest(rawPassword.getBytes(StandardCharsets.UTF_8));
+
+            // Convert the byte array to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            // Handle the exception (e.g., print an error message)
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
