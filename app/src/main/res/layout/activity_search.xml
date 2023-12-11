@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".view.SearchActivity">
+    tools:context=".views.SearchActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -21,28 +21,23 @@
         android:id="@+id/searchExplore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-10dp"
+        android:layout_marginBottom="19dp"
         android:fontFamily="@font/signika_bold"
         android:text="DISCOVER"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintBottom_toTopOf="@+id/searchSearchBar"
+        app:layout_constraintStart_toStartOf="@+id/searchSearchBar" />
 
     <ImageButton
         android:id="@+id/searchAvatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginBottom="640dp"
+        android:layout_marginTop="16dp"
         android:background="@color/cream"
         android:contentDescription="searchAvatar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/searchSearchBar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/avataricon"></ImageButton>
 
@@ -107,6 +102,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Home Button"
+                android:onClick="homeBtn"
                 app:srcCompat="@mipmap/homeicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="match"></ImageButton>
@@ -118,6 +114,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Search Button"
+                android:onClick="searchBtn"
                 app:srcCompat="@mipmap/searchicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
@@ -130,6 +127,7 @@
                 android:layout_marginRight="0dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Main Button"
+                android:onClick="popUpBtn"
                 app:srcCompat="@mipmap/mainbuttonicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
@@ -140,17 +138,19 @@
                 android:layout_height="70dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Edit Button"
+                android:onClick="editPlanBtn"
                 app:srcCompat="@mipmap/editicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
 
             <ImageButton
-                android:id="@+id/mainUserProfileButton"
+                android:id="@+id/M_userSettingsBtn"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Profile Button"
+                android:onClick="userSettingsBtn"
                 app:srcCompat="@mipmap/profileicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
@@ -180,11 +180,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/S_popularTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Popular" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/S_recentTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recent" />
@@ -193,13 +195,10 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:contentDescription="Description for ViewPager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        android:contentDescription="Description for ViewPager"/>
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

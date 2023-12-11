@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".view.UserProfileActivity">
+    tools:context=".views.UserProfileActivity">
 
     <TextView
         android:id="@+id/userProfileLastName"
@@ -168,61 +168,61 @@
                 android:id="@+id/userProfileHomeButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="match"
-                android:contentDescription="Home Button"
                 android:layout_marginLeft="5dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/homeicon" >
-            </ImageButton>
+                android:contentDescription="Home Button"
+                android:onClick="homeBtn"
+                app:srcCompat="@mipmap/homeicon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="match"></ImageButton>
 
             <ImageButton
                 android:id="@+id/userProfileSearchButton"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="30dp"
+                android:layout_height="73dp"
                 android:layout_marginLeft="10dp"
-                android:contentDescription="Search Button"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/searchicon" >
-            </ImageButton>
+                android:contentDescription="Search Button"
+                android:onClick="searchBtn"
+                app:srcCompat="@mipmap/searchicon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"></ImageButton>
 
             <ImageButton
                 android:id="@+id/userProfileMainButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="30dp"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
-                android:contentDescription="Main Button"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/mainbuttonicon" >
-            </ImageButton>
+                android:contentDescription="Main Button"
+                android:onClick="popUpBtn"
+                app:srcCompat="@mipmap/mainbuttonicon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"></ImageButton>
 
             <ImageButton
                 android:id="@+id/userProfileEditButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="30dp"
-                android:contentDescription="Edit Button"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/editicon" >
-            </ImageButton>
+                android:contentDescription="Edit Button"
+                android:onClick="editPlanBtn"
+                app:srcCompat="@mipmap/editicon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"></ImageButton>
 
             <ImageButton
                 android:id="@+id/userProfileUPButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="30dp"
                 android:layout_marginLeft="10dp"
-                android:contentDescription="Profile Button"
                 android:background="@android:color/transparent"
-                app:srcCompat="@mipmap/profileicon" >
-            </ImageButton>
+                android:contentDescription="Profile Button"
+                android:onClick="userSettingsBtn"
+                app:srcCompat="@mipmap/profileicon"
+                tools:layout_editor_absoluteX="319dp"
+                tools:layout_editor_absoluteY="30dp"></ImageButton>
 
         </LinearLayout>
 

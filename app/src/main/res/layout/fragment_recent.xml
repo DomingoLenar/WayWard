@@ -6,108 +6,98 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.RecentFragment">
+    tools:context=".views.fragments.RecentFragment">
 
     <Button
         android:id="@+id/searchFood"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Food"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/foodSample"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#D9BAA4"
         android:fontFamily="@font/signika_bold"
         android:text="Good Taste Restaurant"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintEnd_toEndOf="@+id/searchFood"
+        app:layout_constraintStart_toStartOf="@+id/searchFood"
+        app:layout_constraintTop_toBottomOf="@+id/searchFood" />
 
     <Button
         android:id="@+id/searchHotel"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Hotels"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintEnd_toEndOf="@+id/foodSample"
+        app:layout_constraintStart_toStartOf="@+id/foodSample"
+        app:layout_constraintTop_toBottomOf="@+id/foodSample" />
 
     <Button
         android:id="@+id/hotelSample"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#D9BAA4"
         android:fontFamily="@font/signika_bold"
         android:text="Venus Parkview Hotel"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintEnd_toEndOf="@+id/searchHotel"
+        app:layout_constraintStart_toStartOf="@+id/searchHotel"
+        app:layout_constraintTop_toBottomOf="@+id/searchHotel" />
 
     <Button
         android:id="@+id/searchTouristSpot"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Tourist Spots"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
+        app:layout_constraintEnd_toEndOf="@+id/hotelSample"
+        app:layout_constraintStart_toStartOf="@+id/hotelSample"
+        app:layout_constraintTop_toBottomOf="@+id/hotelSample" />
 
     <Button
         android:id="@+id/touristSpotSample"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#D9BAA4"
         android:fontFamily="@font/signika_bold"
         android:text="Camp John Hay"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintEnd_toEndOf="@+id/searchTouristSpot"
+        app:layout_constraintStart_toStartOf="@+id/searchTouristSpot"
+        app:layout_constraintTop_toBottomOf="@+id/searchTouristSpot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

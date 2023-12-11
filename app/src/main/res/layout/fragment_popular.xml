@@ -6,106 +6,96 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.PopularFragment">
+    tools:context=".views.fragments.PopularFragment">
 
     <Button
         android:id="@+id/sample1"
         android:layout_width="185dp"
         android:layout_height="180dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Camp John Hay"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintEnd_toStartOf="@+id/sample2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/sample2"
         android:layout_width="165dp"
         android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#D9BAA4"
         android:fontFamily="@font/signika_bold"
         android:text="Minesview Park"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/searchRecent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/signika"
         android:text="Recent"
         android:textColor="#000000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintTop_toBottomOf="@+id/sample1" />
 
     <Button
         android:id="@+id/food"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="43dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Food"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintEnd_toEndOf="@+id/sample2"
+        app:layout_constraintStart_toStartOf="@+id/sample1"
+        app:layout_constraintTop_toBottomOf="@+id/sample1" />
 
     <Button
         android:id="@+id/hotel"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Hotels"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintEnd_toEndOf="@+id/food"
+        app:layout_constraintStart_toStartOf="@+id/food"
+        app:layout_constraintTop_toBottomOf="@+id/food" />
 
     <Button
         android:id="@+id/touristspot"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Tourist Spots"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintEnd_toEndOf="@+id/hotel"
+        app:layout_constraintStart_toStartOf="@+id/hotel"
+        app:layout_constraintTop_toBottomOf="@+id/hotel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

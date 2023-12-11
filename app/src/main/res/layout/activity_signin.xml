@@ -8,6 +8,7 @@
     tools:context=".views.SignupActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="240dp"
@@ -113,37 +114,37 @@
         android:id="@+id/SI_mottoLabel"
         android:layout_width="289dp"
         android:layout_height="55dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="64dp"
         android:fontFamily="@font/signika_negative"
         android:text="Navigate Your Advetures with Precision"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/SI_appName"
-        app:layout_constraintStart_toStartOf="@+id/SI_appName"
-        app:layout_constraintTop_toBottomOf="@+id/SI_appName" />
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/SI_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="129dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="150dp"
         android:fontFamily="@font/sansita_black_italic"
         android:text="Way Ward"
         android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="34dp"
+        android:layout_marginEnd="-25dp"
         android:src="@mipmap/logowc"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/SI_appName"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
