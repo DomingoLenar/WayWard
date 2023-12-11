@@ -112,7 +112,8 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img1.setImageBitmap(bitmap);
-                editPlanController.imagePath(bitmap);
+                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+//                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -123,7 +124,9 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img2.setImageBitmap(bitmap);
-                editPlanController.imagePath(bitmap);
+                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+//                editPlanController.imagePath(bitmap);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -134,7 +137,8 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img3.setImageBitmap(bitmap);
-                editPlanController.imagePath(bitmap);
+                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+//                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -145,7 +149,8 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img4.setImageBitmap(bitmap);
-                editPlanController.imagePath(bitmap);
+                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+//                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
