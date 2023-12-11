@@ -1,4 +1,4 @@
-package com.example.myfirstapp.view;
+package com.example.myfirstapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
