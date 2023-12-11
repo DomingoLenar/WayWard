@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.UserProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.EditPlanActivity"
             android:exported="false" />
         <activity
@@ -36,12 +39,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.SearchActivity"
+        <activity android:name=".views.SearchActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
