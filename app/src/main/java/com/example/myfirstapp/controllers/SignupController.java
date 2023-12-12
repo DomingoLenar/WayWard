@@ -1,6 +1,7 @@
 package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.example.myfirstapp.models.ContactDetails;
 import com.example.myfirstapp.models.User;
@@ -15,16 +16,15 @@ public class SignupController {
     public SignupController(SignupActivity signupActivity) {
         this.signupActivity = signupActivity;
         userModel = new User(this);
-//        contactDetails = new ContactDetails(this);
     }
 
-    public void submitAccountDetails(String email, String username, String password) {
-        userModel = new User(username, password, false);
-        userModel.insertCurrentUser(); // store new user in database
-
-//        contactDetails = new ContactDetails(username, email);
-        contactDetails.insertCurrentCD(); // store contact details of new user in database
-    }
+//    public void submitAccountDetails(String email, String username, String password) {
+//        userModel = new User(username, password, false);
+//        userModel.insertCurrentUser();
+//
+//        contactDetails = new ContactDetails(username, email, null, null);
+//        contactDetails.insertCurrentCD();
+//    }
 
     public void displayMainActivity(SignupActivity signupActivity) { // display Home page
 
@@ -36,24 +36,23 @@ public class SignupController {
     public void submitAccountDetails(String email, String username, String password, String fName, String lName, String phoneNo) {
 
         if (email.equals("") || username.equals("") || password.equals("") || fName.equals("") || lName.equals("") || phoneNo.equals("")) {
-            // notify user; display a view in Signupactivity
+            Toast.makeText(signupActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         } else {
-            displayMainActivity(signupActivity); // temporary...
-
             userModel = new User(username, password, false, fName, null, lName);
-            userModel.isUsernameValid(); // *returns boolean??
+            authorize(userModel.isUsernameValid());
 
             contactDetails = new ContactDetails(username, email, phoneNo, null);
-            contactDetails.insertCurrentCD(); // *returns boolean?
+            contactDetails.insertCurrentCD();
         }
 
     }
 
-    public void usernameAvailability(boolean exist) {
-        if (!exist) {
-            // notify user
+    private void authorize(boolean usernameValid) {
+        if (!usernameValid) {
+            Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
         } else {
             userModel.insertCurrentUser();
+            displayMainActivity(signupActivity);
         }
     }
 }

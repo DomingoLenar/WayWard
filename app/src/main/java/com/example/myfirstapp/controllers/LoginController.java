@@ -20,9 +20,6 @@ public class LoginController {
 
         Intent i = new Intent(loginActivity, SigninActivity.class);
         loginActivity.startActivity(i);
-
-//        Intent i = new Intent(loginActivity, SigninActivity.class);
-//        loginActivity.startActivity(i);
     }
 
     public void displaySignUpActivity(LoginActivity loginActivity) { // display Sign Up Activity
