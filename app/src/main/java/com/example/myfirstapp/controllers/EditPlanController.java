@@ -61,7 +61,7 @@ public class EditPlanController {
         travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
         travelPlan.insertTravelPlan();
 
-        uploadToDB(travelPlan, base64Image);
+        uploadToDB(travelPlan, imagePath);
 
     }
 
