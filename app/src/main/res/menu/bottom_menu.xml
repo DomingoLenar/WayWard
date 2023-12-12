@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/E_bottom_home"
+        android:icon="@drawable/home_icon"
+        />
+    <item
+        android:id="@+id/E_bottom_search"
+        android:icon="@drawable/search_icon"
+        />
+    <item
+        android:id="@+id/E_bottom_logo"
+        android:icon="@mipmap/logowc"
+        />
+    <item
+        android:id="@+id/E_bottom_settings"
+        android:icon="@drawable/edit_icon"
+        />
+    <item
+        android:id="@+id/E_bottom_profile"
+        android:icon="@drawable/person_icon"
+        />
+</menu>
