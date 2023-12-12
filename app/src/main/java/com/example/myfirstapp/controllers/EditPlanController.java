@@ -6,9 +6,14 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.MediaStore;
 
+import com.example.myfirstapp.R;
 import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
+import com.example.myfirstapp.views.MainActivity;
+import com.example.myfirstapp.views.SearchActivity;
+import com.example.myfirstapp.views.UserProfileActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class EditPlanController {
-    private String base64Image;
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
@@ -25,16 +29,37 @@ public class EditPlanController {
         this.editPlanActivity = editPlanActivity;
     }
 
+    public void displayMainActivity() {
+        Intent i = new Intent(editPlanActivity, MainActivity.class);
+        editPlanActivity.startActivity(i);
+        editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+    public void displaySearchActivity() {
+        Intent i = new Intent(editPlanActivity, SearchActivity.class);
+        editPlanActivity.startActivity(i);
+        editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+    public void displayPopUpActivity() {
+//        Intent i = new Intent(mainActivity, PopUpFragment.class);
+//        mainActivity.startActivity(i);
+//        mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void displayEditPlanActivity() {
+       return;
+    }
+    public void displayUserSettingsActivity() {
+        Intent i = new Intent(editPlanActivity, UserProfileActivity.class);
+        editPlanActivity.startActivity(i);
+        editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
     public void loadImage(int GALLERY_REQ_CODE) {
         Intent iImage1 = new Intent(Intent.ACTION_PICK);
         iImage1.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         editPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
     }
 
-//    /**
-//     * - convert bitmap into string
-//     * @param bitmap
-//     */
 //    public String imagePath(Bitmap bitmap) {
 //        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 //        if (bitmap != null) {

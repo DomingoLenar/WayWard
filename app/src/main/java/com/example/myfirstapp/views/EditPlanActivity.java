@@ -1,5 +1,6 @@
 package com.example.myfirstapp.views;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,12 +9,16 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.EditPlanController;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
@@ -26,6 +31,7 @@ public class EditPlanActivity extends AppCompatActivity {
     EditPlanController editPlanController;
     ImageView img1, img2, img3, img4, app_bar_img;
     TextView estimatedPrice, duration, title, description;
+    BottomNavigationView navbar;
     Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +42,23 @@ public class EditPlanActivity extends AppCompatActivity {
 
         initViews();
 
+        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.equals(navbar.getMenu().getItem(0))) editPlanController.displayMainActivity();
+                else if (item.equals(navbar.getMenu().getItem(1))) editPlanController.displaySearchActivity();
+                else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpActivity();
+                else if (item.equals(navbar.getMenu().getItem(3))) editPlanController.displayEditPlanActivity();
+                else if (item.equals(navbar.getMenu().getItem(4))) editPlanController.displayUserSettingsActivity();
+                return true;
+            }
+        });
     }
 
     private void initViews() {
 
         app_bar_img = findViewById(R.id.E_app_bar_image);
+        navbar = findViewById(R.id.E_bottomNavBar);
 
         estimatedPrice = findViewById(R.id.E_estimatedPrice);
         findViewById(R.id.E_estimatedPriceLabel);
@@ -81,10 +99,16 @@ public class EditPlanActivity extends AppCompatActivity {
         editPlanController.loadImage(GALLERY_CODE_4);
     }
 
-    public void planNowBtn(View view) {
-//        editPlanController.submitTravelPlanDetails();
-    }
+    public void saveNowBtn(View view) {
+        if (title.getText().toString().equals("") || duration.getText().toString().equals("") || estimatedPrice.getText().toString().equals("") || description.getText().toString().equals("")) {
+            Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+        } else {
+            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+            editPlanController.submitTravelPlanDetails("temp", null, "temp",
+                    duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
 
+        }
+    }
     public void insert_thumbnail(View view) {
         editPlanController.imageType = "thumbnail";
     }
