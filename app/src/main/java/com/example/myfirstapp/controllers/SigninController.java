@@ -27,8 +27,14 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-        userModel = new User(username, password, false);
-        authorize(userModel.authenticate());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                userModel = new User(username, password, false);
+                authorize(userModel.authenticate());
+            }
+        });
+
     }
 
     public void authorize(boolean permit) {

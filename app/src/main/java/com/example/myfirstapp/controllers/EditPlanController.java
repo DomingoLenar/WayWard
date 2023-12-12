@@ -76,10 +76,16 @@ public class EditPlanController {
 //    }
 
     public void uploadToDB(TravelPlan plan, String filePath){
-        DataBase db = new DataBase();
-        String post_id = ""+plan.getPost_id();
-        String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
-        db.uploadImage(filePath,remotePath);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DataBase db = new DataBase();
+                String post_id = ""+plan.getPost_id();
+                String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
+                db.uploadImage(filePath,remotePath);
+            }
+        });
+        
     }
 
     public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
