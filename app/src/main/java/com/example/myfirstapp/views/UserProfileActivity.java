@@ -1,22 +1,18 @@
 package com.example.myfirstapp.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.UserProfileSettingsController;
-
-import org.w3c.dom.Text;
 
 public class UserProfileActivity extends AppCompatActivity {
     UserProfileSettingsController userProfileSettingsController;
@@ -35,7 +31,6 @@ public class UserProfileActivity extends AppCompatActivity {
         ImageView userProfileAvatar = findViewById(R.id.userProfileAvatar);
 
         Button userProfilePreviousTravels = findViewById(R.id.userProfilePreviousTravels);
-        Button userProfileLocationServices = findViewById(R.id.userProfileLocationServices);
         Button userProfileProfileSettings = findViewById(R.id.userProfileProfileSettings);
         Button userProfilePrivacy = findViewById(R.id.userProfilePrivacy);
         Button userProfileLogout = findViewById(R.id.userProfileLogout);
@@ -68,7 +63,7 @@ public class UserProfileActivity extends AppCompatActivity {
     public void editPlanBtn(View view) {
         userProfileSettingsController.displayEditPlanActivity();
     }
-    public void userSettingsBtn(View view) {
-        userProfileSettingsController.displayUserSettingsActivity();
+    public void profileSettingsBtn(View view) {
+        userProfileSettingsController.displayProfileSettingsActivity();
     }
 }

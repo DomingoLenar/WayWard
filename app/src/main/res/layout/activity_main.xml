@@ -782,7 +782,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Profile Button"
-                android:onClick="userSettingsBtn"
+                android:onClick="profileSettingsBtn"
                 app:srcCompat="@mipmap/profileicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>

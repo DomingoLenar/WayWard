@@ -83,23 +83,6 @@
         app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/userProfileLocationServices"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Location Services"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
-
-    <Button
         android:id="@+id/userProfileProfileSettings"
         android:layout_width="320dp"
         android:layout_height="48dp"
@@ -111,10 +94,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintVertical_bias="0.361" />
 
     <Button
         android:id="@+id/userProfilePrivacy"
@@ -131,7 +114,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintVertical_bias="0.449" />
 
     <Button
         android:id="@+id/userProfileLogout"
@@ -148,7 +131,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintVertical_bias="0.808" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/userProfileBottomBarDarkCream"
@@ -219,7 +202,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Profile Button"
-                android:onClick="userSettingsBtn"
+                android:onClick="profileSettingsBtn"
                 app:srcCompat="@mipmap/profileicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
