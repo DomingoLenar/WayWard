@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
-    android:fitsSystemWindows="true"
+    android:id="@+id/E_coordinatorLayout"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:layout_width="match_parent">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
 
-            app:contentScrim="?attr/colorPrimary">
+            app:toolbarId="@+id/toolbar">
 
             <ImageView
                 android:id="@+id/E_app_bar_image"
@@ -36,8 +38,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
 
 
             </androidx.appcompat.widget.Toolbar>
@@ -114,11 +116,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/E_body"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="46dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/signika_light"
                 android:lineSpacingExtra="8dp"
@@ -155,7 +157,7 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                 app:layout_constraintStart_toEndOf="@+id/E_left_constraintLayout"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <EditText
                     android:id="@+id/E_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,21 +173,19 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                     android:id="@+id/E_durationLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="-5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Duration"
                     android:textColor="#000000"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/E_duration" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="43dp"
                     android:layout_height="46dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="27dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/E_duration"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/duration_logo" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -202,25 +202,26 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <EditText
                     android:id="@+id/E_estimatedPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="42dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="40dp"
+                    android:editable="true"
                     android:fontFamily="@font/signika_bold"
                     android:text="1,500"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Deprecated" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="43dp"
                     android:layout_height="46dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="27dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/E_estimatedPrice"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/estimated_price_icon" />
 
@@ -228,15 +229,16 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                     android:id="@+id/E_estimatedPriceLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="47dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="-5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Price"
                     android:textColor="#000000"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
                     app:layout_constraintTop_toBottomOf="@+id/E_estimatedPrice" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -244,12 +246,27 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
         android:id="@+id/E_floatingPlanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="16dp"
-        android:onClick="planNowBtn"
-        android:src="@drawable/baseline_arrow_circle_right_256"
+        android:onClick="saveNowBtn"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/save_icon"
         app:backgroundTint="#FFFFFF"
+        app:fabSize="mini"
+        app:layout_anchor="@+id/E_bottomNavBar"
+        app:layout_anchorGravity="bottom|end"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="501dp" />
+    />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/E_bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EDDFCD"
+        app:itemIconSize="40dp"
+        app:itemIconTint="#000000"
+        app:layout_anchor="@id/E_nestedScrollView"
+        app:layout_anchorGravity="bottom"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
