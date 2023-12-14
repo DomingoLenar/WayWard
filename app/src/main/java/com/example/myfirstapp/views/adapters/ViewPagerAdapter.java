@@ -1,24 +1,18 @@
-package com.example.myfirstapp.views;
+package com.example.myfirstapp.views.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myfirstapp.views.fragments.PopularFragment;
-import com.example.myfirstapp.views.fragments.RecentFragment;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class VPAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     private final ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public VPAdapter(@NonNull FragmentManager fm, int behavior) {
+    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
