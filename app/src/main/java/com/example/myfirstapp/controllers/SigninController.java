@@ -1,6 +1,7 @@
 package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.views.MainActivity;
@@ -26,21 +27,13 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-//        if (){
-//            // notify user
-//        } else {
-//        }
-        displayMainActivity(signinActivity); // temporary...
-
         userModel = new User(username, password, false);
-        userModel.authenticate();
-
-
+        authorize(userModel.authenticate());
     }
 
     public void authorize(boolean permit) {
         if (!permit) {
-            // notify user that username || password incorrect
+            Toast.makeText(signinActivity.getApplicationContext(), "Wrong email and password", Toast.LENGTH_SHORT).show();
         } else {
             displayMainActivity(signinActivity);
         }
