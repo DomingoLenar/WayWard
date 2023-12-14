@@ -16,14 +16,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.controllers.EditPlanController;
 
 import org.w3c.dom.Text;
 
 public class PostActivity extends AppCompatActivity {
+
+    public PostActivity() {}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
 
         TextView postProfileTitle = findViewById(R.id.postProfileTitle);
         TextView postDescription = findViewById(R.id.postDescription);

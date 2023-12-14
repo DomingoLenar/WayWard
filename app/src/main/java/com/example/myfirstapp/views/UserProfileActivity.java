@@ -63,7 +63,7 @@ public class UserProfileActivity extends AppCompatActivity {
         userProfileSettingsController.displaySearchActivity();
     }
     public void popUpBtn(View view) {
-        userProfileSettingsController.displayPopUpActivity();
+        userProfileSettingsController.displayPopUpDialog();
     }
     public void editPlanBtn(View view) {
         userProfileSettingsController.displayEditPlanActivity();

@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SearchController;
+import com.example.myfirstapp.views.adapters.ViewPagerAdapter;
 import com.example.myfirstapp.views.fragments.PopularFragment;
 import com.example.myfirstapp.views.fragments.RecentFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -52,7 +53,7 @@ public class SearchActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         vpAdapter.addFragment(new PopularFragment(),"Popular");
         vpAdapter.addFragment(new RecentFragment(), "Recent");
         viewPager.setAdapter(vpAdapter);
@@ -88,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
         searchController.displaySearchActivity();
     }
     public void popUpBtn(View view) {
-        searchController.displayPopUpActivity();
+        searchController.displayPopUpDialog();
     }
     public void editPlanBtn(View view) {
         searchController.displayEditPlanActivity();
