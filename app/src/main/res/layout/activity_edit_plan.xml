@@ -63,11 +63,10 @@
                 android:id="@+id/E_img1"
                 android:layout_width="164dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="415dp"
+                android:layout_marginTop="10dp"
                 android:onClick="insert_img1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/E_galleryLabel"
+                app:layout_constraintTop_toBottomOf="@+id/E_galleryLabel"
                 app:srcCompat="@drawable/campjohnhay1" />
 
             <ImageView
@@ -86,10 +85,10 @@
                 android:layout_width="124dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="7dp"
-                android:layout_marginTop="415dp"
+                android:layout_marginTop="48dp"
                 android:onClick="insert_img2"
                 app:layout_constraintStart_toEndOf="@+id/E_img1"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/E_body"
                 app:srcCompat="@drawable/campjohnhay2" />
 
             <ImageView
@@ -108,13 +107,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
-                android:layout_marginTop="375dp"
                 android:fontFamily="@font/signika_bold"
                 android:text="Gallery"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/E_body" />
 
             <EditText
                 android:id="@+id/E_body"
@@ -157,12 +155,12 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                 app:layout_constraintStart_toEndOf="@+id/E_left_constraintLayout"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/E_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="47dp"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="2 hrs"
                     android:textColor="#000000"
@@ -173,6 +171,7 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                     android:id="@+id/E_durationLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
                     android:layout_marginTop="-5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Duration"
@@ -184,10 +183,11 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                     android:id="@+id/imageView3"
                     android:layout_width="43dp"
                     android:layout_height="46dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="27dp"
-                    app:layout_constraintEnd_toStartOf="@+id/E_duration"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/duration_logo" />
+                    app:srcCompat="@drawable/time_icon" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -202,26 +202,26 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/E_estimatedPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
-                    android:layout_marginEnd="40dp"
-                    android:editable="true"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="31dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="1,500"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="Deprecated" />
+                    />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="43dp"
                     android:layout_height="46dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="27dp"
-                    app:layout_constraintEnd_toStartOf="@+id/E_estimatedPrice"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/estimated_price_icon" />
 

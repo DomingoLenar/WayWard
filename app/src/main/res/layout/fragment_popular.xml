@@ -9,7 +9,7 @@
     tools:context=".views.fragments.PopularFragment">
 
     <Button
-        android:id="@+id/sample1"
+        android:id="@+id/S_campjohnhay"
         android:layout_width="185dp"
         android:layout_height="180dp"
         android:layout_marginStart="25dp"
@@ -51,7 +51,7 @@
         android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sample1" />
+        app:layout_constraintTop_toBottomOf="@+id/S_campjohnhay" />
 
     <Button
         android:id="@+id/food"
@@ -65,8 +65,8 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/sample2"
-        app:layout_constraintStart_toStartOf="@+id/sample1"
-        app:layout_constraintTop_toBottomOf="@+id/sample1" />
+        app:layout_constraintStart_toStartOf="@+id/S_campjohnhay"
+        app:layout_constraintTop_toBottomOf="@+id/S_campjohnhay" />
 
     <Button
         android:id="@+id/hotel"
@@ -90,10 +90,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Tourist Spots"
-        android:textColor="#000000"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/hotel"
         app:layout_constraintStart_toStartOf="@+id/hotel"
         app:layout_constraintTop_toBottomOf="@+id/hotel" />
