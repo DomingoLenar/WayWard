@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ValueAnimator;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,14 @@ import com.example.myfirstapp.controllers.SignupController;
 import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.models.UserTasks.UserCallback;
+
+import org.postgresql.util.PSQLException;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class SignupActivity extends AppCompatActivity implements UserCallback {
@@ -30,6 +40,9 @@ public class SignupActivity extends AppCompatActivity implements UserCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(threadPolicy);
 
         signupController = new SignupController(this);
 
@@ -71,11 +84,50 @@ public class SignupActivity extends AppCompatActivity implements UserCallback {
 
         signUpButton.setText(R.string.sign_up);
 
-        performBackgroundTask();
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    DataBase db = new DataBase();
+
+                    Connection conn = createConnection(db.getUrl(), db.getUser(),db.getPassword());
+                    Statement st = conn.createStatement();
+                    ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + usernameField.getText().toString()+ "','"
+                            + passwordField.getText().toString() + "','" + fnameField.getText().toString() + "','" + null + "','" + lNameField.getText().toString()+ "')");
+                    rs.next();
+                }
+                catch(PSQLException psqlException){
+                    if("No results were returned by the query.".equals(psqlException.getMessage())){
+                        System.out.println("No results from query, query success");
+
+                    }else{
+                        psqlException.printStackTrace();
+
+                    }
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+
+                }
+            }
+        }).start();
+
+
 
 //        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
 //                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
+    }
+
+    public Connection createConnection(String url, String user, String password){
+        Connection connection = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(url,user, password);
+        }catch(ClassNotFoundException | SQLException e ){
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     private void initViews() {
