@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ValueAnimator;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +13,12 @@ import android.widget.TextView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SignupController;
+import com.example.myfirstapp.models.DataBase;
+import com.example.myfirstapp.models.User;
+import com.example.myfirstapp.models.UserTasks.UserCallback;
 
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity implements UserCallback {
 
     private ValueAnimator valueAnimator;
     private EditText usernameField, passwordField, emailField, fnameField, lNameField, phoneNoField;
@@ -28,6 +32,9 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         signupController = new SignupController(this);
+
+
+
 
         initViews();
 
@@ -64,8 +71,10 @@ public class SignupActivity extends AppCompatActivity {
 
         signUpButton.setText(R.string.sign_up);
 
-        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
-                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
+        performBackgroundTask();
+
+//        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
+//                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
     }
 
@@ -87,5 +96,32 @@ public class SignupActivity extends AppCompatActivity {
         lNameLabel = findViewById(R.id.SU_lastNameLabel);
         phoneNoLabel = findViewById(R.id.SU_phoneLabel);
 
+    }
+
+    @Override
+    public void onTaskComplete(User result) {
+
+    }
+
+    @Override
+    public void onTaskComplete(String response) {
+
+    }
+
+    public void performBackgroundTask() {
+        new YourAsyncTask().execute();
+//        YourAsyncTask asyncTask = new YourAsyncTask();
+//        Thread thread = new Thread(asyncTask);
+//        thread.start();
+
+    }
+
+    private class YourAsyncTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            User user = new User(usernameField.getText().toString(), passwordField.getText().toString(), false);
+            user.insertCurrentUser();
+            return null;
+        }
     }
 }
