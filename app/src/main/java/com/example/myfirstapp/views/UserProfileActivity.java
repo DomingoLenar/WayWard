@@ -15,7 +15,10 @@ import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.UserProfileSettingsController;
 
 public class UserProfileActivity extends AppCompatActivity {
+
+    private TextView userProfileLastName, userProfileFirstName;
     UserProfileSettingsController userProfileSettingsController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +27,7 @@ public class UserProfileActivity extends AppCompatActivity {
         userProfileSettingsController = new UserProfileSettingsController(this);
         initViews();
 
-        TextView userProfileLastName = findViewById(R.id.userProfileLastName);
-        TextView userProfileFirstName = findViewById(R.id.userProfileFirstName);
+
         TextView userProfileDescription = findViewById(R.id.userProfileDescription);
 
         ImageView userProfileAvatar = findViewById(R.id.userProfileAvatar);
@@ -49,7 +51,8 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        
+        userProfileLastName = findViewById(R.id.userProfileLastName);
+        userProfileFirstName = findViewById(R.id.userProfileFirstName);
     }
 
     public void homeBtn(View view) {
