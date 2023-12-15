@@ -41,7 +41,7 @@ public class UserFetchTask implements Runnable {
                 }
             }else{
                 if(userCallback != null){
-                    userCallback.onTaskComplete(null);
+                    userCallback.onTaskComplete((User)null);
                 }
             }
         }catch(SQLException e){
