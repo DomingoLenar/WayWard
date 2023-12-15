@@ -3,11 +3,9 @@ package com.example.myfirstapp.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,8 +13,6 @@ import android.widget.TextView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.UserProfileSettingsController;
-
-import org.w3c.dom.Text;
 
 public class UserProfileActivity extends AppCompatActivity {
     UserProfileSettingsController userProfileSettingsController;
@@ -70,5 +66,8 @@ public class UserProfileActivity extends AppCompatActivity {
     }
     public void userSettingsBtn(View view) {
         userProfileSettingsController.displayUserSettingsActivity();
+    }
+    public void sign_out(View view) {
+        userProfileSettingsController.logoutBtnClicked();
     }
 }

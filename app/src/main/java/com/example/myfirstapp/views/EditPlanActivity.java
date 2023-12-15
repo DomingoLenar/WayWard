@@ -30,7 +30,6 @@ public class EditPlanActivity extends AppCompatActivity {
     private final int GALLERY_CODE_3 = 3;
     private final int GALLERY_CODE_4 = 4;
     EditPlanController editPlanController;
-    PostActivity postActivity;
     ImageView img1, img2, img3, img4, app_bar_img;
     TextView estimatedPrice, duration, title, description;
     BottomNavigationView navbar;
@@ -40,8 +39,7 @@ public class EditPlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_plan);
 
-        postActivity = new PostActivity();
-        editPlanController = new EditPlanController(this, postActivity);
+        editPlanController = new EditPlanController(this);
 
         initViews();
 
@@ -104,9 +102,9 @@ public class EditPlanActivity extends AppCompatActivity {
 
     public void saveNowBtn(View view) {
         if (title.getText().toString().equals("") || duration.getText().toString().equals("") || estimatedPrice.getText().toString().equals("") || description.getText().toString().equals("")) {
-            Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+//            Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
         } else {
-            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+//            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
             editPlanController.submitTravelPlanDetails("temp", null, "temp",
                     duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
 

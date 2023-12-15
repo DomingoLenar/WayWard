@@ -3,9 +3,11 @@ package com.example.myfirstapp.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.media.Image;
 import android.media.Rating;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,8 +23,6 @@ import com.example.myfirstapp.controllers.EditPlanController;
 import org.w3c.dom.Text;
 
 public class PostActivity extends AppCompatActivity {
-
-    public PostActivity() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
