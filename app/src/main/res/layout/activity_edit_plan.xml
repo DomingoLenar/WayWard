@@ -49,7 +49,7 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/E_nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="-35dp"
         android:background="@drawable/rounded_orange"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -57,7 +57,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/E_img1"
@@ -78,7 +78,7 @@
                 android:onClick="insert_img4"
                 app:layout_constraintStart_toEndOf="@+id/E_img3"
                 app:layout_constraintTop_toBottomOf="@+id/E_img2"
-                app:srcCompat="@drawable/add_icon" />
+                app:srcCompat="@drawable/campjohnhay5" />
 
             <ImageView
                 android:id="@+id/E_img2"
@@ -100,7 +100,7 @@
                 android:onClick="insert_img3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/E_img1"
-                app:srcCompat="@drawable/add_icon" />
+                app:srcCompat="@drawable/campjohnhay4" />
 
             <TextView
                 android:id="@+id/E_galleryLabel"
@@ -212,8 +212,7 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
                     android:text="1,500"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -239,6 +238,16 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="@+id/E_img4"
+                app:layout_constraintStart_toStartOf="@+id/E_img3"
+                app:layout_constraintTop_toBottomOf="@+id/E_img4"
+                app:srcCompat="@drawable/campjohnhay3" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -255,8 +264,8 @@ gives you a taste of pleasure and adventure. Outlined with numerous leisure spot
         app:layout_anchor="@+id/E_bottomNavBar"
         app:layout_anchorGravity="bottom|end"
         tools:layout_editor_absoluteX="202dp"
-        tools:layout_editor_absoluteY="501dp" />
-    />
+        tools:layout_editor_absoluteY="501dp"
+        android:contentDescription="TODO" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/E_bottomNavBar"
