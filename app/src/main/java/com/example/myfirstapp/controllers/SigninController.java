@@ -12,18 +12,14 @@ public class SigninController {
     SigninActivity signinActivity;
     User userModel;
 
-
     public SigninController(SigninActivity signinActivity) {
         this.signinActivity = signinActivity;
         userModel = new User(this);
     }
 
-
     public void displayMainActivity(SigninActivity signinActivity) {
-
         Intent i = new Intent(signinActivity, MainActivity.class);
         signinActivity.startActivity(i);
-
     }
 
     public void submitAccountDetails(String username, String password) {
