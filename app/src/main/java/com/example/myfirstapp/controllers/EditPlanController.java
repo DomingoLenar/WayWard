@@ -36,9 +36,8 @@ public class EditPlanController {
     PostActivity postActivity;
     TravelPlan travelPlan;
 
-    public EditPlanController(EditPlanActivity editPlanActivity, PostActivity postActivity) {
+    public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
-        this.postActivity = postActivity;
     }
 
     public void displayMainActivity() {
@@ -161,7 +160,6 @@ public class EditPlanController {
         validator(imagePath);
 
     }
-
     private void validator(String imagePath) {
 
         if (imagePath != null) {

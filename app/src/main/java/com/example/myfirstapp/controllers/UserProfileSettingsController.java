@@ -11,7 +11,9 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.views.EditPlanActivity;
+import com.example.myfirstapp.views.LoginActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
 import com.example.myfirstapp.views.SearchActivity;
@@ -19,8 +21,10 @@ import com.example.myfirstapp.views.UserProfileActivity;
 
 public class UserProfileSettingsController {
     UserProfileActivity userProfileActivity;
+    User userModel;
     public UserProfileSettingsController(UserProfileActivity userProfileActivity) {
         this.userProfileActivity= userProfileActivity;
+        userModel = new User(this);
     }
 
     public void displayMainActivity() {
@@ -80,5 +84,22 @@ public class UserProfileSettingsController {
     }
     public void displayUserSettingsActivity() {
         return;
+    }
+
+    public void logoutBtnClicked() {
+        boolean valid = userModel.logoutUser();
+
+        if (valid){
+            System.out.println("Success!");
+            displayLoginActivity();
+        } else {
+            System.out.println("Failed");
+        }
+    }
+
+    private void displayLoginActivity() {
+        Intent i = new Intent(userProfileActivity, LoginActivity.class);
+        userProfileActivity.startActivity(i);
+        userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
