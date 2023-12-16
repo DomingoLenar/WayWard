@@ -16,6 +16,7 @@ import java.sql.*;
  */
 
 public class User {
+    private String email;
     private String username;
     private String password;
     private int userId = -1;
@@ -39,7 +40,8 @@ public class User {
      * @param password
      * @param hashed
      */
-    public User(String username, String password, boolean hashed){
+    public User(String email, String username, String password, boolean hashed){
+        this.email = email;
         this.username = username;
         if(hashed){
             this.password = password;
@@ -60,7 +62,8 @@ public class User {
      * @param middleName
      * @param lastName
      */
-    public User(String username, String password, boolean hashed, String firstName, String middleName, String lastName){
+    public User(String email, String username, String password, boolean hashed, String firstName, String middleName, String lastName){
+        this.email = email;
         this.username = username;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -166,7 +169,7 @@ public class User {
      * @param rawPassword Takes in a string that is a raw unhashed version of the password
      * @return String
      */
-    private String hashPassword(String rawPassword){
+    public String hashPassword(String rawPassword){
         try {
             // Create a MessageDigest instance for SHA-256
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -220,6 +223,14 @@ public class User {
     public String getUsername(){
         return this.username;
 
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**

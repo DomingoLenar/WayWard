@@ -12,6 +12,15 @@ import android.widget.TextView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SignupController;
+import com.example.myfirstapp.models.DataBase;
+
+import org.postgresql.util.PSQLException;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class SignupActivity extends AppCompatActivity {
