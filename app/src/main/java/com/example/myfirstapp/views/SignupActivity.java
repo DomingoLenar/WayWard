@@ -16,8 +16,8 @@ import android.widget.TextView;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SignupController;
 import com.example.myfirstapp.models.DataBase;
-import com.example.myfirstapp.models.User;
-import com.example.myfirstapp.models.UserTasks.UserCallback;
+import com.example.myfirstapp.modelsV2.User;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
 
 import org.postgresql.util.PSQLException;
 
@@ -27,8 +27,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import retrofit2.Retrofit;
 
-public class SignupActivity extends AppCompatActivity implements UserCallback {
+
+public class SignupActivity extends AppCompatActivity {
 
     private ValueAnimator valueAnimator;
     private EditText usernameField, passwordField, emailField, fnameField, lNameField, phoneNoField;
@@ -84,33 +86,29 @@ public class SignupActivity extends AppCompatActivity implements UserCallback {
 
         signUpButton.setText(R.string.sign_up);
 
-        new Thread(new Runnable(){
+        DataBaseAPI dbAPI = new DataBaseAPI();
+        Retrofit retrofit = dbAPI.getClient();
+        User newUser = new User(-1,"usernameField.getText().toString()",
+                                "passwordField.getText().toString()", false,
+                                "fnameField.getText().toString()",
+                                "null",
+                                "lNameField.getText().toString()");
+        dbAPI.insertUser(newUser, retrofit, new DataBaseAPI.UserCallback() {
             @Override
-            public void run() {
-                try {
-                    DataBase db = new DataBase();
-
-                    Connection conn = createConnection(db.getUrl(), db.getUser(),db.getPassword());
-                    Statement st = conn.createStatement();
-                    ResultSet rs = st.executeQuery("insert into user_details(user_id,username,password,first_name,middle_name,last_name) values (default,'" + usernameField.getText().toString()+ "','"
-                            + passwordField.getText().toString() + "','" + fnameField.getText().toString() + "','" + null + "','" + lNameField.getText().toString()+ "')");
-                    rs.next();
-                }
-                catch(PSQLException psqlException){
-                    if("No results were returned by the query.".equals(psqlException.getMessage())){
-                        System.out.println("No results from query, query success");
-
-                    }else{
-                        psqlException.printStackTrace();
-
-                    }
-                }
-                catch(SQLException e){
-                    e.printStackTrace();
-
-                }
+            public void onUserReceived(User user) {
+                System.out.println(user.getUsername());
             }
-        }).start();
+
+            @Override
+            public void onUserReceived(String string) {
+                System.out.println(string);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                System.out.println(errorMessage);
+            }
+        });
 
 
 
@@ -119,16 +117,6 @@ public class SignupActivity extends AppCompatActivity implements UserCallback {
 
     }
 
-    public Connection createConnection(String url, String user, String password){
-        Connection connection = null;
-        try{
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection(url,user, password);
-        }catch(ClassNotFoundException | SQLException e ){
-            e.printStackTrace();
-        }
-        return connection;
-    }
 
     private void initViews() {
         findViewById(R.id.SI_welcomeLabel);
@@ -148,32 +136,5 @@ public class SignupActivity extends AppCompatActivity implements UserCallback {
         lNameLabel = findViewById(R.id.SU_lastNameLabel);
         phoneNoLabel = findViewById(R.id.SU_phoneLabel);
 
-    }
-
-    @Override
-    public void onTaskComplete(User result) {
-
-    }
-
-    @Override
-    public void onTaskComplete(String response) {
-
-    }
-
-    public void performBackgroundTask() {
-        new YourAsyncTask().execute();
-//        YourAsyncTask asyncTask = new YourAsyncTask();
-//        Thread thread = new Thread(asyncTask);
-//        thread.start();
-
-    }
-
-    private class YourAsyncTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            User user = new User(usernameField.getText().toString(), passwordField.getText().toString(), false);
-            user.insertCurrentUser();
-            return null;
-        }
     }
 }
