@@ -147,10 +147,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainTopRatedButton1"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/minesviewpark"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -185,7 +184,7 @@
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="Mines View \nPark"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -200,7 +199,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Baguio City, Benguet"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -246,10 +245,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainTopRatedButton2"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/burnharmpark"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -282,7 +280,7 @@
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="Burnham \nPark"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -297,7 +295,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Baguio City, Benguet"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -343,10 +341,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainTopRatedButton3"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/themansion"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -370,6 +367,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@mipmap/staricon" />
+
                 <TextView
                     android:id="@+id/mainButtonTitle3"
                     android:layout_width="wrap_content"
@@ -378,7 +376,7 @@
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="The \nMansion"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -393,7 +391,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Baguio City, Benguet"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -439,10 +437,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainTopRatedButton4"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/wrightpark"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -475,7 +472,7 @@
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="Wright \nPark"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -490,7 +487,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Baguio City, Benguet"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -536,10 +533,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainTopRatedButton5"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/botanicalgarden"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -572,7 +568,7 @@
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/signika_bold"
                     android:text="Botanical \nGarden"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -587,7 +583,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/signika_light"
                     android:text="Baguio City, Benguet"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -664,10 +660,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainRecommendedButton1"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/lionspark"
                     tools:layout_editor_absoluteX="500dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -677,16 +672,15 @@
                 android:layout_height="130dp"
                 android:layout_marginTop="140dp">
 
-            <ImageButton
-                android:id="@+id/mainRecommendedButton2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="mainRecommendedButton2"
-                app:srcCompat="@mipmap/avataricon"
-                tools:layout_editor_absoluteX="319dp"
-                tools:layout_editor_absoluteY="match">
-            </ImageButton>
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton2"
+                    app:srcCompat="@drawable/placeholder"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 
@@ -702,10 +696,9 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button"
                     android:contentDescription="mainRecommendedButton3"
-                    app:srcCompat="@mipmap/avataricon"
+                    app:srcCompat="@drawable/placeholder"
                     tools:layout_editor_absoluteX="319dp"
-                    tools:layout_editor_absoluteY="match">
-                </ImageButton>
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
             </LinearLayout>
 

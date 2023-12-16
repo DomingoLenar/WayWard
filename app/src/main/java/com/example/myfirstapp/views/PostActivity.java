@@ -3,9 +3,11 @@ package com.example.myfirstapp.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.media.Image;
 import android.media.Rating;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,14 +18,17 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.controllers.EditPlanController;
 
 import org.w3c.dom.Text;
 
 public class PostActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
 
         TextView postProfileTitle = findViewById(R.id.postProfileTitle);
         TextView postDescription = findViewById(R.id.postDescription);

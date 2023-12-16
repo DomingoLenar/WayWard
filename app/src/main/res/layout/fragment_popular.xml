@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/F_constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.fragments.PopularFragment">
 
-    <Button
-        android:id="@+id/sample1"
+    <ImageView
+        android:id="@+id/S_campjohnhay"
         android:layout_width="185dp"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="22dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Camp John Hay"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="60dp"
         app:layout_constraintEnd_toStartOf="@+id/sample2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/S_campjohnhay" />
 
-    <Button
+    <ImageView
         android:id="@+id/sample2"
         android:layout_width="165dp"
         android:layout_height="150dp"
@@ -33,12 +33,12 @@
         android:layout_marginEnd="15dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#D9BAA4"
-        android:fontFamily="@font/signika_bold"
-        android:text="Minesview Park"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/minesviewpark1" />
 
     <TextView
         android:id="@+id/searchRecent"
@@ -51,7 +51,7 @@
         android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sample1" />
+        app:layout_constraintTop_toBottomOf="@+id/S_campjohnhay" />
 
     <Button
         android:id="@+id/food"
@@ -65,8 +65,8 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/sample2"
-        app:layout_constraintStart_toStartOf="@+id/sample1"
-        app:layout_constraintTop_toBottomOf="@+id/sample1" />
+        app:layout_constraintStart_toStartOf="@+id/S_campjohnhay"
+        app:layout_constraintTop_toBottomOf="@+id/S_campjohnhay" />
 
     <Button
         android:id="@+id/hotel"
@@ -83,19 +83,58 @@
         app:layout_constraintStart_toStartOf="@+id/food"
         app:layout_constraintTop_toBottomOf="@+id/food" />
 
-    <Button
+    <ImageView
         android:id="@+id/touristspot"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_button"
         android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Tourist Spots"
-        android:textColor="#000000"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/hotel"
         app:layout_constraintStart_toStartOf="@+id/hotel"
         app:layout_constraintTop_toBottomOf="@+id/hotel" />
+
+    <TextView
+        android:id="@+id/F_campjohnhayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika"
+        android:text="Camp John Hay"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="161dp" />
+
+    <TextView
+        android:id="@+id/F_cityLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika"
+        android:text="Baguio City"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/F_campjohnhayLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/F_campjohnhayLabel"
+        tools:layout_editor_absoluteY="179dp" />
+
+    <TextView
+        android:id="@+id/F_cityLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika"
+        android:text="Baguio City"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/F_minesviewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minesview Park"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="111dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,11 +48,17 @@ public class SignupController {
     }
 
     private void authorize(boolean usernameValid) {
-        if (!usernameValid) {
-            Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
-        } else {
-            userModel.insertCurrentUser();
-            displayMainActivity(signupActivity);
-        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!usernameValid) {
+                    Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
+                } else {
+                    userModel.insertCurrentUser();
+                    displayMainActivity(signupActivity);
+                }
+            }
+        });
     }
 }

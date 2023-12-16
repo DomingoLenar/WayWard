@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         mainController.displaySearchActivity(this);
     }
     public void popUpBtn(View view) {
-        mainController.displayPopUpActivity(this);
+        mainController.displayPopUpDialog();
     }
     public void editPlanBtn(View view) {
         mainController.displayEditPlanActivity(this);

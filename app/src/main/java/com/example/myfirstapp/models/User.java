@@ -2,6 +2,7 @@ package com.example.myfirstapp.models;
 
 import com.example.myfirstapp.controllers.SigninController;
 import com.example.myfirstapp.controllers.SignupController;
+import com.example.myfirstapp.controllers.UserProfileSettingsController;
 
 import org.postgresql.util.PSQLException;
 
@@ -29,6 +30,8 @@ public class User {
     }
     public User(SigninController signinController) {
         this.signinController = signinController;
+    }
+    public User(UserProfileSettingsController userProfileSettingsController) {
     }
     /**
      * This constructor takes in three parameters and leaves the details of names as null
@@ -280,5 +283,10 @@ public class User {
 
 //        db.storeUserAccount()
         return false;
+    }
+
+    public boolean logoutUser() {
+        // reset states, clear session
+        return true;
     }
 }
