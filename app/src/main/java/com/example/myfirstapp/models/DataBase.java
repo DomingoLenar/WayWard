@@ -27,12 +27,24 @@ public class DataBase {
     private String user = "postgres";
     private String password = "palakapapoy";
 
+    public String getUrl() {
+        return url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     /**
      * This method establishes a connection with the POSTGRES database
      * @return Returns an object of connection
      */
     public Connection createConnection(){
+
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(url,user, password);
@@ -63,7 +75,7 @@ public class DataBase {
                 String fetchedMName = rs.getString(5);
                 String fetchedLName = rs.getString(6);
                 // constructs and returns a new object of user based on the fetched data
-                return new User(fetchedUsername, fetchedPassword, true,fetchedFName,fetchedMName, fetchedLName);
+//                return new User(fetchedUsername, fetchedPassword, true,fetchedFName,fetchedMName, fetchedLName);
             }else{
                 return null;
             }
