@@ -81,7 +81,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void initViews() {}
     public void homeBtn(View view) {
         searchController.displayMainActivity();
     }
@@ -96,9 +96,6 @@ public class SearchActivity extends AppCompatActivity {
     }
     public void userSettingsBtn(View view) {
         searchController.displayUserSettingsActivity();
-    }
-    private void initViews() {
-
     }
 
 }

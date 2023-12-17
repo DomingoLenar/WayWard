@@ -49,12 +49,10 @@ public class UserProfileActivity extends AppCompatActivity {
 
         LinearLayout userProfileBottomBarContents = findViewById(R.id.userProfileBottomBarContents);
     }
-
     private void initViews() {
         userProfileLastName = findViewById(R.id.userProfileLastName);
         userProfileFirstName = findViewById(R.id.userProfileFirstName);
     }
-
     public void homeBtn(View view) {
         userProfileSettingsController.displayMainActivity();
     }

@@ -11,6 +11,9 @@ import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.EditPlanController;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * {Deprecated}
+ */
 public class OldEditPlanActivity extends AppCompatActivity {
 
     private final int GALLERY_CODE_1 = 1;

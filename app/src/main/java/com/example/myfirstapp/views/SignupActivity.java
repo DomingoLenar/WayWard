@@ -48,9 +48,6 @@ public class SignupActivity extends AppCompatActivity {
 
         signupController = new SignupController(this);
 
-
-
-
         initViews();
 
         valueAnimator = ValueAnimator.ofInt(0, -1000);
@@ -86,40 +83,12 @@ public class SignupActivity extends AppCompatActivity {
 
         signUpButton.setText(R.string.sign_up);
 
-        DataBaseAPI dbAPI = new DataBaseAPI();
-        Retrofit retrofit = dbAPI.getClient();
-        User newUser = new User("usernameField.getText().toString()",
-                                "passwordField.getText().toString()", false,
-                                "fnameField.getText().toString()",
-                                "null",
-                                "lNameField.getText().toString()");
-        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
-            @Override
-            public void onUserReceived(User user) {
-
-            }
-
-            @Override
-            public void onUserReceived(String string) {
-
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-
-            }
-        };
-        dbAPI.insertUser(newUser, retrofit, userCallback);
+        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
+                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
 
-
-
-//        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
-//                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
     }
-
-
     private void initViews() {
         findViewById(R.id.SI_welcomeLabel);
 

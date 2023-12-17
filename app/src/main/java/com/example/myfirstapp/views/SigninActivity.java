@@ -13,7 +13,6 @@ import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SigninController;
 
 public class SigninActivity extends AppCompatActivity {
-
     SigninController signinController;
     private EditText usernameField, passwordField;
     private TextView usernameLabel, passwordLabel;
@@ -37,9 +36,7 @@ public class SigninActivity extends AppCompatActivity {
         passwordLabel = findViewById(R.id.SI_passwordLabel);
 
     }
-
     public void SI_signIn(View view) {
         signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
-
     }
 }

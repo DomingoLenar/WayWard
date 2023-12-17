@@ -27,7 +27,6 @@ import com.example.myfirstapp.R;
 import java.io.IOException;
 
 public class EditPlanActivity extends AppCompatActivity {
-
     private ActivityEditPlanBinding binding;
     private final int GALLERY_CODE_0 = 0;
     private final int GALLERY_CODE_1 = 1;
@@ -39,7 +38,6 @@ public class EditPlanActivity extends AppCompatActivity {
     TextView estimatedPrice, duration, title, description;
     BottomNavigationView navbar;
     Uri uri;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,17 +65,13 @@ public class EditPlanActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
     private void initViews() {
+
+//        FloatingActionButton fab = binding.fab;
+
         app_bar_img = findViewById(R.id.E_app_bar_image);
         navbar = findViewById(R.id.E_bottomNavBar);
 
