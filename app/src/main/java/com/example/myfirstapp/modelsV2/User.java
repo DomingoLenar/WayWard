@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 
 public class User {
     @SerializedName("id")
-    private int id;
+    private Integer id;
     @SerializedName("username")
     private String username;
     @SerializedName("password")
@@ -32,6 +32,18 @@ public class User {
         this.last_name = last_name;
     }
 
+    public User(String username, String password, boolean hashed, String first_name, String middle_name, String last_name){
+        this.username = username;
+        if(hashed){
+            this.password = password;
+        }else{
+            this.password = hashPassword(password);
+        }
+        this.first_name = first_name;
+        this.middle_name = middle_name;
+        this.last_name = last_name;
+    }
+
     public User(int id, String username, String password, boolean hashed){
         this.username = username;
         if(hashed){
@@ -43,9 +55,9 @@ public class User {
 
 
     private String hashPassword(String password){
-        String output;
+        String output = password;
 
-        return null;
+        return output;
     }
 
     public int getId() {

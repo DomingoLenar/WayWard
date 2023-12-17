@@ -16,14 +16,13 @@ public interface APIInterface {
      */
     @GET("user_details?username=eq.{username}&select=*")
     Call<User> getUserInterface(@Path("username") String username);
-
     /**
      *
      * @param user JSON format of user to insert
      * @return
      */
     @POST("user_details")
-    Call<String> insertUserInterface(@Body String user);
+    Call<User> insertUserInterface(@Body User user);
 
     /**
      *
@@ -34,13 +33,13 @@ public interface APIInterface {
      * @return              returns boolean value if query succeeded
      */
     @PATCH("{table}?{columnSearch}=.eq{searchKey}")
-    Call<Boolean> updateColumnInterface(@Path("table")String table,
+    Call<User> updateColumnInterface(@Path("table")String table,
                                @Path("columnSearch")String columnSearch,
                                @Path("searchKey")String searchKey,
                                @Body String newValues);
 
 
     @GET("{table}?{column}=eq.{searchKey}")
-    Call<Boolean> existsInterface(@Path("table")String table,@Path("column")String column,@Path("searchKey")String searchKey);
+    Call<Object> existsInterface(@Path("table")String table,@Path("column")String column,@Path("searchKey")String searchKey);
 
 }
