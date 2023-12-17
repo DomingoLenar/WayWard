@@ -221,10 +221,63 @@ public class DataBaseAPI {
                 reviewCallback.onError(t.getMessage());
             }
         };
+        apiInterface.insertReviewInterface(review).enqueue(callback);
     }
 
     //END REVIEW OPERATIONS
 
+    //START CONTACT DETAILS OPERATIONS
+
+    public void getContactDetails(Retrofit retrofit, String username, ContactDetailsCallback contactDetailsCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<ContactDetails> callback = new Callback<ContactDetails>() {
+            @Override
+            public void onResponse(Call<ContactDetails> call, Response<ContactDetails> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    contactDetailsCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactDetails> call, Throwable t) {
+                contactDetailsCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.getContactDetailsInterface(username).enqueue(callback);
+    }
+
+    public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<ContactDetails> callback = new Callback<ContactDetails>() {
+            @Override
+            public void onResponse(Call<ContactDetails> call, Response<ContactDetails> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    contactDetailsCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactDetails> call, Throwable t) {
+                contactDetailsCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.insertContactDetailsInterface(contactDetails).enqueue(callback);
+    }
+
+    //END CONTACT DETAILS OPERATIONS
+
+    public interface ContactDetailsCallback{
+        void onReceived(ContactDetails contactDetails);
+        void onError(String errorMessage);
+    }
     public interface ReviewCallback{
         void onReceived(Review review);
         void onError(String errorMessage);

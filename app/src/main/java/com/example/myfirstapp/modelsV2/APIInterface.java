@@ -55,4 +55,10 @@ public interface APIInterface {
     @POST("review")
     Call<Review> insertReviewInterface(@Body Review review);
 
+    @POST("contact_details")
+    Call<ContactDetails> insertContactDetailsInterface(@Body ContactDetails contactDetails);
+
+    @GET("contact_details?username=eq.{username}")
+    Call<ContactDetails> getContactDetailsInterface(@Path("username") String username);
+
 }
