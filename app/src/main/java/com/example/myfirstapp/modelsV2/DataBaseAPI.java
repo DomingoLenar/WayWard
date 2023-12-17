@@ -179,6 +179,7 @@ public class DataBaseAPI {
                 travelPlanCallback.onError(t.getMessage());
             }
         };
+        apiInterface.insertTravelPlanInterface(travelPlan).enqueue(callback);
     }
 
     //END TRAVEL PLAN OPERATIONS
