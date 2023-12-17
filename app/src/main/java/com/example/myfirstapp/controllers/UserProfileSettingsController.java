@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.LoginActivity;
@@ -78,7 +79,7 @@ public class UserProfileSettingsController {
     }
 
     public void displayEditPlanActivity() {
-        Intent i = new Intent(userProfileActivity, EditPlanActivity.class);
+        Intent i = new Intent(userProfileActivity, OldEditPlanActivity.class);
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

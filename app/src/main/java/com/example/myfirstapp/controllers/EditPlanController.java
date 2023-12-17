@@ -21,6 +21,7 @@ import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
+import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
@@ -33,8 +34,13 @@ public class EditPlanController {
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
+//    OldEditPlanActivity oldEditPlanActivity;
     PostActivity postActivity;
     TravelPlan travelPlan;
+
+//    public EditPlanController(ScrollingActivity scrollingActivity) {
+//        this.scrollingActivity = scrollingActivity;
+//    }
 
     public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
@@ -103,6 +109,7 @@ public class EditPlanController {
         Intent iImage1 = new Intent(Intent.ACTION_PICK);
         iImage1.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         editPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
+//        oldEditPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
     }
 
 //    public String imagePath(Bitmap bitmap) {
@@ -130,7 +137,7 @@ public class EditPlanController {
                 db.uploadImage(filePath,remotePath);
             }
         });
-        
+
     }
 
     public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
@@ -160,6 +167,7 @@ public class EditPlanController {
         validator(imagePath);
 
     }
+
     private void validator(String imagePath) {
 
         if (imagePath != null) {
