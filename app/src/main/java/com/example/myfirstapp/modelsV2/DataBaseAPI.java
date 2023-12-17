@@ -12,6 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.HEAD;
 import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public class DataBaseAPI {
     private Retrofit retrofit = null;
@@ -110,11 +111,10 @@ public class DataBaseAPI {
     /**
      *
      * @param retrofit  Object of retrofit, can be created using createClient() method
-     * @param column    Column of where to search at
-     * @param searchKey search key to be used to search the column for
+     * @param username search key to be used to search the column for
      * @param newValues JSON string of the new values
      */
-    public void updateUserColumn(Retrofit retrofit, String column, String searchKey, String newValues){
+    public void updateUserColumn(Retrofit retrofit, String username, String newValues){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
         Callback<User> callback = new Callback<User>() {
             @Override
@@ -131,7 +131,7 @@ public class DataBaseAPI {
                 t.printStackTrace();
             }
         };
-        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues).enqueue(callback);
+        apiInterface.updateUserColumnInterface("user_details",username,newValues).enqueue(callback);
     }
 
     //END USER OPERATIONS
