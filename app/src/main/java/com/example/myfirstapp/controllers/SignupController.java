@@ -62,14 +62,6 @@ public class SignupController {
                 }
             };
             dbAPI.insertUser(newUser, retrofit, userCallback);
-
-//            MyDatabase db = new MyDatabase(signupActivity.getApplicationContext());
-//            boolean valid = db.createAccount(userModel);
-//            authorize(valid);
-//            authorize(userModel.isUsernameValid());
-//
-//            contactDetails = new ContactDetails(username, email, phoneNo, null);
-//            contactDetails.insertCurrentCD();
         }
 
     }

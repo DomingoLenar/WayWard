@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.TravelPlan;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
@@ -28,12 +29,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import retrofit2.Retrofit;
+
 public class EditPlanController {
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
     PostActivity postActivity;
-    TravelPlan travelPlan;
+    com.example.myfirstapp.modelsV2.TravelPlan travelPlan;
 
     public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
@@ -132,10 +135,25 @@ public class EditPlanController {
 
     }
 
-    public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
-        travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
-//        travelPlan.insertTravelPlan();
-//
+    public void submitTravelPlanDetails(String title, int[] reviews, String username, String duration, String estimated_cost,String description, String destinations) {
+        travelPlan = new com.example.myfirstapp.modelsV2.TravelPlan(title, reviews, duration, estimated_cost, description, destinations, username);
+
+        DataBaseAPI dbAPI = new DataBaseAPI();
+        Retrofit retrofit = dbAPI.getClient();
+
+        DataBaseAPI.TravelPlanCallback travelPlanCallback = new DataBaseAPI.TravelPlanCallback() {
+            @Override
+            public void onReceived(com.example.myfirstapp.modelsV2.TravelPlan travelPlan) {
+
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        };
+        dbAPI.insertTravelPlan(retrofit, travelPlan, travelPlanCallback);
+
 //        uploadToDB(travelPlan, imagePath);
 
     }
