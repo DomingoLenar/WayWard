@@ -2,6 +2,14 @@ package com.example.myfirstapp.modelsV2;
 
 import android.util.Log;
 
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -10,9 +18,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.HEAD;
 import retrofit2.http.Headers;
-import retrofit2.http.Query;
+
 
 public class DataBaseAPI {
     private Retrofit retrofit = null;
@@ -46,7 +53,6 @@ public class DataBaseAPI {
 
         return retrofit;
     }
-
     //START USER OPERATIONS
 
     /**
@@ -57,25 +63,42 @@ public class DataBaseAPI {
      */
     public void getUser(User user, Retrofit retrofit, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        Callback<User> callback = new Callback<User>() {
+        apiInterface.getUserInterface("eq." + user.getUsername()).enqueue(new Callback<JsonElement>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                if (!response.isSuccessful()) {
                     Log.e("getUser", "Unsuccessful response: " + response.code());
-                    System.out.println(response.code());
-                }else{
-                    userCallback.onUserReceived(response.body());
+                    userCallback.onError("Failed to fetch user");
+                    return;
                 }
+
+                Gson gson = new Gson();
+                JsonElement responseBody = response.body();
+
+                if (responseBody.isJsonObject()) {
+                    User user = gson.fromJson(responseBody, User.class);
+                    userCallback.onUserReceived(user);
+                } else if (responseBody.isJsonArray()) {
+                    Type userListType = new TypeToken<List<User>>(){}.getType();
+                    List<User> userList = gson.fromJson(responseBody, userListType);
+                    if (!userList.isEmpty()) {
+                        userCallback.onUserReceived(userList.get(0)); // returns an object of User model to the interface
+                    }
+                } else {
+                    Log.e("getUser", "Unexpected JSON structure");
+                    userCallback.onError("Unexpected JSON structure");
+                }
+
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Log.e("getUser",t.getMessage());
+            public void onFailure(Call<JsonElement> call, Throwable t) {
+                Log.e("Unable to fetch user", t.getMessage());
                 userCallback.onError("Failed to fetch user");
                 t.printStackTrace();
             }
-        };
-        apiInterface.getUserInterface(user.getUsername()).enqueue(callback);
+        });
+
     }
 
     /**
@@ -140,7 +163,6 @@ public class DataBaseAPI {
 
     public void getTravelPlan(Retrofit retrofit, String title, TravelPlanCallback travelPlanCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-
         Callback<TravelPlan> callback = new Callback<TravelPlan>() {
             @Override
             public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
@@ -163,7 +185,6 @@ public class DataBaseAPI {
 
     public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-
         Callback<TravelPlan> callback = new Callback<TravelPlan>() {
             @Override
             public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
