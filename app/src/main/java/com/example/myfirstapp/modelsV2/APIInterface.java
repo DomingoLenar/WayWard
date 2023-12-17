@@ -39,6 +39,13 @@ public interface APIInterface {
                                @Body String newValues);
 
 
+    @GET("travel_plan?title=eq.{title}")
+    Call<TravelPlan> getTravelPlanInterface(@Path("title") String title);
+
+    @POST("travel_plan")
+    Call<TravelPlan> insertTravelPlanInterface(@Body TravelPlan travelPlan);
+
+
     @GET("{table}?{column}=eq.{searchKey}")
     Call<Object> existsInterface(@Path("table")String table,@Path("column")String column,@Path("searchKey")String searchKey);
 

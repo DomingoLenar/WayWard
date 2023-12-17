@@ -100,11 +100,6 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onUserReceived(String string) {
-
-            }
-
-            @Override
             public void onError(String errorMessage) {
 
             }

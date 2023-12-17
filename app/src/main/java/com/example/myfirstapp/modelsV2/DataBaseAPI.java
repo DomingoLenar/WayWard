@@ -44,6 +44,8 @@ public class DataBaseAPI {
         return retrofit;
     }
 
+    //START USER OPERATIONS
+
     /**
      * Fetches the object of username in the database using the username as a search key
      * @param username      username to look for
@@ -92,6 +94,7 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                userCallback.onError(t.getMessage());
                 t.printStackTrace();
             }
         };
@@ -121,19 +124,72 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                t.printStackTrace();
             }
         };
-        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues);
+        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues).enqueue(callback);
     }
 
+    //END USER OPERATIONS
+
+    //START TRAVEL PLAN OPERATIONS
+
+    public void getTravelPlan(Retrofit retrofit, String title, TravelPlanCallback travelPlanCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<TravelPlan> callback = new Callback<TravelPlan>() {
+            @Override
+            public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    travelPlanCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TravelPlan> call, Throwable t) {
+                travelPlanCallback.onError(t.getMessage());
+                t.printStackTrace();
+            }
+        };
+
+        apiInterface.getTravelPlanInterface(title).enqueue(callback);
+    }
+
+    public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<TravelPlan> callback = new Callback<TravelPlan>() {
+            @Override
+            public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    travelPlanCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TravelPlan> call, Throwable t) {
+                travelPlanCallback.onError(t.getMessage());
+            }
+        };
+    }
+
+    //END TRAVEL PLAN OPERATIONS
 
 
 
+
+
+    public interface TravelPlanCallback{
+        void onReceived(TravelPlan travelPlan);
+        void onError(String errorMessage);
+    }
 
     public interface UserCallback {
         void onUserReceived(User user);
-        void onUserReceived(String string);
 
         void onError(String errorMessage);
     }
