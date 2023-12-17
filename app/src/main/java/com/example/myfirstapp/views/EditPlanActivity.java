@@ -1,13 +1,21 @@
 package com.example.myfirstapp.views;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+
+import com.example.myfirstapp.controllers.EditPlanController;
+import com.example.myfirstapp.databinding.ActivityEditPlanBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,16 +23,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.controllers.EditPlanController;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
 public class EditPlanActivity extends AppCompatActivity {
 
-    private final int GALLERY_CODE_0 = 0;
+    private ActivityEditPlanBinding binding;
     private final int GALLERY_CODE_1 = 1;
     private final int GALLERY_CODE_2 = 2;
     private final int GALLERY_CODE_3 = 3;
@@ -34,12 +38,19 @@ public class EditPlanActivity extends AppCompatActivity {
     TextView estimatedPrice, duration, title, description;
     BottomNavigationView navbar;
     Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_plan);
+
+        binding = ActivityEditPlanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         editPlanController = new EditPlanController(this);
+//        Toolbar toolbar = binding.toolbar;
+//        setSupportActionBar(toolbar);
+//        CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
+//        toolBarLayout.setTitle(getTitle());
 
         initViews();
 
@@ -48,16 +59,24 @@ public class EditPlanActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.equals(navbar.getMenu().getItem(0))) editPlanController.displayMainActivity();
                 else if (item.equals(navbar.getMenu().getItem(1))) editPlanController.displaySearchActivity();
-                else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpDialog();
+                else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpActivity();
                 else if (item.equals(navbar.getMenu().getItem(3))) editPlanController.displayEditPlanActivity();
                 else if (item.equals(navbar.getMenu().getItem(4))) editPlanController.displayUserSettingsActivity();
                 return true;
             }
         });
+
+        FloatingActionButton fab = binding.fab;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     private void initViews() {
-
         app_bar_img = findViewById(R.id.E_app_bar_image);
         navbar = findViewById(R.id.E_bottomNavBar);
 
@@ -102,17 +121,17 @@ public class EditPlanActivity extends AppCompatActivity {
 
     public void saveNowBtn(View view) {
         if (title.getText().toString().equals("") || duration.getText().toString().equals("") || estimatedPrice.getText().toString().equals("") || description.getText().toString().equals("")) {
-//            Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+            Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
         } else {
-//            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
             editPlanController.submitTravelPlanDetails("temp", null, "temp",
                     duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
 
         }
     }
+
     public void insert_thumbnail(View view) {
         editPlanController.imageType = "thumbnail";
-        editPlanController.loadImage(GALLERY_CODE_0);
     }
 
     /**
@@ -121,28 +140,17 @@ public class EditPlanActivity extends AppCompatActivity {
      * @param requestCode The integer request code originally supplied to
      *                    startActivityForResult(), allowing you to identify who this
      *                    result came from.
-     * @param resultCode The integer result code returned by the child activity
-     *                   through its setResult().
-     * @param data An Intent, which can return result data to the caller
-     *               (various data can be attached to Intent "extras").
-     *
+     * @param resultCode  The integer result code returned by the child activity
+     *                    through its setResult().
+     * @param data        An Intent, which can return result data to the caller
+     *                    (various data can be attached to Intent "extras").
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_0 && data != null){
-            uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                img1.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
-//                editPlanController.imagePath(bitmap);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        else if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_1 && data != null) {
+
+        if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_1 && data != null) {
 
             uri = data.getData();
             try {
@@ -193,5 +201,4 @@ public class EditPlanActivity extends AppCompatActivity {
 
         }
     }
-
 }

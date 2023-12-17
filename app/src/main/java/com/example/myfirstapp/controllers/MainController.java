@@ -11,7 +11,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.views.EditPlanActivity;
+import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
 import com.example.myfirstapp.views.SearchActivity;
@@ -73,7 +73,7 @@ public class MainController {
     }
 
     public void displayEditPlanActivity(MainActivity mainActivity) {
-        Intent i = new Intent(mainActivity, EditPlanActivity.class);
+        Intent i = new Intent(mainActivity, OldEditPlanActivity.class);
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
