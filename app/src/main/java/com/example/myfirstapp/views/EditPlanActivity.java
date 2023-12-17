@@ -37,6 +37,7 @@ public class EditPlanActivity extends AppCompatActivity {
     EditPlanController editPlanController;
     ImageView img1, img2, img3, img4, app_bar_img;
     TextView estimatedPrice, duration, title, description;
+    TextInputEditText des_field1, des_field2, des_field3, des_field4;
     BottomNavigationView navbar;
     Uri uri;
     @Override
@@ -91,6 +92,12 @@ public class EditPlanActivity extends AppCompatActivity {
         img2 = findViewById(R.id.E_img2);
         img3 = findViewById(R.id.E_img3);
         img4 = findViewById(R.id.E_img4);
+
+        des_field1 = findViewById(R.id.E_destination1Field);
+        des_field2 = findViewById(R.id.E_destination2Field);
+        des_field3 = findViewById(R.id.E_destination3Field);
+        des_field4 = findViewById(R.id.E_destination4Field);
+
     }
 
     public void insert_img1(View view) {
@@ -119,10 +126,13 @@ public class EditPlanActivity extends AppCompatActivity {
         if (title.getText().toString().equals("") || duration.getText().toString().equals("") || estimatedPrice.getText().toString().equals("") || description.getText().toString().equals("")) {
             Snackbar.make(view, "Input the required fields.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
         } else {
-            Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
-            editPlanController.submitTravelPlanDetails("temp", null, "temp",
-                    duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
-
+            if (des_field1.getText().toString().equals("") || des_field1.getText().toString().equals("") || des_field1.getText().toString().equals("") || des_field1.getText().toString().equals("")) {
+                Snackbar.make(view, "Input at least one destination.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+            } else {
+                Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
+                editPlanController.submitTravelPlanDetails("temp", null, "temp",
+                        duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
+            }
         }
     }
 
