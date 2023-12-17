@@ -224,9 +224,10 @@
             app:layout_constraintTop_toBottomOf="@+id/E_travelPlanLabel">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/E_destination1Field"
                 android:layout_width="match_parent"
-                android:paddingStart="30dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:paddingStart="30dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -244,9 +245,10 @@
             app:layout_constraintTop_toBottomOf="@+id/E_destinationLayout1">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/E_destination2Field"
                 android:layout_width="match_parent"
-                android:paddingStart="30dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:paddingStart="30dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -264,9 +266,10 @@
             app:layout_constraintTop_toBottomOf="@+id/E_destinationLayout2">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/E_destination3Field"
                 android:layout_width="match_parent"
-                android:paddingStart="30dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:paddingStart="30dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -284,12 +287,12 @@
             app:layout_constraintTop_toBottomOf="@+id/E_destinationLayout3">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/E_destination4Field"
                 android:layout_width="match_parent"
-                android:paddingStart="30dp"
-                android:layout_height="48dp" />
+                android:layout_height="48dp"
+                android:paddingStart="30dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
