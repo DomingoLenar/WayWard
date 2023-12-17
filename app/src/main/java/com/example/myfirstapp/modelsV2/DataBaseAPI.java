@@ -44,6 +44,8 @@ public class DataBaseAPI {
         return retrofit;
     }
 
+    //START USER OPERATIONS
+
     /**
      * Fetches the object of username in the database using the username as a search key
      * @param username      username to look for
@@ -92,6 +94,7 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                userCallback.onError(t.getMessage());
                 t.printStackTrace();
             }
         };
@@ -121,14 +124,172 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                t.printStackTrace();
             }
         };
-        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues);
+        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues).enqueue(callback);
     }
+
+    //END USER OPERATIONS
+
+    //START TRAVEL PLAN OPERATIONS
+
+    public void getTravelPlan(Retrofit retrofit, String title, TravelPlanCallback travelPlanCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<TravelPlan> callback = new Callback<TravelPlan>() {
+            @Override
+            public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    travelPlanCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TravelPlan> call, Throwable t) {
+                travelPlanCallback.onError(t.getMessage());
+                t.printStackTrace();
+            }
+        };
+
+        apiInterface.getTravelPlanInterface(title).enqueue(callback);
+    }
+
+    public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<TravelPlan> callback = new Callback<TravelPlan>() {
+            @Override
+            public void onResponse(Call<TravelPlan> call, Response<TravelPlan> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    travelPlanCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TravelPlan> call, Throwable t) {
+                travelPlanCallback.onError(t.getMessage());
+            }
+        };
+    }
+
+    //END TRAVEL PLAN OPERATIONS
+
+    //START REVIEW OPERATIONS
+
+    public void getReview(Retrofit retrofit,String author, ReviewCallback reviewCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<Review> callback = new Callback<Review>() {
+            @Override
+            public void onResponse(Call<Review> call, Response<Review> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    reviewCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Review> call, Throwable t) {
+                reviewCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.getReviewInterface(author).enqueue(callback);
+    }
+
+    public void insertReview(Retrofit retrofit, Review review, ReviewCallback reviewCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<Review> callback = new Callback<Review>() {
+            @Override
+            public void onResponse(Call<Review> call, Response<Review> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    reviewCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Review> call, Throwable t) {
+                reviewCallback.onError(t.getMessage());
+            }
+        };
+        apiInterface.insertReviewInterface(review).enqueue(callback);
+    }
+
+    //END REVIEW OPERATIONS
+
+    //START CONTACT DETAILS OPERATIONS
+
+    public void getContactDetails(Retrofit retrofit, String username, ContactDetailsCallback contactDetailsCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<ContactDetails> callback = new Callback<ContactDetails>() {
+            @Override
+            public void onResponse(Call<ContactDetails> call, Response<ContactDetails> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    contactDetailsCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactDetails> call, Throwable t) {
+                contactDetailsCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.getContactDetailsInterface(username).enqueue(callback);
+    }
+
+    public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<ContactDetails> callback = new Callback<ContactDetails>() {
+            @Override
+            public void onResponse(Call<ContactDetails> call, Response<ContactDetails> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    contactDetailsCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactDetails> call, Throwable t) {
+                contactDetailsCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.insertContactDetailsInterface(contactDetails).enqueue(callback);
+    }
+
+    //END CONTACT DETAILS OPERATIONS
+
+    public interface ContactDetailsCallback{
+        void onReceived(ContactDetails contactDetails);
+        void onError(String errorMessage);
+    }
+    public interface ReviewCallback{
+        void onReceived(Review review);
+        void onError(String errorMessage);
+    }
+
+    public interface TravelPlanCallback{
+        void onReceived(TravelPlan travelPlan);
+        void onError(String errorMessage);
+    }
+
     public interface UserCallback {
         void onUserReceived(User user);
-        void onUserReceived(String string);
 
         void onError(String errorMessage);
     }
