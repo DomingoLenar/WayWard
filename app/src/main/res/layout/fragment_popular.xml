@@ -98,11 +98,14 @@
         android:id="@+id/F_campjohnhayLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
         android:fontFamily="@font/signika"
         android:text="Camp John Hay"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="161dp" />
+        app:layout_constraintEnd_toEndOf="@+id/S_campjohnhay"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="@+id/S_campjohnhay"
+        app:layout_constraintTop_toTopOf="@+id/S_campjohnhay" />
 
     <TextView
         android:id="@+id/F_cityLabel1"
@@ -115,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="@+id/F_campjohnhayLabel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/F_campjohnhayLabel"
-        tools:layout_editor_absoluteY="179dp" />
+        app:layout_constraintTop_toBottomOf="@+id/F_campjohnhayLabel" />
 
     <TextView
         android:id="@+id/F_cityLabel2"
@@ -125,16 +128,21 @@
         android:text="Baguio City"
         android:textColor="#000000"
         android:textSize="10sp"
-        tools:layout_editor_absoluteX="242dp"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintEnd_toEndOf="@+id/F_minesviewLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/F_minesviewLabel"
+        app:layout_constraintTop_toBottomOf="@+id/F_minesviewLabel" />
 
     <TextView
         android:id="@+id/F_minesviewLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:text="Minesview Park"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="242dp"
-        tools:layout_editor_absoluteY="111dp" />
+        app:layout_constraintEnd_toEndOf="@+id/sample2"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="@+id/sample2"
+        app:layout_constraintTop_toTopOf="@+id/sample2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

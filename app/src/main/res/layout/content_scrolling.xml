@@ -39,7 +39,7 @@
             android:onClick="insert_img4"
             app:layout_constraintStart_toEndOf="@+id/E_img3"
             app:layout_constraintTop_toBottomOf="@+id/E_img2"
-            app:srcCompat="@drawable/add_icon" />
+            app:srcCompat="@drawable/campjohnhay5" />
 
         <ImageView
             android:id="@+id/E_img2"
@@ -61,7 +61,7 @@
             android:onClick="insert_img3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/E_img1"
-            app:srcCompat="@drawable/add_icon" />
+            app:srcCompat="@drawable/campjohnhay4" />
 
         <TextView
             android:id="@+id/E_galleryLabel"
