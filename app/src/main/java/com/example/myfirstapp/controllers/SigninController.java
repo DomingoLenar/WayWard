@@ -27,9 +27,10 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-        com.example.myfirstapp.modelsV2.User user = new com.example.myfirstapp.modelsV2.User(username, password, false, "l", "o", "u");
+        com.example.myfirstapp.modelsV2.User userModel = new com.example.myfirstapp.modelsV2.User(username, password);
 
-//        if (user.getPassword().equals());
+
+
 
 
 //        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
