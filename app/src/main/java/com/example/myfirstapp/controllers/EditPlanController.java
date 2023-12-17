@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.models.DataBase;
@@ -21,7 +20,6 @@ import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
-import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
@@ -34,13 +32,8 @@ public class EditPlanController {
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
-//    OldEditPlanActivity oldEditPlanActivity;
     PostActivity postActivity;
     TravelPlan travelPlan;
-
-//    public EditPlanController(ScrollingActivity scrollingActivity) {
-//        this.scrollingActivity = scrollingActivity;
-//    }
 
     public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
@@ -77,8 +70,8 @@ public class EditPlanController {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent i = new Intent(editPlanActivity, EditPlanActivity.class);
-                editPlanActivity.startActivity(i);
+//                Intent i = new Intent(editPlanActivity, EditPlanActivity.class);
+//                editPlanActivity.startActivity(i);
             }
         });
 
@@ -109,7 +102,6 @@ public class EditPlanController {
         Intent iImage1 = new Intent(Intent.ACTION_PICK);
         iImage1.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         editPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
-//        oldEditPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
     }
 
 //    public String imagePath(Bitmap bitmap) {
@@ -143,7 +135,7 @@ public class EditPlanController {
     public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
         travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
 //        travelPlan.insertTravelPlan();
-
+//
 //        uploadToDB(travelPlan, imagePath);
 
     }

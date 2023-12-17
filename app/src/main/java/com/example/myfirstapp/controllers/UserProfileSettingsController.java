@@ -79,7 +79,7 @@ public class UserProfileSettingsController {
     }
 
     public void displayEditPlanActivity() {
-        Intent i = new Intent(userProfileActivity, OldEditPlanActivity.class);
+        Intent i = new Intent(userProfileActivity, EditPlanActivity.class);
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

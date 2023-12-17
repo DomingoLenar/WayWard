@@ -5,8 +5,11 @@ import android.widget.Toast;
 
 import com.example.myfirstapp.models.MyDatabase;
 import com.example.myfirstapp.models.User;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SigninActivity;
+
+import retrofit2.Retrofit;
 
 public class SigninController {
 
@@ -24,18 +27,21 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-        User userModel = new User(null, username, password, false);
-        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
-        boolean credentials = db.checkUsernamePassword(userModel);
+        com.example.myfirstapp.modelsV2.User user = new com.example.myfirstapp.modelsV2.User(username, password, false, "l", "o", "u");
 
-        if (credentials) {
-            Toast.makeText(signinActivity.getApplicationContext(), "Login Success!", Toast.LENGTH_SHORT).show();
-            displayMainActivity(signinActivity);
-        } else {
-            Toast.makeText(signinActivity.getApplicationContext(), "Login Failed!", Toast.LENGTH_SHORT).show();
-        }
+//        if (user.getPassword().equals());
+
+
+//        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
+//        boolean credentials = db.checkUsernamePassword(userModel);
+//
+//        if (credentials) {
+//            Toast.makeText(signinActivity.getApplicationContext(), "Login Success!", Toast.LENGTH_SHORT).show();
+//            displayMainActivity(signinActivity);
+//        } else {
+//            Toast.makeText(signinActivity.getApplicationContext(), "Login Failed!", Toast.LENGTH_SHORT).show();
+//        }
     }
-
     public void authorize(boolean permit) {
         if (!permit) {
             Toast.makeText(signinActivity.getApplicationContext(), "Wrong email and password", Toast.LENGTH_SHORT).show();

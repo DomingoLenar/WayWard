@@ -6,8 +6,11 @@ import android.widget.Toast;
 import com.example.myfirstapp.models.ContactDetails;
 import com.example.myfirstapp.models.MyDatabase;
 import com.example.myfirstapp.models.User;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SignupActivity;
+
+import retrofit2.Retrofit;
 
 public class SignupController {
 
@@ -39,8 +42,32 @@ public class SignupController {
         if (email.equals("") || username.equals("") || password.equals("") || fName.equals("") || lName.equals("") || phoneNo.equals("")) {
             Toast.makeText(signupActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         } else {
-            userModel = new User(email, username, password, false, fName, null, lName);
+            userModel = new User(username, password, false, fName, null, lName);
 
+            DataBaseAPI dbAPI = new DataBaseAPI();
+            Retrofit retrofit = dbAPI.getClient();
+            com.example.myfirstapp.modelsV2.User newUser = new com.example.myfirstapp.modelsV2.User(username,
+                    password, false,
+                    fName,
+                    phoneNo,
+                    lName);
+            DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
+                @Override
+                public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
+
+                }
+
+                @Override
+                public void onUserReceived(String string) {
+
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+
+                }
+            };
+            dbAPI.insertUser(newUser, retrofit, userCallback);
 
 //            MyDatabase db = new MyDatabase(signupActivity.getApplicationContext());
 //            boolean valid = db.createAccount(userModel);
@@ -61,19 +88,4 @@ public class SignupController {
             displayMainActivity(signupActivity);
         }
     }
-
-//    private void authorize(boolean usernameValid) {
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (!usernameValid) {
-//                    Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    userModel.insertCurrentUser();
-//                    displayMainActivity(signupActivity);
-//                }
-//            }
-//        });
-//    }
 }
