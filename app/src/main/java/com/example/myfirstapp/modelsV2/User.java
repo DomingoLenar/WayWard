@@ -1,21 +1,28 @@
 package com.example.myfirstapp.modelsV2;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import retrofit2.Retrofit;
 
 public class User {
     @SerializedName("id")
+    @Expose
     private Integer id;
     @SerializedName("username")
+    @Expose
     private String username;
     @SerializedName("password")
+    @Expose
     private String password;
     @SerializedName("first_name")
+    @Expose
     private String first_name;
     @SerializedName("middle_name")
+    @Expose
     private String middle_name;
     @SerializedName("last_name")
+    @Expose
     private String last_name;
 
     public User(String username, String password) {
