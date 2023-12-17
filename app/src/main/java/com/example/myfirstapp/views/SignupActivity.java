@@ -4,10 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ValueAnimator;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +13,6 @@ import android.widget.TextView;
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SignupController;
 import com.example.myfirstapp.models.DataBase;
-import com.example.myfirstapp.modelsV2.User;
-import com.example.myfirstapp.modelsV2.DataBaseAPI;
 
 import org.postgresql.util.PSQLException;
 
@@ -26,8 +21,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import retrofit2.Retrofit;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -43,13 +36,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(threadPolicy);
-
         signupController = new SignupController(this);
-
-
-
 
         initViews();
 
@@ -86,34 +73,10 @@ public class SignupActivity extends AppCompatActivity {
 
         signUpButton.setText(R.string.sign_up);
 
-        DataBaseAPI dbAPI = new DataBaseAPI();
-        Retrofit retrofit = dbAPI.getClient();
-        User newUser = new User("usernameField.getText().toString()",
-                                "passwordField.getText().toString()", false,
-                                "fnameField.getText().toString()",
-                                "null",
-                                "lNameField.getText().toString()");
-        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
-            @Override
-            public void onUserReceived(User user) {
-
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-
-            }
-        };
-        dbAPI.insertUser(newUser, retrofit, userCallback);
-
-
-
-
-//        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
-//                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
+        signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
+                fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
     }
-
 
     private void initViews() {
         findViewById(R.id.SI_welcomeLabel);

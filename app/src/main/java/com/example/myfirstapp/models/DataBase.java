@@ -1,7 +1,5 @@
 package com.example.myfirstapp.models;
 
-import org.postgresql.util.PSQLException;
-
 import java.io.InputStream;
 import java.sql.*;
 
@@ -28,26 +26,33 @@ public class DataBase {
     private String url = "jdbc:postgresql://db.fauokmrzqpowzdiqqxxg.supabase.co:5432/postgres";
     private String user = "postgres";
     private String password = "palakapapoy";
-    private Connection connection = null;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     /**
      * This method establishes a connection with the POSTGRES database
      * @return Returns an object of connection
      */
     public Connection createConnection(){
-        DatabaseConnection dataBaseConnection = new DatabaseConnection(url,user,password,connection);
-        Thread dbThread = new Thread(dataBaseConnection);
 
-        dbThread.start();
-
-        try{
-            dbThread.join();
-        }catch(InterruptedException e){
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection connection = DriverManager.getConnection(url,user, password);
+            return connection;
+        }catch(ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
-
-        return dataBaseConnection.getConnection();
+        return null;
     }
 
     /**
@@ -70,7 +75,7 @@ public class DataBase {
                 String fetchedMName = rs.getString(5);
                 String fetchedLName = rs.getString(6);
                 // constructs and returns a new object of user based on the fetched data
-                return new User(fetchedUsername, fetchedPassword, true,fetchedFName,fetchedMName, fetchedLName);
+//                return new User(fetchedUsername, fetchedPassword, true,fetchedFName,fetchedMName, fetchedLName);
             }else{
                 return null;
             }
@@ -223,16 +228,4 @@ public class DataBase {
 
     }
 
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }

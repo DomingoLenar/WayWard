@@ -3,6 +3,7 @@ package com.example.myfirstapp.controllers;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.myfirstapp.models.MyDatabase;
 import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SigninActivity;
@@ -23,14 +24,16 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                userModel = new User(username, password, false);
-                authorize(userModel.authenticate());
-            }
-        });
+        User userModel = new User(null, username, password, false);
+        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
+        boolean credentials = db.checkUsernamePassword(userModel);
 
+        if (credentials) {
+            Toast.makeText(signinActivity.getApplicationContext(), "Login Success!", Toast.LENGTH_SHORT).show();
+            displayMainActivity(signinActivity);
+        } else {
+            Toast.makeText(signinActivity.getApplicationContext(), "Login Failed!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void authorize(boolean permit) {
