@@ -88,27 +88,29 @@ public class SignupActivity extends AppCompatActivity {
 
         DataBaseAPI dbAPI = new DataBaseAPI();
         Retrofit retrofit = dbAPI.getClient();
-        User newUser = new User(-1,"usernameField.getText().toString()",
+        User newUser = new User("usernameField.getText().toString()",
                                 "passwordField.getText().toString()", false,
                                 "fnameField.getText().toString()",
                                 "null",
                                 "lNameField.getText().toString()");
-        dbAPI.insertUser(newUser, retrofit, new DataBaseAPI.UserCallback() {
+        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
             @Override
             public void onUserReceived(User user) {
-                System.out.println(user.getUsername());
+
             }
 
             @Override
             public void onUserReceived(String string) {
-                System.out.println(string);
+
             }
 
             @Override
             public void onError(String errorMessage) {
-                System.out.println(errorMessage);
+
             }
-        });
+        };
+        dbAPI.insertUser(newUser, retrofit, userCallback);
+
 
 
 
