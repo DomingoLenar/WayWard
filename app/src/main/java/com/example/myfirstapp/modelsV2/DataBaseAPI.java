@@ -126,11 +126,6 @@ public class DataBaseAPI {
         };
         apiInterface.updateColumnInterface("user_details",column,searchKey,newValues);
     }
-
-
-
-
-
     public interface UserCallback {
         void onUserReceived(User user);
         void onUserReceived(String string);
