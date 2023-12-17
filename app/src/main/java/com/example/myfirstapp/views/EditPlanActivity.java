@@ -130,8 +130,8 @@ public class EditPlanActivity extends AppCompatActivity {
                 Snackbar.make(view, "Input at least one destination.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
             } else {
                 Snackbar.make(view, "Plan saved.", Snackbar.LENGTH_SHORT).setAnchorView(R.id.E_bottomNavBar).show();
-                editPlanController.submitTravelPlanDetails("temp", null, "temp",
-                        duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), null);
+                editPlanController.submitTravelPlanDetails("temp", new int[] {1,2,5}, "loudi",
+                        duration.getText().toString(), estimatedPrice.getText().toString(), description.getText().toString(), des_field1.getText().toString());
             }
         }
     }

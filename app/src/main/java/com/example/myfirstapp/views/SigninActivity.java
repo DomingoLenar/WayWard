@@ -42,22 +42,6 @@ public class SigninActivity extends AppCompatActivity {
 
     }
     public void SI_signIn(View view) {
-        User userModel = new User(usernameField.getText().toString(), passwordField.getText().toString());
-        DataBaseAPI dbAPI = new DataBaseAPI();
-        Retrofit retrofit = dbAPI.getClient();
-        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
-            @Override
-            public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
-                user.getUsername();
-            }
-            @Override
-            public void onError(String errorMessage) {
-
-            }
-        };
-        dbAPI.getUser(userModel, retrofit, userCallback);
-
-
-//        signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
+        signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
     }
 }
