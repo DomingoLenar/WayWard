@@ -49,4 +49,10 @@ public interface APIInterface {
     @GET("{table}?{column}=eq.{searchKey}")
     Call<Object> existsInterface(@Path("table")String table,@Path("column")String column,@Path("searchKey")String searchKey);
 
+    @GET("review?author=eq.{author}")
+    Call<Review> getReviewInterface(@Path("author") String author);
+
+    @POST("review")
+    Call<Review> insertReviewInterface(@Body Review review);
+
 }

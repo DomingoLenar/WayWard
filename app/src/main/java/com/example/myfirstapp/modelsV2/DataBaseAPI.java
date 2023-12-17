@@ -179,9 +179,56 @@ public class DataBaseAPI {
 
     //END TRAVEL PLAN OPERATIONS
 
+    //START REVIEW OPERATIONS
 
+    public void getReview(Retrofit retrofit,String author, ReviewCallback reviewCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
 
+        Callback<Review> callback = new Callback<Review>() {
+            @Override
+            public void onResponse(Call<Review> call, Response<Review> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    reviewCallback.onReceived(response.body());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Review> call, Throwable t) {
+                reviewCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.getReviewInterface(author).enqueue(callback);
+    }
+
+    public void insertReview(Retrofit retrofit, Review review, ReviewCallback reviewCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<Review> callback = new Callback<Review>() {
+            @Override
+            public void onResponse(Call<Review> call, Response<Review> response) {
+                if(!response.isSuccessful()){
+                    System.out.println(response.code());
+                }else{
+                    reviewCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Review> call, Throwable t) {
+                reviewCallback.onError(t.getMessage());
+            }
+        };
+    }
+
+    //END REVIEW OPERATIONS
+
+    public interface ReviewCallback{
+        void onReceived(Review review);
+        void onError(String errorMessage);
+    }
 
     public interface TravelPlanCallback{
         void onReceived(TravelPlan travelPlan);
