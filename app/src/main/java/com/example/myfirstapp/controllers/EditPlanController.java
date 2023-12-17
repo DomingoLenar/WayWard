@@ -11,9 +11,9 @@ import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
+import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,8 +24,14 @@ public class EditPlanController {
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
+//    OldEditPlanActivity oldEditPlanActivity;
     TravelPlan travelPlan;
-    public EditPlanController (EditPlanActivity editPlanActivity) {
+
+//    public EditPlanController(ScrollingActivity scrollingActivity) {
+//        this.scrollingActivity = scrollingActivity;
+//    }
+
+    public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
     }
 
@@ -58,6 +64,7 @@ public class EditPlanController {
         Intent iImage1 = new Intent(Intent.ACTION_PICK);
         iImage1.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         editPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
+//        oldEditPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
     }
 
 //    public String imagePath(Bitmap bitmap) {

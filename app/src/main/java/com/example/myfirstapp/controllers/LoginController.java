@@ -2,10 +2,7 @@ package com.example.myfirstapp.controllers;
 
 import android.content.Intent;
 
-import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.LoginActivity;
-import com.example.myfirstapp.views.MainActivity;
-import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.SigninActivity;
 import com.example.myfirstapp.views.SignupActivity;
 
