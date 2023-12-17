@@ -69,8 +69,9 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
+                Log.e("getUser",t.getMessage());
                 userCallback.onError("Failed to fetch user");
+                t.printStackTrace();
             }
         };
         apiInterface.getUserInterface(user.getUsername()).enqueue(callback);

@@ -6,6 +6,7 @@ import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIInterface {
     Object objectReturn = null;
@@ -14,8 +15,9 @@ public interface APIInterface {
      * @param username username of the user to get
      * @return return an object of User
      */
-    @GET("user_details?username=eq.{username}&select=*")
-    Call<User> getUserInterface(@Path("username") String username);
+    @GET("user_details")
+    Call<User> getUserInterface(@Query("username") String username);
+
     /**
      *
      * @param user JSON format of user to insert
