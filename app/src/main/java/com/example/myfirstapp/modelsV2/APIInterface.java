@@ -29,30 +29,29 @@ public interface APIInterface {
     /**
      *
      * @param table     table where to update
-     * @param columnSearch  which column to search at
-     * @param searchKey     search key to be used to search the column for
+     * @param username     search key to be used to search the column for
      * @param newValues     JSON String of new values/value
      * @return              returns boolean value if query succeeded
      */
-    @PATCH("{table}?{columnSearch}=.eq{searchKey}")
-    Call<User> updateColumnInterface(@Path("table")String table,
-                               @Path("columnSearch")String columnSearch,
-                               @Path("searchKey")String searchKey,
+    @PATCH("{table}")
+    Call<User> updateUserColumnInterface(@Path("table")String table,
+                               @Query("username") String username,
                                @Body String newValues);
 
 
-    @GET("travel_plan?title=eq.{title}")
-    Call<TravelPlan> getTravelPlanInterface(@Path("title") String title);
+    @GET("travel_plan")
+    Call<TravelPlan> getTravelPlanInterface(@Query("title") String title);
 
     @POST("travel_plan")
     Call<TravelPlan> insertTravelPlanInterface(@Body TravelPlan travelPlan);
 
 
+    @Deprecated
     @GET("{table}?{column}=eq.{searchKey}")
     Call<Object> existsInterface(@Path("table")String table,@Path("column")String column,@Path("searchKey")String searchKey);
 
-    @GET("review?author=eq.{author}")
-    Call<Review> getReviewInterface(@Path("author") String author);
+    @GET("review")
+    Call<Review> getReviewInterface(@Query("author") String author);
 
     @POST("review")
     Call<Review> insertReviewInterface(@Body Review review);
@@ -60,7 +59,7 @@ public interface APIInterface {
     @POST("contact_details")
     Call<ContactDetails> insertContactDetailsInterface(@Body ContactDetails contactDetails);
 
-    @GET("contact_details?username=eq.{username}")
-    Call<ContactDetails> getContactDetailsInterface(@Path("username") String username);
+    @GET("contact_details")
+    Call<ContactDetails> getContactDetailsInterface(@Query("username") String username);
 
 }
