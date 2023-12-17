@@ -86,8 +86,6 @@ public class SignupActivity extends AppCompatActivity {
         signupController.submitAccountDetails(emailField.getText().toString(), usernameField.getText().toString(), passwordField.getText().toString(),
                 fnameField.getText().toString(), lNameField.getText().toString(), phoneNoField.getText().toString());
 
-
-
     }
     private void initViews() {
         findViewById(R.id.SI_welcomeLabel);

@@ -49,19 +49,13 @@ public class SignupController {
             com.example.myfirstapp.modelsV2.User newUser = new com.example.myfirstapp.modelsV2.User(username,
                     password, false,
                     fName,
-                    phoneNo,
+                    "",
                     lName);
             DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
                 @Override
                 public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
 
                 }
-
-                @Override
-                public void onUserReceived(String string) {
-
-                }
-
                 @Override
                 public void onError(String errorMessage) {
 

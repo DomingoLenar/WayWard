@@ -27,8 +27,29 @@ public class SigninController {
     }
 
     public void submitAccountDetails(String username, String password) {
-        com.example.myfirstapp.modelsV2.User userModel = new com.example.myfirstapp.modelsV2.User(username, password);
 
+        if (username.equals("") || password.equals("")){
+            Toast.makeText(signinActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
+        } else {
+            com.example.myfirstapp.modelsV2.User userModel = new com.example.myfirstapp.modelsV2.User(username, password);
+            DataBaseAPI dbAPI = new DataBaseAPI();
+            Retrofit retrofit = dbAPI.getClient();
+            DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
+                @Override
+                public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
+                    if (user.getUsername().equals(userModel.getUsername()) &&
+                            user.getPassword().equals(userModel.getPassword())) {
+                        Toast.makeText(signinActivity.getApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
+                        displayMainActivity(signinActivity);
+                    }
+                }
+                @Override
+                public void onError(String errorMessage) {
+
+                }
+            };
+            dbAPI.getUser(userModel, retrofit, userCallback);
+        }
 
 
 

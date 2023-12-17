@@ -1,5 +1,7 @@
 package com.example.myfirstapp.modelsV2;
 
+import android.util.Log;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -48,17 +50,17 @@ public class DataBaseAPI {
 
     /**
      * Fetches the object of username in the database using the username as a search key
-     * @param username      username to look for
+     * @param       user to look for
      * @param retrofit      object of retrofit that can be created using createClient()
-     * @param userCallback  object of UserCallback to to return the query from the method
+     * @param userCallback  object of UserCallback to return the query from the method
      */
-    public void getUser(String username, Retrofit retrofit, UserCallback userCallback){
+    public void getUser(User user, Retrofit retrofit, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        apiInterface.getUserInterface(username).enqueue(new Callback<User>() {
-
+        Callback<User> callback = new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(!response.isSuccessful()){
+                    Log.e("getUser", "Unsuccessful response: " + response.code());
                     System.out.println(response.code());
                 }else{
                     userCallback.onUserReceived(response.body());
@@ -70,7 +72,8 @@ public class DataBaseAPI {
                 t.printStackTrace();
                 userCallback.onError("Failed to fetch user");
             }
-        });
+        };
+        apiInterface.getUserInterface(user.getUsername()).enqueue(callback);
     }
 
     /**
