@@ -273,13 +273,12 @@
         app:layout_anchor="@+id/E_nestedScrollView"
         app:layout_anchorGravity="center" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/E_floatingPlanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="saveNowBtn"
-        android:layout_marginBottom="60dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="60dp"
         android:src="@drawable/save_icon"
         app:backgroundTint="#FFFFFF"
         app:fabSize="mini"
@@ -287,16 +286,5 @@
         app:layout_anchorGravity="bottom|end"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="501dp" />
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/E_bottomNavBar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:background="#EDDFCD"-->
-<!--        app:itemIconSize="40dp"-->
-<!--        app:itemIconTint="#000000"-->
-<!--        app:layout_anchor="@id/E_nestedScrollView"-->
-<!--        app:layout_anchorGravity="bottom"-->
-<!--        app:menu="@menu/bottom_menu" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

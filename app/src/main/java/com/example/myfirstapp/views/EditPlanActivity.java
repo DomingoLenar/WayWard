@@ -27,8 +27,8 @@ import com.example.myfirstapp.R;
 import java.io.IOException;
 
 public class EditPlanActivity extends AppCompatActivity {
-
     private ActivityEditPlanBinding binding;
+    private final int GALLERY_CODE_0 = 0;
     private final int GALLERY_CODE_1 = 1;
     private final int GALLERY_CODE_2 = 2;
     private final int GALLERY_CODE_3 = 3;
@@ -38,7 +38,6 @@ public class EditPlanActivity extends AppCompatActivity {
     TextView estimatedPrice, duration, title, description;
     BottomNavigationView navbar;
     Uri uri;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,24 +58,20 @@ public class EditPlanActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.equals(navbar.getMenu().getItem(0))) editPlanController.displayMainActivity();
                 else if (item.equals(navbar.getMenu().getItem(1))) editPlanController.displaySearchActivity();
-                else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpActivity();
+                else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpDialog();
                 else if (item.equals(navbar.getMenu().getItem(3))) editPlanController.displayEditPlanActivity();
                 else if (item.equals(navbar.getMenu().getItem(4))) editPlanController.displayUserSettingsActivity();
                 return true;
             }
         });
 
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
 
     private void initViews() {
+
+//        FloatingActionButton fab = binding.fab;
+
         app_bar_img = findViewById(R.id.E_app_bar_image);
         navbar = findViewById(R.id.E_bottomNavBar);
 
@@ -132,6 +127,7 @@ public class EditPlanActivity extends AppCompatActivity {
 
     public void insert_thumbnail(View view) {
         editPlanController.imageType = "thumbnail";
+        editPlanController.loadImage(GALLERY_CODE_0);
     }
 
     /**
@@ -149,8 +145,18 @@ public class EditPlanActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-        if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_1 && data != null) {
+        if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_0 && data != null){
+            uri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                img1.setImageBitmap(bitmap);
+                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+//                editPlanController.imagePath(bitmap);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else if (resultCode == RESULT_OK && requestCode == GALLERY_CODE_1 && data != null) {
 
             uri = data.getData();
             try {

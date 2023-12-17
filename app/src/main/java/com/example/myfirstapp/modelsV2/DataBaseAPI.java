@@ -1,5 +1,7 @@
 package com.example.myfirstapp.modelsV2;
 
+import android.util.Log;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -10,6 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.HEAD;
 import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public class DataBaseAPI {
     private Retrofit retrofit = null;
@@ -48,17 +51,17 @@ public class DataBaseAPI {
 
     /**
      * Fetches the object of username in the database using the username as a search key
-     * @param username      username to look for
+     * @param       user to look for
      * @param retrofit      object of retrofit that can be created using createClient()
-     * @param userCallback  object of UserCallback to to return the query from the method
+     * @param userCallback  object of UserCallback to return the query from the method
      */
-    public void getUser(String username, Retrofit retrofit, UserCallback userCallback){
+    public void getUser(User user, Retrofit retrofit, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        apiInterface.getUserInterface(username).enqueue(new Callback<User>() {
-
+        Callback<User> callback = new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(!response.isSuccessful()){
+                    Log.e("getUser", "Unsuccessful response: " + response.code());
                     System.out.println(response.code());
                 }else{
                     userCallback.onUserReceived(response.body());
@@ -67,10 +70,12 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
+                Log.e("getUser",t.getMessage());
                 userCallback.onError("Failed to fetch user");
+                t.printStackTrace();
             }
-        });
+        };
+        apiInterface.getUserInterface(user.getUsername()).enqueue(callback);
     }
 
     /**
@@ -106,11 +111,10 @@ public class DataBaseAPI {
     /**
      *
      * @param retrofit  Object of retrofit, can be created using createClient() method
-     * @param column    Column of where to search at
-     * @param searchKey search key to be used to search the column for
+     * @param username search key to be used to search the column for
      * @param newValues JSON string of the new values
      */
-    public void updateUserColumn(Retrofit retrofit, String column, String searchKey, String newValues){
+    public void updateUserColumn(Retrofit retrofit, String username, String newValues){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
         Callback<User> callback = new Callback<User>() {
             @Override
@@ -127,7 +131,7 @@ public class DataBaseAPI {
                 t.printStackTrace();
             }
         };
-        apiInterface.updateColumnInterface("user_details",column,searchKey,newValues).enqueue(callback);
+        apiInterface.updateUserColumnInterface("user_details",username,newValues).enqueue(callback);
     }
 
     //END USER OPERATIONS
@@ -175,6 +179,7 @@ public class DataBaseAPI {
                 travelPlanCallback.onError(t.getMessage());
             }
         };
+        apiInterface.insertTravelPlanInterface(travelPlan).enqueue(callback);
     }
 
     //END TRAVEL PLAN OPERATIONS

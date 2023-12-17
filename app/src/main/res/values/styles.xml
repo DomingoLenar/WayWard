@@ -6,11 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
     </style>
 
-
-
-
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
 
 </resources>

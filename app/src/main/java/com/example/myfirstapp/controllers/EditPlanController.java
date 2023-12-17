@@ -1,17 +1,25 @@
 package com.example.myfirstapp.controllers;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
-import com.example.myfirstapp.views.OldEditPlanActivity;
+import com.example.myfirstapp.views.PostActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
@@ -24,12 +32,8 @@ public class EditPlanController {
     public String imageType;
     public String imagePath;
     EditPlanActivity editPlanActivity;
-//    OldEditPlanActivity oldEditPlanActivity;
+    PostActivity postActivity;
     TravelPlan travelPlan;
-
-//    public EditPlanController(ScrollingActivity scrollingActivity) {
-//        this.scrollingActivity = scrollingActivity;
-//    }
 
     public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
@@ -45,10 +49,44 @@ public class EditPlanController {
         editPlanActivity.startActivity(i);
         editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displayPopUpActivity() {
-//        Intent i = new Intent(mainActivity, PopUpFragment.class);
-//        mainActivity.startActivity(i);
-//        mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    public void displayPopUpDialog() {
+        final Dialog dialog = new Dialog(editPlanActivity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_bottom_dialog_menu);
+        ImageView postBtn = dialog.findViewById(R.id.F_postBtn);
+        ImageView rateBtn = dialog.findViewById(R.id.F_rateBtn);
+        ImageView cancelButton = dialog.findViewById(R.id.F_exitBtn);
+
+        postBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent i = new Intent(editPlanActivity, PostActivity.class);
+                editPlanActivity.startActivity(i);
+            }
+        });
+
+        rateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+//                Intent i = new Intent(editPlanActivity, EditPlanActivity.class);
+//                editPlanActivity.startActivity(i);
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     public void displayEditPlanActivity() {
@@ -64,7 +102,6 @@ public class EditPlanController {
         Intent iImage1 = new Intent(Intent.ACTION_PICK);
         iImage1.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         editPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
-//        oldEditPlanActivity.startActivityForResult(iImage1, GALLERY_REQ_CODE);
     }
 
 //    public String imagePath(Bitmap bitmap) {
@@ -83,17 +120,23 @@ public class EditPlanController {
 //    }
 
     public void uploadToDB(TravelPlan plan, String filePath){
-        DataBase db = new DataBase();
-        String post_id = ""+plan.getPost_id();
-        String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
-        db.uploadImage(filePath,remotePath);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DataBase db = new DataBase();
+                String post_id = ""+plan.getPost_id();
+                String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
+                db.uploadImage(filePath,remotePath);
+            }
+        });
+
     }
 
     public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
         travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
-        travelPlan.insertTravelPlan();
-
-        uploadToDB(travelPlan, imagePath);
+//        travelPlan.insertTravelPlan();
+//
+//        uploadToDB(travelPlan, imagePath);
 
     }
 

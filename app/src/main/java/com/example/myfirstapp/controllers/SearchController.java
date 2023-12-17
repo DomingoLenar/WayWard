@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
@@ -20,11 +21,9 @@ import com.example.myfirstapp.views.UserProfileActivity;
 public class SearchController {
 
     SearchActivity searchActivity;
-
     public SearchController(SearchActivity searchActivity) {
         this.searchActivity = searchActivity;
     }
-
     public void displayMainActivity() {
         Intent i = new Intent(searchActivity, MainActivity.class);
         searchActivity.startActivity(i);
@@ -74,7 +73,7 @@ public class SearchController {
     }
 
     public void displayEditPlanActivity() {
-        Intent i = new Intent(searchActivity, OldEditPlanActivity.class);
+        Intent i = new Intent(searchActivity, EditPlanActivity.class);
         searchActivity.startActivity(i);
         searchActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

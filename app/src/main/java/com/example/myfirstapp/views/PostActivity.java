@@ -29,7 +29,6 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-
         TextView postProfileTitle = findViewById(R.id.postProfileTitle);
         TextView postDescription = findViewById(R.id.postDescription);
         TextView postNameTitle1 = findViewById(R.id.postNameTitle1);

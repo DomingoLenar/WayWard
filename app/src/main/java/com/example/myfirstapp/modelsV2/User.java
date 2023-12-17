@@ -18,6 +18,10 @@ public class User {
     @SerializedName("last_name")
     private String last_name;
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = hashPassword(password);
+    }
     public User(int id, String username, String password, boolean hashed, String first_name, String middle_name, String last_name){
         if(hashed){
             this.password = password;

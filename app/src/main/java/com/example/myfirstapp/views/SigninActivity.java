@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SigninController;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
+import com.example.myfirstapp.modelsV2.*;
+
+import retrofit2.Retrofit;
 
 public class SigninActivity extends AppCompatActivity {
-
     SigninController signinController;
     private EditText usernameField, passwordField;
     private TextView usernameLabel, passwordLabel;
@@ -37,9 +41,23 @@ public class SigninActivity extends AppCompatActivity {
         passwordLabel = findViewById(R.id.SI_passwordLabel);
 
     }
-
     public void SI_signIn(View view) {
-        signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
+        User userModel = new User(usernameField.getText().toString(), passwordField.getText().toString());
+        DataBaseAPI dbAPI = new DataBaseAPI();
+        Retrofit retrofit = dbAPI.getClient();
+        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
+            @Override
+            public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
+                user.getUsername();
+            }
+            @Override
+            public void onError(String errorMessage) {
 
+            }
+        };
+        dbAPI.getUser(userModel, retrofit, userCallback);
+
+
+//        signinController.submitAccountDetails(usernameField.getText().toString(), passwordField.getText().toString());
     }
 }

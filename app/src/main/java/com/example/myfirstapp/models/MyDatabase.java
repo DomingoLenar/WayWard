@@ -44,29 +44,29 @@ public class MyDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean createAccount(User user_model) {
-        boolean exist = checkEmail(user_model.getEmail());
-        if (exist) {
-            return false;
-        }
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_EMAIL, user_model.getEmail());
-        cv.put(COLUMN_USERNAME, user_model.getUsername());
-        cv.put(COLUMN_PASSWORD, user_model.getPassword());
-        cv.put(COLUMN_FIRSTNAME, user_model.getFirstName());
-        cv.put(COLUMN_LASTNAME, user_model.getLastName());
-
+//    public boolean createAccount(User user_model) {
+//        boolean exist = checkEmail(user_model.getEmail());
+//        if (exist) {
+//            return false;
+//        }
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        ContentValues cv = new ContentValues();
+//        cv.put(COLUMN_EMAIL, user_model.getEmail());
+//        cv.put(COLUMN_USERNAME, user_model.getUsername());
+//        cv.put(COLUMN_PASSWORD, user_model.getPassword());
+//        cv.put(COLUMN_FIRSTNAME, user_model.getFirstName());
+//        cv.put(COLUMN_LASTNAME, user_model.getLastName());
+//
 //        cv.put(COLUMN_PHONE, user_model.getUsername());
-
-        if (db.insert(TABLE_NAME, null, cv) == -1) {
-            return false;
-        }
-
-        return true;
-    }
+//
+//        if (db.insert(TABLE_NAME, null, cv) == -1) {
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
     /**
      *
