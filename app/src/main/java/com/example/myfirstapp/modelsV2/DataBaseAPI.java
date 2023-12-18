@@ -154,7 +154,7 @@ public class DataBaseAPI {
                 t.printStackTrace();
             }
         };
-        apiInterface.updateUserColumnInterface("user_details",username,newValues).enqueue(callback);
+        apiInterface.updateUserColumnInterface("user_details","eq."+username,newValues).enqueue(callback);
     }
 
     //END USER OPERATIONS
@@ -180,16 +180,16 @@ public class DataBaseAPI {
             }
         };
 
-        apiInterface.getTravelPlanInterface(title).enqueue(callback);
+        apiInterface.getTravelPlanInterface("eq."+title).enqueue(callback);
     }
 
     /**
      * Returns a list of TravelPlan to the callback given to it
      * @param retrofit              Object of Retrofit that can be created using createClient()
-     * @param title                 Title of travel plans to search for
+     * @param titleLetter           Title of travel plans to search for, format {P*}
      * @param travelPlanCallback    object of TravelPlanListCallback where to return the data to
      */
-    public void getListOfTravelPlan(Retrofit retrofit, String title, TravelPlanListCallback travelPlanCallback){
+    public void getListOfTravelPlan(Retrofit retrofit, String titleLetter, TravelPlanListCallback travelPlanCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
         Callback<TravelPlan[]> callback = new Callback<TravelPlan[]>() {
@@ -208,7 +208,7 @@ public class DataBaseAPI {
             }
         };
 
-        apiInterface.getListOfTravelPlanInterface(title).enqueue(callback);
+        apiInterface.getListOfTravelPlanInterface("like(any)."+titleLetter).enqueue(callback);
     }
 
     public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
@@ -254,7 +254,7 @@ public class DataBaseAPI {
             }
         };
 
-        apiInterface.getReviewInterface(author).enqueue(callback);
+        apiInterface.getReviewInterface("eq."+author).enqueue(callback);
     }
 
     public void insertReview(Retrofit retrofit, Review review, ReviewCallback reviewCallback){
@@ -301,7 +301,7 @@ public class DataBaseAPI {
             }
         };
 
-        apiInterface.getContactDetailsInterface(username).enqueue(callback);
+        apiInterface.getContactDetailsInterface("eq."+username).enqueue(callback);
     }
 
     /**
@@ -330,7 +330,7 @@ public class DataBaseAPI {
             }
         };
 
-        apiInterface.updateContactDetailsInterface(username, newValues).enqueue(callback);
+        apiInterface.updateContactDetailsInterface("eq."+username, newValues).enqueue(callback);
     }
 
     public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
