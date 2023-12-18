@@ -77,8 +77,8 @@ public class MainController {
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displayUserSettingsActivity(MainActivity mainActivity) {
-        Intent i = new Intent(mainActivity, UserProfileActivity.class);
+    public void displayUserSettingsActivity(MainActivity mainActivity, Intent intent) {
+        Intent i = new Intent(mainActivity, UserProfileActivity.class).putExtra("userInfo", intent.getStringArrayExtra("datum"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

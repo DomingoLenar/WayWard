@@ -5,8 +5,8 @@ import android.widget.Toast;
 
 import com.example.myfirstapp.models.ContactDetails;
 import com.example.myfirstapp.models.MyDatabase;
-import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.modelsV2.DataBaseAPI;
+import com.example.myfirstapp.modelsV2.User;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.SignupActivity;
 
@@ -16,10 +16,8 @@ public class SignupController {
 
     SignupActivity signupActivity;
     User userModel;
-    ContactDetails contactDetails;
     public SignupController(SignupActivity signupActivity) {
         this.signupActivity = signupActivity;
-        userModel = new User(this);
     }
 
 //    public void submitAccountDetails(String email, String username, String password) {
@@ -42,8 +40,7 @@ public class SignupController {
         if (email.equals("") || username.equals("") || password.equals("") || fName.equals("") || lName.equals("") || phoneNo.equals("")) {
             Toast.makeText(signupActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         } else {
-            userModel = new User(username, password, false, fName, null, lName);
-
+//            userModel = new User(0, username, password, false, fName, phoneNo, lName);
             DataBaseAPI dbAPI = new DataBaseAPI();
             Retrofit retrofit = dbAPI.getClient();
             com.example.myfirstapp.modelsV2.User newUser = new com.example.myfirstapp.modelsV2.User(username,
@@ -54,11 +51,10 @@ public class SignupController {
             DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
                 @Override
                 public void onUserReceived(com.example.myfirstapp.modelsV2.User user) {
-
+                    Toast.makeText(signupActivity.getApplicationContext(), "Account Created", Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onError(String errorMessage) {
-
                 }
             };
             dbAPI.insertUser(newUser, retrofit, userCallback);
@@ -66,12 +62,12 @@ public class SignupController {
 
     }
 
-    private void authorize(boolean valid) {
-        if (!valid) {
-            Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
-        } else {
-            userModel.insertCurrentUser();
-            displayMainActivity(signupActivity);
-        }
-    }
+//    private void authorize(boolean valid) {
+//        if (!valid) {
+//            Toast.makeText(signupActivity.getApplicationContext(), "Username already exist!", Toast.LENGTH_SHORT).show();
+//        } else {
+//            userModel.insertCurrentUser();
+//            displayMainActivity(signupActivity);
+//        }
+//    }
 }
