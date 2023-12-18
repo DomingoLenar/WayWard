@@ -7,7 +7,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import java.util.logging.Handler;
 
@@ -20,6 +24,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Headers;
+
+
+import io.supabase.StorageClient;
+import io.supabase.api.IStorageFileAPI;
+import io.supabase.data.bucket.BucketUpdateOptions;
+import io.supabase.data.file.*;
+import io.supabase.utils.MessageResponse;
+
+import java.io.File;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 
 public class DataBaseAPI {
@@ -356,6 +371,79 @@ public class DataBaseAPI {
     }
 
     //END CONTACT DETAILS OPERATIONS
+
+
+    /**
+     * This method allows you to upload images to the content delivery
+     * @param localPath Local path of the image you want to upload
+     * @param remotePath    Remote path of where you want to upload the image
+     * @return  Returns a boolean value if the image has been successfully uploaded
+     */
+    public boolean uploadImage(String localPath, String remotePath){
+        String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/";
+        String serviceToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhdW9rbXJ6cXBvd3pkaXFxeHhnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMTU4NzI1NiwiZXhwIjoyMDE3MTYzMjU2fQ.IPP4_Zgysjp--4AwxDwkHC33G-oTW04SQE4OUWnoTQA";
+
+        StorageClient storageClient = new StorageClient(serviceToken, url);
+
+        IStorageFileAPI fileAPI = storageClient.from("images");
+        try {
+            // We call .get here to block the thread and retrieve the value or an exception.
+            // Pass the file path in supabase storage and pass a file object of the file you want to upload.
+            FilePathResponse response = fileAPI.upload(remotePath, new File(localPath)).get();
+
+            System.out.println("Uploaded");
+            return true;
+
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * This method allows you to download an image given the remote path of the image as well as its bucket,
+     * and the name of the output file
+     * @param remotePath    Path of the file in the remote server
+     * @param bucket    Bucket of the path in the server
+     * @param fileOutputPath    Specify to what file you would want the output to go through
+     * @return
+     */
+    public boolean downloadImage(String remotePath, String bucket,String fileOutputPath){
+        String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/object/public/";
+        url+=bucket+remotePath+"?download="+fileOutputPath;
+        try{
+            //New object of url
+            URL urlOb = new URL(url);
+
+            //Opens a connection to the url object
+            URLConnection urlConnection = urlOb.openConnection();
+
+            InputStream inputStream = urlConnection.getInputStream();
+
+            FileOutputStream fileOutputStream = new FileOutputStream(fileOutputPath);
+
+            // Read from the input stream and write to the output stream
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                fileOutputStream.write(buffer, 0, bytesRead);
+            }
+
+            // Close streams
+            inputStream.close();
+            fileOutputStream.close();
+
+
+            System.out.println("File downloaded successfully!");
+
+            return true;
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+
 
     public interface TravelPlanListCallback{
         void onReceived(TravelPlan[] travelPlans);

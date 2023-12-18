@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+@Deprecated
 public class TravelPlan {
     private int post_id =-1;
     private String title;

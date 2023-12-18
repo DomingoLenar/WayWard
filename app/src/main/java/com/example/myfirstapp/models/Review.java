@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
 
+@Deprecated
 public class Review {
     private User reviewer;
     private int rating;

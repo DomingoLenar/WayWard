@@ -16,7 +16,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.models.TravelPlan;
+import com.example.myfirstapp.modelsV2.TravelPlan;
 import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
@@ -123,14 +123,24 @@ public class EditPlanController {
 //        return null;
 //    }
 
-    public void uploadToDB(TravelPlan plan, String filePath){
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                DataBase db = new DataBase();
-//                db.uploadImage(filePath,remotePath);
-//            }
-//        });
+    /**
+     * Method uploads image to Supabase Storage
+     * @param plan              object of travelplan which owns the image
+     * @param filePath          local path of the image
+     * @param ifGalleryIndex    count of what the image is, -1 if it is a thumbnail
+     */
+    public void uploadToDB(TravelPlan plan, String filePath, int ifGalleryIndex){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DataBaseAPI db = new DataBaseAPI();
+                int travelPlanID = travelPlan.getId();
+                if(ifGalleryIndex != -1){
+                    db.uploadImage(filePath, "travel_plan/"+travelPlanID+"/"+travelPlanID+"_thumbnail.png");
+                }
+                db.uploadImage(filePath, "travel_plan/"+travelPlanID+"/"+travelPlanID+"_gallery_"+ifGalleryIndex+".png");
+            }
+        }).start();
 
     }
 
