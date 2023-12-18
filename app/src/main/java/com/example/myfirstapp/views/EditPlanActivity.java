@@ -128,7 +128,8 @@ public class EditPlanActivity extends AppCompatActivity {
                     String fname = userInfo[0];
                     String lname = userInfo[1];
                     String user_id = userInfo[2];
-                    editPlanController.submitTravelPlanDetails(Integer.parseInt(user_id), title.getText().toString(), new int[] {69}, fname, duration.getText().toString(),
+                    String user_username = userInfo[3];
+                    editPlanController.submitTravelPlanDetails(Integer.parseInt(user_id), title.getText().toString(), new int[] {69}, user_username, duration.getText().toString(),
                             estimatedPrice.getText().toString(), description.getText().toString(), des_field1.getText().toString());
                 } catch (AssertionError error) {
                     error.printStackTrace();

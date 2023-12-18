@@ -38,7 +38,7 @@ public class EditPlanController  {
     private final String[] arr_img_path = new String[5]; // max image to be uploaded per query
     private final int[] arr_gallery_code = new int[] {-1, 1, 2, 3, 4}; // helper variable to upload an image
     EditPlanActivity editPlanActivity;
-    com.example.myfirstapp.modelsV2.TravelPlan travelPlan;
+    com.example.myfirstapp.modelsV2.TravelPlan travelPlanWithID;
     public int[] getArr_gallery_code() {
         return arr_gallery_code;
     }
@@ -57,7 +57,7 @@ public class EditPlanController  {
     private class DownloadFilesTask extends AsyncTask<TravelPlan, Void, Integer> {
         @Override
         protected Integer doInBackground(TravelPlan... travelPlans) {
-            int travelPlanID = travelPlan.getId();
+            int travelPlanID = travelPlanWithID.getId();
             String[] arr_file_path = getArr_img_path();
             int[] ifGalleryIndex = getArr_gallery_code();
             DataBaseAPI db = new DataBaseAPI();
@@ -179,7 +179,8 @@ public class EditPlanController  {
     public void uploadToDB(TravelPlan travelPlan, String[] arr_file_path, int[] ifGalleryIndex){
     }
     public void submitTravelPlanDetails(int id, String title, int[] reviews, String username, String duration, String estimated_cost,String description, String destinations) {
-        travelPlan = new com.example.myfirstapp.modelsV2.TravelPlan(id, title, reviews, duration, estimated_cost, description, destinations, username);
+        travelPlanWithID = new com.example.myfirstapp.modelsV2.TravelPlan(id, title, reviews, duration, estimated_cost, description, destinations, username);
+        TravelPlan travelPlan = new com.example.myfirstapp.modelsV2.TravelPlan(title, reviews, duration, estimated_cost, description, destinations, username);
 
         DataBaseAPI dbAPI = new DataBaseAPI();
         Retrofit retrofit = dbAPI.getClient();
@@ -201,7 +202,11 @@ public class EditPlanController  {
         };
         dbAPI.insertTravelPlan(retrofit, travelPlan, travelPlanCallback);
 
-        new DownloadFilesTask().execute(travelPlan);
+        for (int i = 0; i < arr_gallery_code.length; i++) {
+            if (arr_img_path[i] != null) {
+                new DownloadFilesTask().execute(travelPlanWithID); // Worker Thread
+            }
+        }
     }
 
     public void convertBitmapToFile(Context applicationContext, Bitmap bitmap, int code) {
@@ -218,12 +223,8 @@ public class EditPlanController  {
             outputStream.close();
             this.imagePath = imageFile.getAbsolutePath();
 
-            for (int i = 0; i < arr_img_path.length; i++) { // brute force
-                if (arr_img_path[i] == null && arr_gallery_code[i] == code) {
-                    arr_img_path[i] = imagePath;
-                    arr_gallery_code[i] = code;
-                }
-            }
+            populateArrayImagePath(imagePath, code);
+
             // object of file (i.e., imageFile) is ready to be uploaded in remote server
 
         } catch (IOException e) {
@@ -231,6 +232,16 @@ public class EditPlanController  {
         }
 
     }
+
+    private void populateArrayImagePath(String imagePath, int code) {
+        for (int i = 0; i < arr_img_path.length; i++) { // brute force
+            if (arr_img_path[i] == null && arr_gallery_code[i] == code) {
+                arr_img_path[i] = imagePath;
+                arr_gallery_code[i] = code;
+            }
+        }
+    }
+
     private boolean validator(String imagePath) {
        return imagePath != null;
     }
