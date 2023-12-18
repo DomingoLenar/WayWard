@@ -19,7 +19,7 @@ public class SigninController {
     }
 
     public void displayMainActivity(SigninActivity signinActivity, com.example.myfirstapp.modelsV2.User user) {
-        Intent i = new Intent(signinActivity, MainActivity.class).putExtra("datum", new String[] {user.getFirst_name(), user.getLast_name()});
+        Intent i = new Intent(signinActivity, MainActivity.class).putExtra("datum", new String[] {user.getFirst_name(), user.getLast_name(), String.valueOf(user.getId())});
         signinActivity.startActivity(i);
     }
 
