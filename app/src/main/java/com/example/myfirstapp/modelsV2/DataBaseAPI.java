@@ -236,6 +236,7 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<TravelPlan> call, Throwable t) {
+                Log.e("DataBaseAPI", "Error saving travel plan", t);
                 travelPlanCallback.onError(t.getMessage());
             }
         };
@@ -343,7 +344,6 @@ public class DataBaseAPI {
 
         apiInterface.updateContactDetailsInterface("eq."+username, newValues).enqueue(callback);
     }
-
     public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
@@ -391,8 +391,9 @@ public class DataBaseAPI {
             return true;
 
         } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
+            Log.e("EditPlanActivity", "Upload image failed", e);
         }
+        return false;
     }
 
     /**
@@ -439,8 +440,6 @@ public class DataBaseAPI {
         }
 
     }
-
-
     public interface TravelPlanListCallback{
         void onReceived(TravelPlan[] travelPlans);
         void onError(String errorMessage);
