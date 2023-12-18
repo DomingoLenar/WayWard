@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.logging.Handler;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -74,7 +75,6 @@ public class DataBaseAPI {
 
                 Gson gson = new Gson();
                 JsonElement responseBody = response.body();
-
                 if (responseBody.isJsonObject()) {
                     User user = gson.fromJson(responseBody, User.class);
                     userCallback.onUserReceived(user);
@@ -181,6 +181,34 @@ public class DataBaseAPI {
         };
 
         apiInterface.getTravelPlanInterface(title).enqueue(callback);
+    }
+
+    /**
+     * Returns a list of TravelPlan to the callback given to it
+     * @param retrofit              Object of Retrofit that can be created using createClient()
+     * @param title                 Title of travel plans to search for
+     * @param travelPlanCallback    object of TravelPlanListCallback where to return the data to
+     */
+    public void getListOfTravelPlan(Retrofit retrofit, String title, TravelPlanListCallback travelPlanCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+
+        Callback<TravelPlan[]> callback = new Callback<TravelPlan[]>() {
+            @Override
+            public void onResponse(Call<TravelPlan[]> call, Response<TravelPlan[]> response) {
+                if(!response.isSuccessful()){
+                    Log.e("Callback Response: ", String.valueOf(response.code()));
+                }else{
+                    travelPlanCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TravelPlan[]> call, Throwable t) {
+                travelPlanCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.getListOfTravelPlanInterface(title).enqueue(callback);
     }
 
     public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
@@ -300,6 +328,10 @@ public class DataBaseAPI {
 
     //END CONTACT DETAILS OPERATIONS
 
+    public interface TravelPlanListCallback{
+        void onReceived(TravelPlan[] travelPlans);
+        void onError(String errorMessage);
+    }
     public interface ContactDetailsCallback{
         void onReceived(ContactDetails contactDetails);
         void onError(String errorMessage);

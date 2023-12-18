@@ -63,4 +63,7 @@ public interface APIInterface {
     @GET("contact_details")
     Call<ContactDetails> getContactDetailsInterface(@Query("username") String username);
 
+
+    @GET("travel_plan")
+    Call<TravelPlan[]> getListOfTravelPlanInterface(@Query("title") String title);
 }
