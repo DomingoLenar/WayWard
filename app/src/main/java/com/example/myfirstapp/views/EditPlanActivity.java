@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.example.myfirstapp.controllers.EditPlanController;
 import com.example.myfirstapp.databinding.ActivityEditPlanBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -34,6 +33,7 @@ public class EditPlanActivity extends AppCompatActivity {
     private final int GALLERY_CODE_2 = 2;
     private final int GALLERY_CODE_3 = 3;
     private final int GALLERY_CODE_4 = 4;
+
     EditPlanController editPlanController;
     ImageView img1, img2, img3, img4, app_bar_img;
     TextView estimatedPrice, duration, title, description;
@@ -48,10 +48,6 @@ public class EditPlanActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         editPlanController = new EditPlanController(this);
-//        Toolbar toolbar = binding.toolbar;
-//        setSupportActionBar(toolbar);
-//        CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
-//        toolBarLayout.setTitle(getTitle());
 
         initViews();
 
@@ -72,9 +68,6 @@ public class EditPlanActivity extends AppCompatActivity {
 
     private void initViews() {
 
-//        FloatingActionButton fab = binding.fab;
-
-        app_bar_img = findViewById(R.id.E_app_bar_image);
         navbar = findViewById(R.id.E_bottomNavBar);
 
         estimatedPrice = findViewById(R.id.E_estimatedPrice);
@@ -86,8 +79,7 @@ public class EditPlanActivity extends AppCompatActivity {
         title = findViewById(R.id.E_title);
         description = findViewById(R.id.E_body);
 
-
-        findViewById(R.id.E_app_bar_image);
+        app_bar_img = findViewById(R.id.E_app_bar_image);
         img1 = findViewById(R.id.E_img1);
         img2 = findViewById(R.id.E_img2);
         img3 = findViewById(R.id.E_img3);
@@ -161,7 +153,7 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img1.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+                editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_0);
 //                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -173,7 +165,7 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img1.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+                editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_1);
 //                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -185,7 +177,7 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img2.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+                editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_2);
 //                editPlanController.imagePath(bitmap);
 
             } catch (IOException e) {
@@ -198,7 +190,7 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img3.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+                editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_3);
 //                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -210,7 +202,7 @@ public class EditPlanActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 img4.setImageBitmap(bitmap);
-                editPlanController.saveImagePath(getApplicationContext(), bitmap);
+                editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_4);
 //                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);

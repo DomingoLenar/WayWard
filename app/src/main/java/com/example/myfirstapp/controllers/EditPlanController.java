@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.models.DataBase;
 import com.example.myfirstapp.models.TravelPlan;
 import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.EditPlanActivity;
@@ -25,14 +25,15 @@ import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import retrofit2.Retrofit;
 
 public class EditPlanController {
     public String imageType;
+    public File imageFile;
     public String imagePath;
     EditPlanActivity editPlanActivity;
     PostActivity postActivity;
@@ -123,15 +124,13 @@ public class EditPlanController {
 //    }
 
     public void uploadToDB(TravelPlan plan, String filePath){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                DataBase db = new DataBase();
-                String post_id = ""+plan.getPost_id();
-                String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
-                db.uploadImage(filePath,remotePath);
-            }
-        });
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                DataBase db = new DataBase();
+//                db.uploadImage(filePath,remotePath);
+//            }
+//        });
 
     }
 
@@ -154,36 +153,34 @@ public class EditPlanController {
         };
         dbAPI.insertTravelPlan(retrofit, travelPlan, travelPlanCallback);
 
+
 //        uploadToDB(travelPlan, imagePath);
 
     }
 
-    public void saveImagePath(Context applicationContext, Bitmap bitmap) {
-        String imageFileName = "IMG_" + 1 + ".jpg";
+    public void convertBitmapToFile(Context applicationContext, Bitmap bitmap, int code) {
+
+        // Process this conversion in another thread except Main Thread and UI Thread
+        String imageFileName = "IMG_" +code+ ".jpg";
 
         File storageDir = applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File imageFile = new File(storageDir, imageFileName);
 
         try {
             FileOutputStream outputStream = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream); // NOTE: if save bitmap/image to a server
             outputStream.flush();
             outputStream.close();
-            imagePath = imageFile.getAbsolutePath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        validator(imagePath);
+            // object of file (i.e., imageFile) is ready to be uploaded in remote server
+
+            // #TODO: upload file to remote server
+        } catch (IOException e) {
+            Log.e("EditPlanController", "Error saving image", e);
+        }
 
     }
-
-    private void validator(String imagePath) {
-
-        if (imagePath != null) {
-            System.out.println("Success");
-        } else {
-            System.out.println("Failed");
-        }
+    private boolean validator(String imagePath) {
+       return imagePath != null;
     }
 }
