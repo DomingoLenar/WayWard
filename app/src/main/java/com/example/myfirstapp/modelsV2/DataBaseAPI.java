@@ -13,7 +13,6 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
-import java.util.logging.Handler;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,12 +27,9 @@ import retrofit2.http.Headers;
 
 import io.supabase.StorageClient;
 import io.supabase.api.IStorageFileAPI;
-import io.supabase.data.bucket.BucketUpdateOptions;
 import io.supabase.data.file.*;
-import io.supabase.utils.MessageResponse;
 
 import java.io.File;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 

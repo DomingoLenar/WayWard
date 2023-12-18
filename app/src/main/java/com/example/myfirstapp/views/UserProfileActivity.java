@@ -3,7 +3,9 @@ package com.example.myfirstapp.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -52,6 +54,19 @@ public class UserProfileActivity extends AppCompatActivity {
     private void initViews() {
         userProfileLastName = findViewById(R.id.userProfileLastName);
         userProfileFirstName = findViewById(R.id.userProfileFirstName);
+
+        try {
+            Intent intent = getIntent();
+            if (intent != null) {
+                String[] userInfo = intent.getStringArrayExtra("userInfo");
+                assert userInfo != null;
+                userProfileFirstName.setText(userInfo[0]);
+                userProfileLastName.setText(userInfo[1]);
+            }
+        } catch (AssertionError e) {
+            Log.e("UserProfileActivity" , "Empty user object", e);
+        }
+
     }
     public void homeBtn(View view) {
         userProfileSettingsController.displayMainActivity();
