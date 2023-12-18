@@ -304,6 +304,35 @@ public class DataBaseAPI {
         apiInterface.getContactDetailsInterface(username).enqueue(callback);
     }
 
+    /**
+     * Method that updates contact details and returns the new object of contact details to given callback
+     * @param retrofit                  Object of retrofit that can be created using createClient()
+     * @param username                  username of the Contact details to update
+     * @param newValues                 JSON String of the new values
+     * @param contactDetailsCallback    Callback where to give contact details
+     */
+    public void updateContactDetails(Retrofit retrofit, String username, String newValues, ContactDetailsCallback contactDetailsCallback){
+        APIInterface apiInterface = retrofit.create(APIInterface.class);
+        Callback<ContactDetails> callback = new Callback<ContactDetails>() {
+            @Override
+            public void onResponse(Call<ContactDetails> call, Response<ContactDetails> response) {
+                if(!response.isSuccessful()){
+                    Log.e("Response Code: ", String.valueOf(response.code()));
+                }else{
+                    contactDetailsCallback.onReceived(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ContactDetails> call, Throwable t) {
+                Log.e("Update CD Query",t.getMessage(),t);
+                contactDetailsCallback.onError(t.getMessage());
+            }
+        };
+
+        apiInterface.updateContactDetailsInterface(username, newValues).enqueue(callback);
+    }
+
     public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 

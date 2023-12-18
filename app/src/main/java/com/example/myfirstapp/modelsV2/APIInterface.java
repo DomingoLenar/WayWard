@@ -41,6 +41,9 @@ public interface APIInterface {
                                @Body String newValues);
 
 
+    @PATCH("contact_details")
+    Call<ContactDetails> updateContactDetailsInterface(@Query("username") String username, @Body String newValues);
+
     @GET("travel_plan")
     Call<TravelPlan> getTravelPlanInterface(@Query("title") String title);
 
