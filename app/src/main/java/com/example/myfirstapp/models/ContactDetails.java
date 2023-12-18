@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Deprecated
 public class ContactDetails {
     private String username;
     private String address;

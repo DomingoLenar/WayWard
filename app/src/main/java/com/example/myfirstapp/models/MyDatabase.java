@@ -9,6 +9,7 @@ import android.database.Cursor;
 import androidx.annotation.Nullable;
 
 
+@Deprecated
 public class MyDatabase extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "users.db";

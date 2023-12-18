@@ -1,30 +1,39 @@
 package com.example.myfirstapp.modelsV2;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TravelPlan {
     @SerializedName("id")
+    @Expose
     private Integer id;
 
     @SerializedName("title")
+    @Expose
     private String title;
 
     @SerializedName("reviews")
+    @Expose
     private int[] reviews;
 
     @SerializedName("duration")
+    @Expose
     private String duration;
 
     @SerializedName("estimated_cost")
+    @Expose
     private String estimated_cost;
 
     @SerializedName("description")
+    @Expose
     private String description;
 
     @SerializedName("destinations")
+    @Expose
     private String destinations;
 
     @SerializedName("author")
+    @Expose
     private String author;
 
     public TravelPlan(int id, String title, int[] reviews, String duration, String estimated_cost, String description, String destinations, String author){

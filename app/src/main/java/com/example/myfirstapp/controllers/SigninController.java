@@ -40,7 +40,6 @@ public class SigninController {
                     if (user.getUsername().equals(userModel.getUsername()) &&
                             user.getPassword().equals(userModel.getPassword())) {
                         Toast.makeText(signinActivity.getApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
-                        displayMainActivity(signinActivity);
                     }
                 }
                 @Override
@@ -49,11 +48,8 @@ public class SigninController {
                 }
             };
             dbAPI.getUser(userModel, retrofit, userCallback);
+//            displayMainActivity(signinActivity);
         }
-
-
-
-
 //        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
 //        boolean credentials = db.checkUsernamePassword(userModel);
 //

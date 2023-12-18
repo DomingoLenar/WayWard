@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,8 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.models.DataBase;
-import com.example.myfirstapp.models.TravelPlan;
+import com.example.myfirstapp.modelsV2.TravelPlan;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
@@ -24,16 +25,19 @@ import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+
+import retrofit2.Retrofit;
 
 public class EditPlanController {
     public String imageType;
+    public File imageFile;
     public String imagePath;
     EditPlanActivity editPlanActivity;
     PostActivity postActivity;
-    TravelPlan travelPlan;
+    com.example.myfirstapp.modelsV2.TravelPlan travelPlan;
 
     public EditPlanController(EditPlanActivity editPlanActivity) {
         this.editPlanActivity = editPlanActivity;
@@ -119,53 +123,74 @@ public class EditPlanController {
 //        return null;
 //    }
 
-    public void uploadToDB(TravelPlan plan, String filePath){
+    /**
+     * Method uploads image to Supabase Storage
+     * @param plan              object of travelplan which owns the image
+     * @param filePath          local path of the image
+     * @param ifGalleryIndex    count of what the image is, -1 if it is a thumbnail
+     */
+    public void uploadToDB(TravelPlan plan, String filePath, int ifGalleryIndex){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                DataBase db = new DataBase();
-                String post_id = ""+plan.getPost_id();
-                String remotePath = "images/travel_plan/"+post_id+"/"+post_id+"_"+imageType+".jpg";
-                db.uploadImage(filePath,remotePath);
+                DataBaseAPI db = new DataBaseAPI();
+                int travelPlanID = travelPlan.getId();
+                if(ifGalleryIndex != -1){
+                    db.uploadImage(filePath, "travel_plan/"+travelPlanID+"/"+travelPlanID+"_thumbnail.png");
+                }
+                db.uploadImage(filePath, "travel_plan/"+travelPlanID+"/"+travelPlanID+"_gallery_"+ifGalleryIndex+".png");
             }
-        });
+        }).start();
 
     }
 
-    public void submitTravelPlanDetails(String title, ArrayList<Integer> reviews, String username, String duration, String estimated_cost,String description, String destinations) {
-        travelPlan = new TravelPlan(title, reviews, username, duration, estimated_cost, description, destinations);
-//        travelPlan.insertTravelPlan();
-//
+    public void submitTravelPlanDetails(String title, int[] reviews, String username, String duration, String estimated_cost,String description, String destinations) {
+        travelPlan = new com.example.myfirstapp.modelsV2.TravelPlan(title, reviews, duration, estimated_cost, description, destinations, username);
+
+        DataBaseAPI dbAPI = new DataBaseAPI();
+        Retrofit retrofit = dbAPI.getClient();
+
+        DataBaseAPI.TravelPlanCallback travelPlanCallback = new DataBaseAPI.TravelPlanCallback() {
+            @Override
+            public void onReceived(com.example.myfirstapp.modelsV2.TravelPlan travelPlan) {
+
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        };
+        dbAPI.insertTravelPlan(retrofit, travelPlan, travelPlanCallback);
+
+
 //        uploadToDB(travelPlan, imagePath);
 
     }
 
-    public void saveImagePath(Context applicationContext, Bitmap bitmap) {
-        String imageFileName = "IMG_" + 1 + ".jpg";
+    public void convertBitmapToFile(Context applicationContext, Bitmap bitmap, int code) {
+
+        // Process this conversion in another thread except Main Thread and UI Thread
+        String imageFileName = "IMG_" +code+ ".jpg";
 
         File storageDir = applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File imageFile = new File(storageDir, imageFileName);
 
         try {
             FileOutputStream outputStream = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream); // NOTE: if save bitmap/image to a server
             outputStream.flush();
             outputStream.close();
-            imagePath = imageFile.getAbsolutePath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        validator(imagePath);
+            // object of file (i.e., imageFile) is ready to be uploaded in remote server
+
+            // #TODO: upload file to remote server
+        } catch (IOException e) {
+            Log.e("EditPlanController", "Error saving image", e);
+        }
 
     }
-
-    private void validator(String imagePath) {
-
-        if (imagePath != null) {
-            System.out.println("Success");
-        } else {
-            System.out.println("Failed");
-        }
+    private boolean validator(String imagePath) {
+       return imagePath != null;
     }
 }

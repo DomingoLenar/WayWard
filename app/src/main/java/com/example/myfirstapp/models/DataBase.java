@@ -24,6 +24,7 @@ import java.net.URL;
 import java.net.URLConnection;
 //end
 
+@Deprecated
 public class DataBase {
     private String url = "jdbc:postgresql://db.fauokmrzqpowzdiqqxxg.supabase.co:5432/postgres";
     private String user = "postgres";

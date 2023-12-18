@@ -1,5 +1,7 @@
 package com.example.myfirstapp.modelsV2;
 
+import com.google.gson.JsonElement;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -16,7 +18,7 @@ public interface APIInterface {
      * @return return an object of User
      */
     @GET("user_details")
-    Call<User> getUserInterface(@Query("username") String username);
+    Call<JsonElement> getUserInterface(@Query("username") String username);
 
     /**
      *
@@ -39,12 +41,14 @@ public interface APIInterface {
                                @Body String newValues);
 
 
+    @PATCH("contact_details")
+    Call<ContactDetails> updateContactDetailsInterface(@Query("username") String username, @Body String newValues);
+
     @GET("travel_plan")
     Call<TravelPlan> getTravelPlanInterface(@Query("title") String title);
 
     @POST("travel_plan")
     Call<TravelPlan> insertTravelPlanInterface(@Body TravelPlan travelPlan);
-
 
     @Deprecated
     @GET("{table}?{column}=eq.{searchKey}")
@@ -62,4 +66,7 @@ public interface APIInterface {
     @GET("contact_details")
     Call<ContactDetails> getContactDetailsInterface(@Query("username") String username);
 
+
+    @GET("travel_plan")
+    Call<TravelPlan[]> getListOfTravelPlanInterface(@Query("title") String title);
 }

@@ -15,6 +15,7 @@ import java.sql.*;
  * User model class
  */
 
+@Deprecated
 public class User {
     private String username;
     private String password;
