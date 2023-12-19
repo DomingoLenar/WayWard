@@ -15,7 +15,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
-import kotlinx.serialization.json.Json;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -191,25 +190,27 @@ public class DataBaseAPI {
     }
 
     /**
-     *
-     * @param retrofit  Object of retrofit, can be created using createClient() method
-     * @param username search key to be used to search the column for
-     * @param newValues JSON string of the new values
+     * @param retrofit     Object of retrofit, can be created using createClient() method
+     * @param username     search key to be used to search the column for
+     * @param newValues    JSON string of the new values
+     * @param userCallback
      */
-    public void updateUserColumn(Retrofit retrofit, String username, String newValues){
+    public void updateUserColumn(Retrofit retrofit, String username, String newValues, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        Callback<User> callback = new Callback<User>() {
+        Callback<JsonElement> callback = new Callback<JsonElement>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(!response.isSuccessful()){
-                    System.out.println(response.code());
-                }else{
-                    response.body();
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                if (!response.isSuccessful()) {
+                    Log.e("DataBaseAPI", "Unsuccessful response: " + response.code());
+                    userCallback.onError("Failed to fetch user");
+                    return;
+                } else {
+                    Log.e("DataBaseAPI", "Successful response: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<JsonElement> call, Throwable t) {
                 Log.e("DataBaseAPI", "Failed to update username and password", t);
             }
         };

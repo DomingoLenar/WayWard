@@ -57,13 +57,10 @@ public class User {
         this.last_name = last_name;
     }
 
-    public User(int id, String username, String password, boolean hashed){
+    public User(int id, String username, String password){
+        this.id = id;
         this.username = username;
-        if(hashed){
-            this.password = password;
-        }else{
-            this.password = hashPassword(password);
-        }
+        this.password = hashPassword(password);
     }
 
 

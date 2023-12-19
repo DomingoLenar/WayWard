@@ -36,7 +36,7 @@ public interface APIInterface {
      * @return              returns boolean value if query succeeded
      */
     @PATCH("{table}")
-    Call<User> updateUserColumnInterface(@Path("table")String table,
+    Call<JsonElement> updateUserColumnInterface(@Path("table")String table,
                                @Query("username") String username,
                                @Body String newValues);
 
