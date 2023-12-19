@@ -36,7 +36,7 @@ public class EditPlanController  {
     public String imageType;
     public String imagePath;
     private final String[] arr_img_path = new String[5]; // max image to be uploaded per query
-    private final int[] arr_gallery_code = new int[] {-1, 1, 2, 3, 4}; // helper variable to upload an image
+    private final int[] arr_gallery_code = new int[] {0, 1, 2, 3, 4}; // helper variable to upload an image
     EditPlanActivity editPlanActivity;
     com.example.myfirstapp.modelsV2.TravelPlan travelPlanWithID;
     public int[] getArr_gallery_code() {
@@ -66,7 +66,7 @@ public class EditPlanController  {
                     if (arr_file_path[i] == null) {
                         continue;
                     }
-                    if (arr_file_path[i] != null && ifGalleryIndex[i] == -1) {
+                    if (arr_file_path[i] != null && ifGalleryIndex[i] == 0) {
                         db.uploadImage(arr_file_path[i], "travel_plan/" + travelPlanID + "/" + travelPlanID + "_thumbnail.png");
                     } else if (arr_file_path[i] != null && ifGalleryIndex[i] == i) {
                         db.uploadImage(arr_file_path[i], "travel_plan/" + travelPlanID + "/" + travelPlanID + "_gallery_" + ifGalleryIndex[i] + ".png");
@@ -176,8 +176,7 @@ public class EditPlanController  {
      * @param arr_file_path     array local path of the image
      * @param ifGalleryIndex    array count of what the image is, -1 if it is a thumbnail
      */
-    public void uploadToDB(TravelPlan travelPlan, String[] arr_file_path, int[] ifGalleryIndex){
-    }
+    public void uploadToDB(TravelPlan travelPlan, String[] arr_file_path, int[] ifGalleryIndex){}
     public void submitTravelPlanDetails(int id, String title, int[] reviews, String username, String duration, String estimated_cost,String description, String destinations) {
         travelPlanWithID = new com.example.myfirstapp.modelsV2.TravelPlan(id, title, reviews, duration, estimated_cost, description, destinations, username);
         TravelPlan travelPlan = new com.example.myfirstapp.modelsV2.TravelPlan(title, reviews, duration, estimated_cost, description, destinations, username);
