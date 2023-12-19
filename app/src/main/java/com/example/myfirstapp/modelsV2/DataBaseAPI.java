@@ -192,10 +192,10 @@ public class DataBaseAPI {
     /**
      * @param retrofit     Object of retrofit, can be created using createClient() method
      * @param username     search key to be used to search the column for
-     * @param newValues    JSON string of the new values
+//     * @param newValues    JSON string of the new values
      * @param userCallback
      */
-    public void updateUserColumn(Retrofit retrofit, String username, String newValues, UserCallback userCallback){
+    public void updateUserColumn(Retrofit retrofit, String username, User userModel, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
         Callback<JsonElement> callback = new Callback<JsonElement>() {
             @Override
@@ -214,7 +214,7 @@ public class DataBaseAPI {
                 Log.e("DataBaseAPI", "Failed to update username and password", t);
             }
         };
-        apiInterface.updateUserColumnInterface("user_details","eq."+username,newValues).enqueue(callback);
+        apiInterface.updateUserColumnInterface("user_details","eq."+username,userModel).enqueue(callback);
     }
 
     //END USER OPERATIONS

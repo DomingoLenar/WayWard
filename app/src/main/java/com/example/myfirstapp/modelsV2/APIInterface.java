@@ -32,13 +32,13 @@ public interface APIInterface {
      *
      * @param table     table where to update
      * @param username     search key to be used to search the column for
-     * @param newValues     JSON String of new values/value
+     * @param userRequest     object of UserRequest class
      * @return              returns boolean value if query succeeded
      */
     @PATCH("{table}")
     Call<JsonElement> updateUserColumnInterface(@Path("table")String table,
                                @Query("username") String username,
-                               @Body String newValues);
+                               @Body User userModel);
 
 
     @PATCH("contact_details")

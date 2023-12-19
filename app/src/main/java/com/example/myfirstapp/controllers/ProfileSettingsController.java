@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.modelsV2.User;
+import com.example.myfirstapp.modelsV2.UserRequest;
 import com.example.myfirstapp.views.ProfileSettingsActivity;
 
 import retrofit2.Retrofit;
@@ -21,9 +22,11 @@ public class ProfileSettingsController {
         if (new_username.equals("") || new_password.equals("")) {
             Toast.makeText(profileSettingsActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         }
+        userModel = new User(new_username, new_password);
         Retrofit retrofit = dataBaseAPI.getClient();
         String hashedPassword = hashUserPassword(new_password);
-        String updatedUserJson = createJsonForUserUpdate(new_username, hashedPassword);
+        UserRequest userRequestModel = new UserRequest(new_username, hashedPassword);
+//        String updatedUserJson = createJsonForUserUpdate(new_username, hashedPassword);
 
         DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
             @Override
@@ -37,7 +40,7 @@ public class ProfileSettingsController {
 
             }
         };
-        dataBaseAPI.updateUserColumn(retrofit, username, updatedUserJson, userCallback);
+        dataBaseAPI.updateUserColumn(retrofit, username, userModel, userCallback);
     }
     private String hashUserPassword(String password) {
         // Get the hashed password using the User model's hashPassword method
