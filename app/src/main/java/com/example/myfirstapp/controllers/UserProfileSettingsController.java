@@ -11,12 +11,12 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.models.User;
 import com.example.myfirstapp.views.EditPlanActivity;
 import com.example.myfirstapp.views.LoginActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
+import com.example.myfirstapp.views.ProfileSettingsActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
 
@@ -84,7 +84,9 @@ public class UserProfileSettingsController {
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     public void displayUserSettingsActivity() {
-        return;
+        Intent i = new Intent(userProfileActivity, UserProfileActivity.class);
+        userProfileActivity.startActivity(i);
+        userProfileActivity.overridePendingTransition(R.anim.slide_in, R.anim.slide_in);
     }
 
     public void logoutBtnClicked() {
@@ -100,6 +102,12 @@ public class UserProfileSettingsController {
 
     private void displayLoginActivity() {
         Intent i = new Intent(userProfileActivity, LoginActivity.class);
+        userProfileActivity.startActivity(i);
+        userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void displayProfileSettingsActivity(Intent intent) {
+        Intent i = new Intent(userProfileActivity, ProfileSettingsActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

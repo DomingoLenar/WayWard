@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".views.EditProfileDetailActivity">
+    tools:context=".views.ProfileSettingsActivity">
 
     <TextView
         android:id="@+id/userProfileDescription"
@@ -92,7 +92,7 @@
                 tools:background="#ACA193">
 
                 <ImageButton
-                    android:id="@+id/EDS_HomeButton"
+                    android:id="@+id/EDS_homeBtn"
                     android:layout_width="87dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -101,7 +101,7 @@
                     app:srcCompat="@mipmap/homeicon"/>
 
                 <ImageButton
-                    android:id="@+id/EDS_SearchButton"
+                    android:id="@+id/EDS_searchBtn"
                     android:layout_width="87dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -119,7 +119,7 @@
                     app:srcCompat="@mipmap/mainbuttonicon"/>
 
                 <ImageButton
-                    android:id="@+id/EDS_EditButton"
+                    android:id="@+id/EDS_editPlanBtn"
                     android:layout_width="87dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"

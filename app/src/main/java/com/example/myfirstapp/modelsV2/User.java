@@ -3,7 +3,9 @@ package com.example.myfirstapp.modelsV2;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import retrofit2.Retrofit;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class User {
     @SerializedName("id")
@@ -65,10 +67,31 @@ public class User {
     }
 
 
-    private String hashPassword(String password){
-        String output = password;
+    public String hashPassword(String rawPassword){
+        try {
+            // Create a MessageDigest instance for SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
-        return output;
+            // Get the byte representation of the input string
+            byte[] hash = digest.digest(rawPassword.getBytes(StandardCharsets.UTF_8));
+
+            // Convert the byte array to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            // Handle the exception (e.g., print an error message)
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public int getId() {

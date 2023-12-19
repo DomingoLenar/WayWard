@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
-    tools:context=".views.UserProfileActivity">
+    tools:context=".views.UserProfileActivity"
+    tools:layout_editor_absoluteX="-13dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <TextView
         android:id="@+id/userProfileLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/signika_bold"
         android:text="User"
         android:textColor="#853E34"
@@ -24,14 +26,13 @@
         android:id="@+id/userProfileFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="-20dp"
         android:fontFamily="@font/signika"
         android:text="User"
         android:textColor="#853E34"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="@+id/userProfileLastName"
-        app:layout_constraintStart_toStartOf="@+id/userProfileLastName"
+        app:layout_constraintEnd_toStartOf="@+id/userProfileAvatar"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userProfileLastName" />
 
     <TextView
@@ -44,8 +45,8 @@
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/userProfilePreviousTravels"
-        app:layout_constraintStart_toStartOf="@+id/userProfilePreviousTravels"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -53,59 +54,27 @@
         android:layout_width="46dp"
         android:layout_height="44dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/userProfileDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157"
         app:srcCompat="@mipmap/usernameicon" />
-
-    <Button
-        android:id="@+id/userProfilePreviousTravels"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="46dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Previous Travels"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userProfileDescription" />
-
-    <Button
-        android:id="@+id/userProfileLocationServices"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#E96925"
-        android:fontFamily="@font/signika_bold"
-        android:text="Location Services"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/userProfilePreviousTravels"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/userProfilePreviousTravels"
-        app:layout_constraintTop_toBottomOf="@+id/userProfilePreviousTravels" />
 
     <Button
         android:id="@+id/userProfileProfileSettings"
         android:layout_width="320dp"
         android:layout_height="48dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="#E96925"
         android:fontFamily="@font/signika_bold"
         android:text="Profile Settings"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/userProfileLocationServices"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/userProfileLocationServices"
-        app:layout_constraintTop_toBottomOf="@+id/userProfileLocationServices" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userProfileDescription" />
 
     <Button
         android:id="@+id/userProfilePrivacy"
@@ -135,10 +104,12 @@
         android:text="Log-out"
         android:textColor="#000000"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/userProfileBottomBarDarkCream"
         app:layout_constraintEnd_toEndOf="@+id/userProfilePrivacy"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/userProfilePrivacy"
-        app:layout_constraintTop_toBottomOf="@+id/userProfilePrivacy" />
+        app:layout_constraintTop_toBottomOf="@+id/userProfilePrivacy"
+        app:layout_constraintVertical_bias="0.921" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/userProfileBottomBarDarkCream"
@@ -147,12 +118,12 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-26dp"
         android:backgroundTint="#ACA193"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:id="@+id/userProfileBottomBarContents"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/userProfileHomeButton"
@@ -216,14 +187,14 @@
 
         </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/userProfileBottomBarOrange"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="70dp"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/orange"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userProfileBottomBarOrange"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         </androidx.cardview.widget.CardView>
 

@@ -1,17 +1,12 @@
 package com.example.myfirstapp.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.UserProfileSettingsController;
@@ -20,12 +15,13 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private TextView userProfileLastName, userProfileFirstName;
     UserProfileSettingsController userProfileSettingsController;
+    Intent pIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userprofile);
-
+        pIntent = getIntent();
         userProfileSettingsController = new UserProfileSettingsController(this);
         initViews();
 
@@ -35,9 +31,8 @@ public class UserProfileActivity extends AppCompatActivity {
         userProfileFirstName = findViewById(R.id.userProfileFirstName);
 
         try {
-            Intent intent = getIntent();
-            if (intent != null) {
-                String[] userInfo = intent.getStringArrayExtra("userInfo");
+            if (pIntent != null) {
+                String[] userInfo = pIntent.getStringArrayExtra("userInfo");
                 assert userInfo != null;
                 userProfileFirstName.setText(userInfo[0]);
                 userProfileLastName.setText(userInfo[1]);
@@ -61,6 +56,9 @@ public class UserProfileActivity extends AppCompatActivity {
     }
     public void userSettingsBtn(View view) {
         userProfileSettingsController.displayUserSettingsActivity();
+    }
+    public void profileSettingsBtn(View view){
+        userProfileSettingsController.displayProfileSettingsActivity(pIntent);
     }
     public void sign_out(View view) {
         userProfileSettingsController.logoutBtnClicked();
