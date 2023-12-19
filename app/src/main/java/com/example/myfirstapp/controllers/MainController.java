@@ -8,15 +8,16 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.views.EditPlanActivity;
-import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
 import com.example.myfirstapp.views.SearchActivity;
 import com.example.myfirstapp.views.UserProfileActivity;
+import com.squareup.picasso.Picasso;
 
 public class MainController {
     MainActivity mainActivity;
@@ -83,4 +84,7 @@ public class MainController {
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    public void preloadImages(String imageUrl, ImageButton imageBtn1) {
+        Picasso.get().load(imageUrl).into(imageBtn1);
+    }
 }

@@ -15,16 +15,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.MainController;
+import com.example.myfirstapp.modelsV2.DataBaseAPI;
+import com.example.myfirstapp.modelsV2.TravelPlan;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity {
+import retrofit2.Retrofit;
 
+public class MainActivity extends AppCompatActivity {
+    private final String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/object/public/images/travel_plan/";
     MainController mainController;
-    ImageButton homeBtn, searchBtn, popUpBtn, editPlanBtn, userSettingsBtn;
+    ImageButton homeBtn, searchBtn, popUpBtn, editPlanBtn, userSettingsBtn, imageBtn1;
     Intent pIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        imageBtn1 = findViewById(R.id.mainRecommendedButton2);
+
+        String[] userInfo = pIntent.getStringArrayExtra("datum");
+        assert userInfo != null;
+        int user_id = Integer.parseInt(userInfo[2]);
+
+//        dbAPI.downloadImage("/travel_plan/" + user_id + "/" + user_id + "_thumbnail.png", "images", user_id + "_thumbnail.png");
+
+        String imageUrl = url + user_id + "/" + user_id + "_thumbnail.png";
+        mainController.preloadImages(imageUrl, imageBtn1);
+
+        DataBaseAPI dbAPI = new DataBaseAPI();
+        Retrofit retrofit = dbAPI.getClient();
+        DataBaseAPI.TravelPlanCallback travelPlanCallback = new DataBaseAPI.TravelPlanCallback() {
+            @Override
+            public void onReceived(TravelPlan travelPlan) {
+
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        };
+//        dbAPI.getListOfTravelPlan(retrofit, user_id, travelPlanCallback);
+
         homeBtn = findViewById(R.id.M_homeBtn);
         searchBtn =findViewById(R.id.M_searchBtn);
         popUpBtn = findViewById(R.id.M_popUpBtn);
