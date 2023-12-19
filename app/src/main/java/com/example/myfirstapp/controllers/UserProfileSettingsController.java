@@ -84,6 +84,15 @@ public class UserProfileSettingsController {
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     public void displayUserSettingsActivity() {
+        return;
+    }
+
+    public void displayProfileSettingsActivity(Intent intent) {
+        Intent i = new Intent(userProfileActivity, ProfileSettingsActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
+        userProfileActivity.startActivity(i);
+        userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+    public void displayProfileSettingsActivity() {
         Intent i = new Intent(userProfileActivity, ProfileSettingsActivity.class);
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in, R.anim.slide_in);
@@ -106,9 +115,5 @@ public class UserProfileSettingsController {
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    public void displayProfileSettingsActivity(Intent intent) {
-        Intent i = new Intent(userProfileActivity, ProfileSettingsActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
-        userProfileActivity.startActivity(i);
-        userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+
 }

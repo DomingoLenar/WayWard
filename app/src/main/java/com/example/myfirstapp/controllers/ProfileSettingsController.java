@@ -12,18 +12,32 @@ public class ProfileSettingsController {
     ProfileSettingsActivity profileSettingsActivity;
     DataBaseAPI dataBaseAPI;
     User userModel;
-    public ProfileSettingsController(DataBaseAPI dataBaseAPI) {
-        this.dataBaseAPI = dataBaseAPI;
+    public ProfileSettingsController(ProfileSettingsActivity profileSettingsActivity) {
+        this.profileSettingsActivity = profileSettingsActivity;
+        this.dataBaseAPI = new DataBaseAPI();
     }
 
-    public void updateAccountDetails(String username, String password, String new_username) {
-        if (username.equals("") || password.equals("")) {
+    public void updateAccountDetails(String username, String new_password, String new_username) {
+        if (new_username.equals("") || new_password.equals("")) {
             Toast.makeText(profileSettingsActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         }
         Retrofit retrofit = dataBaseAPI.getClient();
-        String hashedPassword = hashUserPassword(password);
+        String hashedPassword = hashUserPassword(new_password);
         String updatedUserJson = createJsonForUserUpdate(new_username, hashedPassword);
-        dataBaseAPI.updateUserColumn(retrofit, username, updatedUserJson);
+
+        DataBaseAPI.UserCallback userCallback = new DataBaseAPI.UserCallback() {
+            @Override
+            public void onUserReceived(User user) {
+                Toast.makeText(profileSettingsActivity.getApplicationContext(), "Username and password updated", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(profileSettingsActivity.getApplicationContext(), "An error occur updating username and password.", Toast.LENGTH_SHORT).show();
+
+            }
+        };
+        dataBaseAPI.updateUserColumn(retrofit, username, updatedUserJson, userCallback);
     }
     private String hashUserPassword(String password) {
         // Get the hashed password using the User model's hashPassword method
