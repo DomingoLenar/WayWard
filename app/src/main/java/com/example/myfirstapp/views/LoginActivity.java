@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
 
-
     }
 
     private void initViews() {

@@ -621,41 +621,90 @@
 
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainRecommendedButton"
-        android:layout_width="390dp"
+    <ScrollView
+        android:id="@+id/mainRecommendedButtonVerticalScrollView"
+        android:layout_width="350dp"
         android:layout_height="275dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageButton
-            android:id="@+id/mainRecommendedButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:contentDescription="mainRecommendedButton1"
-            app:srcCompat="@drawable/lionspark"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainRecommendedButton"
+            android:layout_width="350dp"
+            android:layout_height="275dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="412dp"
+            android:backgroundTint="@color/cream"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toTopOf="parent"
+            card_view:cardElevation="0dp">
 
-        <ImageButton
-            android:id="@+id/mainRecommendedButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:contentDescription="mainRecommendedButton2"
-            app:srcCompat="@drawable/placeholder"/>
+            <LinearLayout
+                android:id="@+id/mainRecommendedFirstButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp">
 
-        <ImageButton
-            android:id="@+id/mainRecommendedButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:contentDescription="mainRecommendedButton3"
-            app:srcCompat="@drawable/placeholder"/>
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton1"
+                    app:srcCompat="@drawable/lionspark"
+                    tools:layout_editor_absoluteX="500dp"
+                    tools:layout_editor_absoluteY="match"></ImageButton>
 
-    </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainRecommendedSecondButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="140dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton2"
+                    app:srcCompat="@drawable/placeholder"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match"></ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mainRecommendedThirdButton"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="280dp">
+
+                <ImageButton
+                    android:id="@+id/mainRecommendedButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="mainRecommendedButton3"
+                    app:srcCompat="@drawable/placeholder"
+                    tools:layout_editor_absoluteX="319dp"
+                    tools:layout_editor_absoluteY="match"></ImageButton>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/mainBottomBarDarkCream"

@@ -72,13 +72,13 @@ public class MainController {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
-    public void displayEditPlanActivity(MainActivity mainActivity) {
-        Intent i = new Intent(mainActivity, EditPlanActivity.class);
+    public void displayEditPlanActivity(MainActivity mainActivity, Intent intent) {
+        Intent i = new Intent(mainActivity, EditPlanActivity.class).putExtra("userInfo", intent.getStringArrayExtra("datum"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displayUserSettingsActivity(MainActivity mainActivity) {
-        Intent i = new Intent(mainActivity, UserProfileActivity.class);
+    public void displayUserSettingsActivity(MainActivity mainActivity, Intent intent) {
+        Intent i = new Intent(mainActivity, UserProfileActivity.class).putExtra("userInfo", intent.getStringArrayExtra("datum"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

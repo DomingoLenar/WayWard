@@ -14,15 +14,12 @@ import retrofit2.Retrofit;
 public class SigninController {
 
     SigninActivity signinActivity;
-    User userModel;
-
     public SigninController(SigninActivity signinActivity) {
         this.signinActivity = signinActivity;
-        userModel = new User(this);
     }
 
-    public void displayMainActivity(SigninActivity signinActivity) {
-        Intent i = new Intent(signinActivity, MainActivity.class);
+    public void displayMainActivity(SigninActivity signinActivity, com.example.myfirstapp.modelsV2.User user) {
+        Intent i = new Intent(signinActivity, MainActivity.class).putExtra("datum", new String[] {user.getFirst_name(), user.getLast_name(), String.valueOf(user.getId()), user.getUsername()});
         signinActivity.startActivity(i);
     }
 
@@ -40,6 +37,9 @@ public class SigninController {
                     if (user.getUsername().equals(userModel.getUsername()) &&
                             user.getPassword().equals(userModel.getPassword())) {
                         Toast.makeText(signinActivity.getApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
+                        displayMainActivity(signinActivity, user);
+                    } else {
+                        Toast.makeText(signinActivity.getApplicationContext(), "Login failed!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
@@ -48,7 +48,6 @@ public class SigninController {
                 }
             };
             dbAPI.getUser(userModel, retrofit, userCallback);
-//            displayMainActivity(signinActivity);
         }
 //        MyDatabase db = new MyDatabase(signinActivity.getApplicationContext());
 //        boolean credentials = db.checkUsernamePassword(userModel);
@@ -60,11 +59,11 @@ public class SigninController {
 //            Toast.makeText(signinActivity.getApplicationContext(), "Login Failed!", Toast.LENGTH_SHORT).show();
 //        }
     }
-    public void authorize(boolean permit) {
-        if (!permit) {
-            Toast.makeText(signinActivity.getApplicationContext(), "Wrong email and password", Toast.LENGTH_SHORT).show();
-        } else {
-            displayMainActivity(signinActivity);
-        }
-    }
+//    public void authorize(boolean permit) {
+//        if (!permit) {
+//            Toast.makeText(signinActivity.getApplicationContext(), "Wrong email and password", Toast.LENGTH_SHORT).show();
+//        } else {
+//            displayMainActivity(signinActivity);
+//        }
+//    }
 }

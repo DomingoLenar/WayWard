@@ -13,7 +13,6 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
-import java.util.logging.Handler;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,12 +27,9 @@ import retrofit2.http.Headers;
 
 import io.supabase.StorageClient;
 import io.supabase.api.IStorageFileAPI;
-import io.supabase.data.bucket.BucketUpdateOptions;
 import io.supabase.data.file.*;
-import io.supabase.utils.MessageResponse;
 
 import java.io.File;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 
@@ -240,6 +236,7 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<TravelPlan> call, Throwable t) {
+                Log.e("DataBaseAPI", "Error saving travel plan", t);
                 travelPlanCallback.onError(t.getMessage());
             }
         };
@@ -347,7 +344,6 @@ public class DataBaseAPI {
 
         apiInterface.updateContactDetailsInterface("eq."+username, newValues).enqueue(callback);
     }
-
     public void insertContactDetails(Retrofit retrofit, ContactDetails contactDetails, ContactDetailsCallback contactDetailsCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
@@ -395,8 +391,9 @@ public class DataBaseAPI {
             return true;
 
         } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
+            Log.e("EditPlanActivity", "Upload image failed", e);
         }
+        return false;
     }
 
     /**
@@ -443,8 +440,6 @@ public class DataBaseAPI {
         }
 
     }
-
-
     public interface TravelPlanListCallback{
         void onReceived(TravelPlan[] travelPlans);
         void onError(String errorMessage);
