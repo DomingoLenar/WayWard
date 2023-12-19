@@ -210,7 +210,7 @@ public class DataBaseAPI {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
+                Log.e("DataBaseAPI", "Failed to update username and password", t);
             }
         };
         apiInterface.updateUserColumnInterface("user_details","eq."+username,newValues).enqueue(callback);

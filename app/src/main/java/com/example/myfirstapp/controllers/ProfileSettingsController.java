@@ -16,13 +16,13 @@ public class ProfileSettingsController {
         this.dataBaseAPI = dataBaseAPI;
     }
 
-    public void updateAccountDetails(String username, String password) {
+    public void updateAccountDetails(String username, String password, String new_username) {
         if (username.equals("") || password.equals("")) {
             Toast.makeText(profileSettingsActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         }
         Retrofit retrofit = dataBaseAPI.getClient();
         String hashedPassword = hashUserPassword(password);
-        String updatedUserJson = createJsonForUserUpdate(username, hashedPassword);
+        String updatedUserJson = createJsonForUserUpdate(new_username, hashedPassword);
         dataBaseAPI.updateUserColumn(retrofit, username, updatedUserJson);
     }
     private String hashUserPassword(String password) {
@@ -34,7 +34,7 @@ public class ProfileSettingsController {
         // Create a JSON string of the new values to be updated in the user details
         // Modify this method according to your JSON structure
         // For example: {"username": "newUsername", "password": "newPasswordHash"}
-        return "{\"username\":\"" + username + "\", \"password\":\"" + hashedPassword + "\"}";
+        return "{\n\"username\":\"" + username + "\", \"password\":\"" + hashedPassword + "\"\n}";
     }
 }
 

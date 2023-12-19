@@ -54,12 +54,11 @@ public class UserProfileActivity extends AppCompatActivity {
     public void editPlanBtn(View view) {
         userProfileSettingsController.displayEditPlanActivity();
     }
-    public void userSettingsBtn(View view) {
-        userProfileSettingsController.displayUserSettingsActivity();
-    }
-    public void profileSettingsBtn(View view){
+    public void U_profileSettingsBtn(View view) {
         userProfileSettingsController.displayProfileSettingsActivity(pIntent);
     }
+//    public void profileSettingsBtn(View view){
+//    }
     public void sign_out(View view) {
         userProfileSettingsController.logoutBtnClicked();
     }

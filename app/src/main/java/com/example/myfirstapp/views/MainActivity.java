@@ -21,7 +21,7 @@ import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.MainController;
 import com.example.myfirstapp.modelsV2.DataBaseAPI;
 import com.example.myfirstapp.modelsV2.TravelPlan;
-import com.squareup.picasso.Picasso;
+
 
 import org.w3c.dom.Text;
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     public void editPlanBtn(View view) {
         mainController.displayEditPlanActivity(this, pIntent);
     }
-    public void userSettingsBtn(View view) {
+    public void M_profileSettingsBtn(View view) {
         mainController.displayUserSettingsActivity(this, pIntent);
     }
 }

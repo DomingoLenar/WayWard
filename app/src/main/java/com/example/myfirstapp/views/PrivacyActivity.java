@@ -9,10 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirstapp.R;
-import com.example.myfirstapp.controllers.PrivacyController;
 
 public class PrivacyActivity extends AppCompatActivity {
-    PrivacyController privacyController;
     private WebView webView_privacyPolicy;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -17,31 +17,33 @@ import com.example.myfirstapp.controllers.ProfileSettingsController;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
     ProfileSettingsController profileSettingsController;
+    EditText editText_password, editText_username;
     Intent pIntent;
+    TextView userProfileFirstName;
+    String pUsername;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_profile_detail);
 
         pIntent = getIntent();
-        pIntent.getStringArrayExtra("userInfo");
+        String[] arr = pIntent.getStringArrayExtra("userInfo");
+        pUsername = arr[3];
         initViews();
-        EditText editText_password = findViewById(R.id.editText_password);
-        EditText editText_username = findViewById(R.id.editText_username);
 
-        Button button_editDetails = findViewById(R.id.button_editDetails);
-        button_editDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String updatedUsername = editText_username.getText().toString();
-                String updatedPassword = editText_password.getText().toString();
-
-                profileSettingsController.updateAccountDetails(updatedUsername, updatedPassword);
-            }
-        });
+        editText_password = findViewById(R.id.editText_password);
+        editText_username = findViewById(R.id.editText_username);
 
     }
+
+    public void EDP_editBtn(View view) {
+        String updatedUsername = editText_username.getText().toString();
+        String updatedPassword = editText_password.getText().toString();
+
+        profileSettingsController.updateAccountDetails(pUsername, updatedPassword, updatedUsername);
+    }
     private void initViews() {
-        TextView userProfileFirstName = findViewById(R.id.userProfileFirstName);
+        userProfileFirstName = findViewById(R.id.userProfileFirstName);
         TextView userProfileLastName = findViewById(R.id.userProfileLastName);
 
         try {

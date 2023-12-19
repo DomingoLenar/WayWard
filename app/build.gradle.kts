@@ -65,6 +65,7 @@ dependencies {
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.8.0-RC")
 
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation("com.squareup.picasso:picasso:2.71828")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
 

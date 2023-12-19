@@ -84,7 +84,7 @@ public class UserProfileSettingsController {
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     public void displayUserSettingsActivity() {
-        Intent i = new Intent(userProfileActivity, UserProfileActivity.class);
+        Intent i = new Intent(userProfileActivity, ProfileSettingsActivity.class);
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in, R.anim.slide_in);
     }

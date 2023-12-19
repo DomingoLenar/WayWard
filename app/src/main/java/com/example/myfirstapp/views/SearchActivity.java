@@ -94,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
     public void editPlanBtn(View view) {
         searchController.displayEditPlanActivity();
     }
-    public void userSettingsBtn(View view) {
+    public void S_userSettingsBtn(View view) {
         searchController.displayUserSettingsActivity();
     }
 
