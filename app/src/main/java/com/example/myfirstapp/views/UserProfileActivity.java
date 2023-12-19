@@ -42,17 +42,20 @@ public class UserProfileActivity extends AppCompatActivity {
         }
 
     }
-    public void homeBtn(View view) {
+    public void U_homeBtn(View view) {
         userProfileSettingsController.displayMainActivity();
     }
-    public void searchBtn(View view) {
+    public void U_searchBtn(View view) {
         userProfileSettingsController.displaySearchActivity();
     }
-    public void popUpBtn(View view) {
+    public void U_popUpBtn(View view) {
         userProfileSettingsController.displayPopUpDialog();
     }
-    public void editPlanBtn(View view) {
+    public void U_editPlanBtn(View view) {
         userProfileSettingsController.displayEditPlanActivity();
+    }
+    public void U_userSettingsBtn(View view){
+        userProfileSettingsController.displayUserSettingsActivity();
     }
     public void U_profileSettingsBtn(View view) {
         userProfileSettingsController.displayProfileSettingsActivity(pIntent);

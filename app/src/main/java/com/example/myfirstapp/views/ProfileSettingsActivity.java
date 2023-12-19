@@ -27,7 +27,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile_detail);
 
         pIntent = getIntent();
+
+        profileSettingsController = new ProfileSettingsController(this);
+
         String[] arr = pIntent.getStringArrayExtra("userInfo");
+        assert arr != null;
         pUsername = arr[3];
         initViews();
 
