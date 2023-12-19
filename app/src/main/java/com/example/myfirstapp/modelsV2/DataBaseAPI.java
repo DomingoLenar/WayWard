@@ -1,5 +1,6 @@
 package com.example.myfirstapp.modelsV2;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
+import kotlinx.serialization.json.Json;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -34,6 +36,52 @@ import java.util.concurrent.ExecutionException;
 
 
 public class DataBaseAPI {
+    private String bucket;
+    private String remotePath;
+    private String fileOutputPath;
+
+    private class DownloadFilesTask extends AsyncTask <Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/object/public/";
+
+            url+=bucket+remotePath+"?download="+fileOutputPath;
+
+
+            try{
+                //New object of url
+                URL urlOb = new URL(url);
+
+                //Opens a connection to the url object
+                URLConnection urlConnection = urlOb.openConnection();
+
+                InputStream inputStream = urlConnection.getInputStream();
+
+                FileOutputStream fileOutputStream = new FileOutputStream(fileOutputPath);
+
+                // Read from the input stream and write to the output stream
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    fileOutputStream.write(buffer, 0, bytesRead);
+                }
+
+                // Close streams
+                inputStream.close();
+                fileOutputStream.close();
+
+
+                System.out.println("File downloaded successfully!");
+                Log.e("DataBaseAPI", "Success retrieving the image" );
+
+            }catch(Exception ex){
+                Log.e("DataBaseAPI", "Failed retrieving the image", ex);
+            }
+
+            return null;
+        }
+    }
     private Retrofit retrofit = null;
 
     @Headers("")
@@ -197,29 +245,45 @@ public class DataBaseAPI {
     /**
      * Returns a list of TravelPlan to the callback given to it
      * @param retrofit              Object of Retrofit that can be created using createClient()
-     * @param titleLetter           Title of travel plans to search for, format {P*}
+     * @param author           Title of travel plans to search for, format {P*}
      * @param travelPlanCallback    object of TravelPlanListCallback where to return the data to
      */
-    public void getListOfTravelPlan(Retrofit retrofit, String titleLetter, TravelPlanListCallback travelPlanCallback){
+    public void getListOfTravelPlan(Retrofit retrofit, String author, TravelPlanCallback travelPlanCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
 
-        Callback<TravelPlan[]> callback = new Callback<TravelPlan[]>() {
+        Callback<JsonElement> callback = new Callback<JsonElement>() {
             @Override
-            public void onResponse(Call<TravelPlan[]> call, Response<TravelPlan[]> response) {
-                if(!response.isSuccessful()){
-                    Log.e("Callback Response: ", String.valueOf(response.code()));
-                }else{
-                    travelPlanCallback.onReceived(response.body());
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                if (!response.isSuccessful()) {
+                    Log.e("getTravelPlan", "Unsuccessful response: " + response.code());
+                    travelPlanCallback.onError("Failed to fetch user");
+                    return;
+                }
+
+                Gson gson = new Gson();
+                JsonElement responseBody = response.body();
+                if (responseBody.isJsonObject()) {
+                    TravelPlan  travelPlans = gson.fromJson(responseBody, TravelPlan.class);
+                    travelPlanCallback.onReceived(travelPlans);
+                } else if (responseBody.isJsonArray()) {
+                    Type travelPlanListType = new TypeToken<List<TravelPlan>>(){}.getType();
+                    List<TravelPlan> travelPlanList = gson.fromJson(responseBody, travelPlanListType);
+                    if (!travelPlanList.isEmpty()) {
+                        travelPlanCallback.onReceived(travelPlanList.get(0)); // returns an object of User model to the interface
+                    }
+                } else {
+                    Log.e("getTravelPLan", "Unexpected JSON structure");
+                    travelPlanCallback.onError("Unexpected JSON structure");
                 }
             }
 
             @Override
-            public void onFailure(Call<TravelPlan[]> call, Throwable t) {
+            public void onFailure(Call<JsonElement> call, Throwable t) {
                 travelPlanCallback.onError(t.getMessage());
             }
         };
 
-        apiInterface.getListOfTravelPlanInterface("like(any)."+titleLetter).enqueue(callback);
+        apiInterface.getListOfTravelPlanInterface("like(any)."+author).enqueue(callback);
     }
 
     public void insertTravelPlan(Retrofit retrofit, TravelPlan travelPlan, TravelPlanCallback travelPlanCallback){
@@ -404,44 +468,17 @@ public class DataBaseAPI {
      * @param fileOutputPath    Specify to what file you would want the output to go through
      * @return
      */
-    public boolean downloadImage(String remotePath, String bucket,String fileOutputPath){
-        String url = "https://fauokmrzqpowzdiqqxxg.supabase.co/storage/v1/object/public/";
-        url+=bucket+remotePath+"?download="+fileOutputPath;
-        try{
-            //New object of url
-            URL urlOb = new URL(url);
 
-            //Opens a connection to the url object
-            URLConnection urlConnection = urlOb.openConnection();
+    // #TODO: display the saved travel plan thumbnail in main activity
+    public void downloadImage(String remotePath, String bucket,String fileOutputPath){
+        this.bucket = bucket;
+        this.remotePath = remotePath;
+        this.fileOutputPath = fileOutputPath;
 
-            InputStream inputStream = urlConnection.getInputStream();
-
-            FileOutputStream fileOutputStream = new FileOutputStream(fileOutputPath);
-
-            // Read from the input stream and write to the output stream
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                fileOutputStream.write(buffer, 0, bytesRead);
-            }
-
-            // Close streams
-            inputStream.close();
-            fileOutputStream.close();
-
-
-            System.out.println("File downloaded successfully!");
-
-            return true;
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-            return false;
-        }
-
+        new DownloadFilesTask().execute();
     }
     public interface TravelPlanListCallback{
-        void onReceived(TravelPlan[] travelPlans);
+        void onReceived(TravelPlan travelPlans);
         void onError(String errorMessage);
     }
     public interface ContactDetailsCallback{
