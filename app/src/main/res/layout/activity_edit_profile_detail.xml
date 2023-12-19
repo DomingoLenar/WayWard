@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="Home Button"
-                    android:onClick="homeBtn"
+                    android:onClick="M_homeBtn"
                     app:srcCompat="@mipmap/homeicon"/>
 
                 <ImageButton
@@ -106,7 +106,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="Search Button"
-                    android:onClick="searchBtn"
+                    android:onClick="M_searchBtn"
                     app:srcCompat="@mipmap/searchicon"/>
 
                 <ImageButton
@@ -115,7 +115,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="Main Button"
-                    android:onClick="popUpBtn"
+                    android:onClick="M_popUpBtn"
                     app:srcCompat="@mipmap/mainbuttonicon"/>
 
                 <ImageButton
@@ -124,7 +124,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:contentDescription="Edit Button"
-                    android:onClick="editPlanBtn"
+                    android:onClick="M_editPlanBtn"
                     app:srcCompat="@mipmap/editicon"/>
 
                 <ImageButton

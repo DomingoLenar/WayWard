@@ -28,7 +28,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Home Button"
-                android:onClick="homeBtn"
+                android:onClick="M_homeBtn"
                 app:srcCompat="@mipmap/homeicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="match"></ImageButton>
@@ -40,7 +40,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Search Button"
-                android:onClick="searchBtn"
+                android:onClick="M_searchBtn"
                 app:srcCompat="@mipmap/searchicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
@@ -53,7 +53,7 @@
                 android:layout_marginRight="0dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Main Button"
-                android:onClick="popUpBtn"
+                android:onClick="M_popUpBtn"
                 app:srcCompat="@mipmap/mainbuttonicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
@@ -64,7 +64,7 @@
                 android:layout_height="70dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Edit Button"
-                android:onClick="editPlanBtn"
+                android:onClick="M_editPlanBtn"
                 app:srcCompat="@mipmap/editicon"
                 tools:layout_editor_absoluteX="319dp"
                 tools:layout_editor_absoluteY="30dp"></ImageButton>
