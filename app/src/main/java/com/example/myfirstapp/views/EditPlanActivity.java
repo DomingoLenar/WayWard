@@ -28,7 +28,7 @@ import java.io.IOException;
 
 public class EditPlanActivity extends AppCompatActivity {
     private ActivityEditPlanBinding binding;
-    private final int GALLERY_CODE_0 = -1;
+    private final int GALLERY_CODE_0 = 0;
     private final int GALLERY_CODE_1 = 1;
     private final int GALLERY_CODE_2 = 2;
     private final int GALLERY_CODE_3 = 3;
@@ -162,7 +162,7 @@ public class EditPlanActivity extends AppCompatActivity {
             uri = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                img1.setImageBitmap(bitmap);
+                app_bar_img.setImageBitmap(bitmap);
                 editPlanController.convertBitmapToFile(getApplicationContext(), bitmap, GALLERY_CODE_0);
 //                editPlanController.imagePath(bitmap);
             } catch (IOException e) {
