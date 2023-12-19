@@ -90,13 +90,13 @@ public class EditPlanController  {
         this.editPlanActivity = editPlanActivity;
     }
 
-    public void displayMainActivity() {
-        Intent i = new Intent(editPlanActivity, MainActivity.class);
+    public void displayMainActivity(Intent pIntent) {
+        Intent i = new Intent(editPlanActivity, MainActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         editPlanActivity.startActivity(i);
         editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displaySearchActivity() {
-        Intent i = new Intent(editPlanActivity, SearchActivity.class);
+    public void displaySearchActivity(Intent pIntent) {
+        Intent i = new Intent(editPlanActivity, SearchActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         editPlanActivity.startActivity(i);
         editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -143,8 +143,8 @@ public class EditPlanController  {
     public void displayEditPlanActivity() {
        return;
     }
-    public void displayUserSettingsActivity() {
-        Intent i = new Intent(editPlanActivity, UserProfileActivity.class);
+    public void displayUserSettingsActivity(Intent pIntent) {
+        Intent i = new Intent(editPlanActivity, UserProfileActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         editPlanActivity.startActivity(i);
         editPlanActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

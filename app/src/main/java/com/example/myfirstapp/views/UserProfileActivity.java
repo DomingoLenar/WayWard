@@ -43,16 +43,16 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
     public void U_homeBtn(View view) {
-        userProfileSettingsController.displayMainActivity();
+        userProfileSettingsController.displayMainActivity(pIntent);
     }
     public void U_searchBtn(View view) {
-        userProfileSettingsController.displaySearchActivity();
+        userProfileSettingsController.displaySearchActivity(pIntent);
     }
     public void U_popUpBtn(View view) {
         userProfileSettingsController.displayPopUpDialog();
     }
     public void U_editPlanBtn(View view) {
-        userProfileSettingsController.displayEditPlanActivity();
+        userProfileSettingsController.displayEditPlanActivity(pIntent);
     }
     public void U_userSettingsBtn(View view){
         userProfileSettingsController.displayUserSettingsActivity();

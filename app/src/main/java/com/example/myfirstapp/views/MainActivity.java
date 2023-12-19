@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageBtn1 = findViewById(R.id.mainRecommendedButton2);
 
-        String[] userInfo = pIntent.getStringArrayExtra("datum");
+        String[] userInfo = pIntent.getStringArrayExtra("userInfo");
         assert userInfo != null;
         int user_id = Integer.parseInt(userInfo[2]);
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         mainController.displayMainActivity(this);
     }
     public void M_searchBtn(View view) {
-        mainController.displaySearchActivity(this);
+        mainController.displaySearchActivity(this, pIntent);
     }
     public void M_popUpBtn(View view) {
         mainController.displayPopUpDialog();

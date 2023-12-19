@@ -28,8 +28,8 @@ public class MainController {
     public void displayMainActivity(MainActivity mainActivity) {
         return;
     }
-    public void displaySearchActivity(MainActivity mainActivity) {
-        Intent i = new Intent(mainActivity, SearchActivity.class);
+    public void displaySearchActivity(MainActivity mainActivity, Intent intent) {
+        Intent i = new Intent(mainActivity, SearchActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -74,12 +74,12 @@ public class MainController {
     }
 
     public void displayEditPlanActivity(MainActivity mainActivity, Intent intent) {
-        Intent i = new Intent(mainActivity, EditPlanActivity.class).putExtra("userInfo", intent.getStringArrayExtra("datum"));
+        Intent i = new Intent(mainActivity, EditPlanActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     public void displayUserSettingsActivity(MainActivity mainActivity, Intent intent) {
-        Intent i = new Intent(mainActivity, UserProfileActivity.class).putExtra("userInfo", intent.getStringArrayExtra("datum"));
+        Intent i = new Intent(mainActivity, UserProfileActivity.class).putExtra("userInfo", intent.getStringArrayExtra("userInfo"));
         mainActivity.startActivity(i);
         mainActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

@@ -12,7 +12,6 @@ import android.widget.ImageView;
 
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.views.EditPlanActivity;
-import com.example.myfirstapp.views.OldEditPlanActivity;
 import com.example.myfirstapp.views.MainActivity;
 import com.example.myfirstapp.views.PostActivity;
 import com.example.myfirstapp.views.SearchActivity;
@@ -24,8 +23,8 @@ public class SearchController {
     public SearchController(SearchActivity searchActivity) {
         this.searchActivity = searchActivity;
     }
-    public void displayMainActivity() {
-        Intent i = new Intent(searchActivity, MainActivity.class);
+    public void displayMainActivity(Intent pIntent) {
+        Intent i = new Intent(searchActivity, MainActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         searchActivity.startActivity(i);
         searchActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -72,13 +71,13 @@ public class SearchController {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
-    public void displayEditPlanActivity() {
-        Intent i = new Intent(searchActivity, EditPlanActivity.class);
+    public void displayEditPlanActivity(Intent pIntent) {
+        Intent i = new Intent(searchActivity, EditPlanActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         searchActivity.startActivity(i);
         searchActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displayUserSettingsActivity() {
-        Intent i = new Intent(searchActivity, UserProfileActivity.class);
+    public void displayUserSettingsActivity(Intent pIntent) {
+        Intent i = new Intent(searchActivity, UserProfileActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         searchActivity.startActivity(i);
         searchActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

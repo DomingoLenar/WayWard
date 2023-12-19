@@ -57,11 +57,11 @@ public class EditPlanActivity extends AppCompatActivity {
         navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.equals(navbar.getMenu().getItem(0))) editPlanController.displayMainActivity();
-                else if (item.equals(navbar.getMenu().getItem(1))) editPlanController.displaySearchActivity();
+                if (item.equals(navbar.getMenu().getItem(0))) editPlanController.displayMainActivity(pIntent);
+                else if (item.equals(navbar.getMenu().getItem(1))) editPlanController.displaySearchActivity(pIntent);
                 else if (item.equals(navbar.getMenu().getItem(2))) editPlanController.displayPopUpDialog();
                 else if (item.equals(navbar.getMenu().getItem(3))) editPlanController.displayEditPlanActivity();
-                else if (item.equals(navbar.getMenu().getItem(4))) editPlanController.displayUserSettingsActivity();
+                else if (item.equals(navbar.getMenu().getItem(4))) editPlanController.displayUserSettingsActivity(pIntent);
                 return true;
             }
         });

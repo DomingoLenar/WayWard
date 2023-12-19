@@ -28,13 +28,13 @@ public class UserProfileSettingsController {
         userModel = new User(this);
     }
 
-    public void displayMainActivity() {
-        Intent i = new Intent(userProfileActivity, MainActivity.class);
+    public void displayMainActivity(Intent pIntent) {
+        Intent i = new Intent(userProfileActivity, MainActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-    public void displaySearchActivity() {
-        Intent i = new Intent(userProfileActivity, SearchActivity.class);
+    public void displaySearchActivity(Intent pIntent) {
+        Intent i = new Intent(userProfileActivity, SearchActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -78,8 +78,8 @@ public class UserProfileSettingsController {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
-    public void displayEditPlanActivity() {
-        Intent i = new Intent(userProfileActivity, EditPlanActivity.class);
+    public void displayEditPlanActivity(Intent pIntent) {
+        Intent i = new Intent(userProfileActivity, EditPlanActivity.class).putExtra("userInfo", pIntent.getStringArrayExtra("userInfo"));
         userProfileActivity.startActivity(i);
         userProfileActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

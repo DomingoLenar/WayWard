@@ -1,17 +1,13 @@
 package com.example.myfirstapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
 import com.example.myfirstapp.R;
 import com.example.myfirstapp.controllers.SearchController;
 import com.example.myfirstapp.views.adapters.ViewPagerAdapter;
@@ -23,30 +19,16 @@ public class SearchActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     SearchController searchController;
+    Intent pIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        pIntent = getIntent();
         searchController = new SearchController(this);
         initViews();
-
-        ImageView imageView2 = findViewById(R.id.imageView2);
-        TextView searchExplore = findViewById(R.id.searchExplore);
-        ImageButton searchAvatar = findViewById(R.id.searchAvatar);
-        CardView searchSearchBar = findViewById(R.id.searchSearchBar);
-        LinearLayout searchSearchBarContents = findViewById(R.id.searchSearchBarContents);
-        ImageView searchSearchLogo = findViewById(R.id.searchSearchLogo);
-        EditText searchSearchField = findViewById(R.id.searchSearchField);
-        CardView mainBottomBarDarkCream = findViewById(R.id.mainBottomBarDarkCream);
-        LinearLayout mainBottomBarContents = findViewById(R.id.mainBottomBarContents);
-        ImageButton mainHomeButton = findViewById(R.id.mainHomeButton);
-        ImageButton mainSearchButton = findViewById(R.id.mainSearchButton);
-        ImageButton mainMButton = findViewById(R.id.mainMButton);
-        ImageButton mainEditButton = findViewById(R.id.mainEditButton);
-        ImageButton mainUserProfileButton = findViewById(R.id.M_userSettingsBtn);
-        CardView mainBottomBarOrange = findViewById(R.id.mainBottomBarOrange);
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
@@ -82,20 +64,20 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
     private void initViews() {}
-    public void homeBtn(View view) {
-        searchController.displayMainActivity();
+    public void S_homeBtn(View view) {
+        searchController.displayMainActivity(pIntent);
     }
-    public void searchBtn(View view) {
+    public void S_searchBtn(View view) {
         searchController.displaySearchActivity();
     }
-    public void popUpBtn(View view) {
+    public void S_popUpBtn(View view) {
         searchController.displayPopUpDialog();
     }
-    public void editPlanBtn(View view) {
-        searchController.displayEditPlanActivity();
+    public void S_editPlanBtn(View view) {
+        searchController.displayEditPlanActivity(pIntent);
     }
     public void S_userSettingsBtn(View view) {
-        searchController.displayUserSettingsActivity();
+        searchController.displayUserSettingsActivity(pIntent);
     }
 
 }
