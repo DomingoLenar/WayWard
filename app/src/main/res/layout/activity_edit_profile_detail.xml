@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".views.EditProfileDetailActivity">
+
+    <TextView
+        android:id="@+id/userProfileDescription"
+        android:layout_width="300dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/signika_light"
+        android:text="We focus a lot on helping the first time or inexperience traveler head out. "
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout_profileSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <ImageView
+        android:id="@+id/userProfileAvatar"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/usernameicon" />
+
+    <TextView
+        android:id="@+id/userProfileFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/signika"
+        android:text="User"
+        android:textColor="#853E34"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/userProfileAvatar"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userProfileLastName" />
+
+    <TextView
+        android:id="@+id/userProfileLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/signika_bold"
+        android:text="User"
+        android:textColor="#853E34"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainBottomBarOrange"
+        android:layout_width="442dp"
+        android:layout_height="136dp"
+        android:background="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_profileSettings"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/mainBottomBarVertical"
+            android:layout_width="441dp"
+            android:layout_height="137dp"
+            android:orientation="vertical"
+            android:paddingTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/mainBottomBarHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="#00ACA193"
+                android:orientation="horizontal"
+                tools:background="#ACA193">
+
+                <ImageButton
+                    android:id="@+id/EDS_HomeButton"
+                    android:layout_width="87dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Home Button"
+                    android:onClick="homeBtn"
+                    app:srcCompat="@mipmap/homeicon"/>
+
+                <ImageButton
+                    android:id="@+id/EDS_SearchButton"
+                    android:layout_width="87dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Search Button"
+                    android:onClick="searchBtn"
+                    app:srcCompat="@mipmap/searchicon"/>
+
+                <ImageButton
+                    android:id="@+id/EDS_MButton"
+                    android:layout_width="87dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Main Button"
+                    android:onClick="popUpBtn"
+                    app:srcCompat="@mipmap/mainbuttonicon"/>
+
+                <ImageButton
+                    android:id="@+id/EDS_EditButton"
+                    android:layout_width="87dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Edit Button"
+                    android:onClick="editPlanBtn"
+                    app:srcCompat="@mipmap/editicon"/>
+
+                <ImageButton
+                    android:id="@+id/EDS_userSettingsBtn"
+                    android:layout_width="87dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Profile Button"
+                    android:onClick="profileSettingsBtn"
+                    app:srcCompat="@mipmap/profileicon"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_profileSettings"
+        android:layout_width="418dp"
+        android:layout_height="554dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/constaint_layout_orange_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editText_password"
+            android:layout_width="299dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints="@string/prompt_password"
+            android:hint="@string/prompt_password"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:textColorHint="#333333"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_updatePassword" />
+
+        <EditText
+            android:id="@+id/editText_username"
+            android:layout_width="299dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints="Username"
+            android:hint="Username"
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="true"
+            android:textColorHint="#333333"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_updateUsername" />
+
+        <TextView
+            android:id="@+id/textView_updatePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/signika_bold"
+            android:text="Update Password"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_username" />
+
+        <TextView
+            android:id="@+id/textView_updateUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:fontFamily="@font/signika_bold"
+            android:text="Update Username"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_editDetails"
+            android:layout_width="239dp"
+            android:layout_height="64dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/button_white_bg"
+            android:enabled="false"
+            android:fontFamily="@font/signika_bold"
+            android:text="Edit"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_password"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
