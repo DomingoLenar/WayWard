@@ -195,11 +195,11 @@ public class DataBaseAPI {
 //     * @param newValues    JSON string of the new values
      * @param userCallback
      */
-    public void updateUserColumn(Retrofit retrofit, String username, User userModel, UserCallback userCallback){
+    public void updateUserColumn(Retrofit retrofit, String username, UserRequest userModel, UserCallback userCallback){
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        Callback<JsonElement> callback = new Callback<JsonElement>() {
+        Callback<User> callback = new Callback<User>() {
             @Override
-            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful()) {
                     Log.e("DataBaseAPI", "Unsuccessful response: " + response.code());
                     userCallback.onError("Failed to fetch user");
@@ -210,7 +210,7 @@ public class DataBaseAPI {
             }
 
             @Override
-            public void onFailure(Call<JsonElement> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 Log.e("DataBaseAPI", "Failed to update username and password", t);
             }
         };

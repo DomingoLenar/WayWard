@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 public class ProfileSettingsController {
     ProfileSettingsActivity profileSettingsActivity;
     DataBaseAPI dataBaseAPI;
-    User userModel;
+    UserRequest userModel;
     public ProfileSettingsController(ProfileSettingsActivity profileSettingsActivity) {
         this.profileSettingsActivity = profileSettingsActivity;
         this.dataBaseAPI = new DataBaseAPI();
@@ -22,7 +22,7 @@ public class ProfileSettingsController {
         if (new_username.equals("") || new_password.equals("")) {
             Toast.makeText(profileSettingsActivity.getApplicationContext(), "Please enter the required input field", Toast.LENGTH_SHORT).show();
         }
-        userModel = new User(new_username, new_password);
+        userModel = new UserRequest(new_username, new_password);
         Retrofit retrofit = dataBaseAPI.getClient();
         String hashedPassword = hashUserPassword(new_password);
         UserRequest userRequestModel = new UserRequest(new_username, hashedPassword);
@@ -45,7 +45,8 @@ public class ProfileSettingsController {
     private String hashUserPassword(String password) {
         // Get the hashed password using the User model's hashPassword method
         // Assuming you have an instance of the User model
-        return userModel.hashPassword(password);
+        User user = new User(null, null);
+        return user.hashPassword(password);
     }
     private String createJsonForUserUpdate(String username, String hashedPassword) {
         // Create a JSON string of the new values to be updated in the user details
