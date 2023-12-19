@@ -62,7 +62,9 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.4.1")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.8.0-RC")
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.8.0-RC")
+
+    implementation ("com.squareup.picasso:picasso:2.71828")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
 
